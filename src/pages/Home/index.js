@@ -1,11 +1,11 @@
 import React from 'react';
-import UploadComponent from '../../components/UploadComponent';
+import LogoutButton from '../../components/Logout';
 
 const Home = () => {
     return (
         <div>
             <h1>Envio de Arquivos</h1>
-            <UploadComponent />
+            <LogoutButton />
         </div>
     );
 };
