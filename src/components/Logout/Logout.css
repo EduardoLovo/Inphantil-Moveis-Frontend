@@ -1,0 +1,9 @@
+.botaoSair {
+    max-width: 200px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.botaoSair:hover {
+    background-color: #d3c013;
+}

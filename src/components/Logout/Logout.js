@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { JwtHandler } from '../services/jwt_handler/jwt_handler';
+import { JwtHandler } from '../../services/jwt_handler/jwt_handler';
 
 const LogoutButton = () => {
     const navigate = useNavigate();
@@ -8,11 +8,14 @@ const LogoutButton = () => {
     const handleLogout = () => {
         JwtHandler.clearJwt(); // Remove o token JWT
         navigate('/login'); // Redireciona para a página de login
+        window.location.reload();
     };
 
     return (
         <div>
-            <button onClick={handleLogout}>Sair</button>;
+            <button className="botaoSair" onClick={handleLogout}>
+                Sair
+            </button>
         </div>
     );
 };

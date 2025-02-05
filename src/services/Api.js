@@ -21,30 +21,6 @@ export const Api = {
         },
     }),
 
-    // login: async (email, password) => {
-    //     try {
-    //         const response = await Api.post(Api.loginUrl(), {
-    //             email,
-    //             password,
-    //         });
-
-    //         if (response.data?.token) {
-    //             JwtHandler.setJwt(response.data.token);
-    //             console.log('Login realizado com sucesso!');
-    //             return true;
-    //         }
-
-    //         console.error('Erro: Token não recebido');
-    //         return false;
-    //     } catch (error) {
-    //         console.error(
-    //             'Erro ao fazer login:',
-    //             error.response?.data || error.message
-    //         );
-    //         return false;
-    //     }
-    // },
-
     // Configuração do token para requisições autenticadas
     authConfig: (isMultipart = false) => {
         const headers = {

@@ -33,10 +33,9 @@ export const JwtHandler = {
             if (!payloadBase64) return false;
 
             const payload = JSON.parse(atob(payloadBase64));
-            const exp = payload?.exp;
-            if (!exp) return false;
 
-            return Date.now() < exp * 1000; // Comparação com a data atual
+            // Apenas verifica se o token foi decodificado corretamente
+            return !!payload;
         } catch {
             return false; // Retorna falso se houver erro no parse
         }

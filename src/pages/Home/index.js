@@ -1,11 +1,10 @@
 import React from 'react';
-import LogoutButton from '../../components/Logout';
+import './Home.css';
 
 const Home = () => {
     return (
-        <div>
-            <h1>Envio de Arquivos</h1>
-            <LogoutButton />
+        <div className="neon-text">
+            <h1>Envio de Arquissvos</h1>
         </div>
     );
 };

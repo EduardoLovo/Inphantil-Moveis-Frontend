@@ -23,7 +23,8 @@ const Login = () => {
             JwtHandler.setJwt(response.data.token);
 
             // Redireciona para a página protegida
-            navigate('/home');
+            navigate('/');
+            window.location.reload();
             console.log('login efetuado');
             setIsLoading(false);
         } catch (error) {

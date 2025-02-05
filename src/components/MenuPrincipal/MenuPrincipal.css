@@ -1,0 +1,62 @@
+/* Container para o menu fixo */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    z-index: 1000; /* Para garantir que o menu fique acima de outros conteúdos */
+}
+
+/* Estilização da lista de links do menu */
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 15px;
+    border-bottom: 1px solid #444;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding-left: 5px;
+}
+
+/* Efeito de hover nos links */
+.menu li a:hover {
+    background-color: #555;
+    color: #bfc219;
+}
+
+.botaoSair {
+    max-width: 200px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.botaoSair:hover {
+    background-color: #d3c013;
+}
+
+/* Ajustes de responsividade */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-top: 10px;
+    }
+    .menu li {
+        padding: 10px;
+    }
+}
