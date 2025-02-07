@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
-import { CardApliques } from '../CardApliques/CardApliques';
-import './ListaDeApliques.css';
+import { CardSinteticos } from '../CardSinteticos/CardSinteticos';
+import { Api } from '../../../services/Api';
 
-export const ListaDeApliques = () => {
-    const [apliques, setApliques] = useState([]);
+export const ListaDeSinteticos = () => {
+    const [sinteticos, setSinteticos] = useState([]);
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
 
@@ -13,13 +12,13 @@ export const ListaDeApliques = () => {
 
     const loadData = async () => {
         try {
-            const response = await Api.get(Api.readAllUrl('aplique'));
-            setApliques(response.data);
+            const response = await Api.get(Api.readAllUrl('sintetico'));
+            setSinteticos(response.data);
             setIsLoading(false);
         } catch (error) {
-            setError('Erro ao carregar apliques. Tente novamente.');
+            setError('Erro ao carregar sinetico. Tente novamente.');
             setIsLoading(false);
-            console.error('Erro ao buscar apliques:', error);
+            console.error('Erro ao buscar sinteticos:', error);
         }
     };
 
@@ -27,17 +26,19 @@ export const ListaDeApliques = () => {
         loadData();
     }, []);
 
-    const sortedApliques = apliques.sort((a, b) => a.ordem - b.ordem);
+    const sortedSinteticos = sinteticos.sort((a, b) =>
+        a.codigo.localeCompare(b.codigo)
+    );
 
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}
-            {sortedApliques.map((aplique, index) => (
+            {sortedSinteticos.map((sintetico, index) => (
                 <div key={index}>
-                    {type !== 'adm' && aplique.estoque === false ? (
+                    {type !== 'adm' && sintetico.estoque === false ? (
                         ''
                     ) : (
-                        <CardApliques aplique={aplique} />
+                        <CardSinteticos sintetico={sintetico} />
                     )}
                 </div>
             ))}

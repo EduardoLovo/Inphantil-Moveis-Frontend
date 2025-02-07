@@ -6,6 +6,8 @@ import PrivateRoute from './components/PrivateRoute';
 import MenuPrincipal from './components/MenuPrincipal/MenuPrincipal';
 import { ApliquesCreate } from './pages/Apliques/ApliquesCreate';
 import { ApliquesCatalogo } from './pages/Apliques/ApliquesCatalogo';
+import { SinteticoCatalogo } from './pages/Sinteticos/SinteticosCatalogo';
+import { SinteticoCreate } from './pages/Sinteticos/SinteticoCreate';
 
 function App() {
     return (
@@ -13,6 +15,7 @@ function App() {
             <MenuPrincipal />
 
             <Routes>
+                <Route path="/login" element={<Login />} />
                 <Route
                     path="/"
                     element={
@@ -20,6 +23,11 @@ function App() {
                             <Home />
                         </PrivateRoute>
                     }
+                />
+                {/* Rotas Apliques */}
+                <Route
+                    path="/catalogo-de-apliques"
+                    element={<ApliquesCatalogo />}
                 />
                 <Route
                     path="/adicionar-novo-aplique"
@@ -29,10 +37,18 @@ function App() {
                         </PrivateRoute>
                     }
                 />
-                <Route path="/login" element={<Login />} />
+                {/* Rotas Sinteticos */}
                 <Route
-                    path="/catalogo-de-apliques"
-                    element={<ApliquesCatalogo />}
+                    path="/catalogo-de-sinteticos"
+                    element={<SinteticoCatalogo />}
+                />
+                <Route
+                    path="/adicionar-novo-sintetico"
+                    element={
+                        <PrivateRoute redirectTo="/login">
+                            <SinteticoCreate />
+                        </PrivateRoute>
+                    }
                 />
             </Routes>
         </div>

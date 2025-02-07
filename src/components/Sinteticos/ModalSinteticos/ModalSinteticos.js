@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import './ModalAplique.css';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 
-const Modal = ({ aplique, onClose }) => {
-    const [codigo, setCodigo] = useState(aplique.codigo);
-    const [quantidade, setQuantidade] = useState(aplique.quantidade);
-    const [estoque, setEstoque] = useState(aplique.estoque);
-    const [ordem, setOrdem] = useState(aplique.ordem);
+export const ModalSinteticos = ({ sintetico, onClose }) => {
+    const [codigo, setCodigo] = useState(sintetico.codigo);
+    const [estoque, setEstoque] = useState(sintetico.estoque);
+    const [cor, setCor] = useState(sintetico.ordem);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregament
 
@@ -26,14 +24,13 @@ const Modal = ({ aplique, onClose }) => {
 
         const payload = {
             codigo,
-            quantidade,
             estoque,
-            ordem,
+            cor,
         };
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('aplique', aplique._id),
+                Api.updateUrl('sintetico', sintetico._id),
                 payload,
                 true
             );
@@ -56,12 +53,12 @@ const Modal = ({ aplique, onClose }) => {
         }
     };
 
-    const deletarAplique = async (e) => {
+    const deletarSintetico = async (e) => {
         e.preventDefault();
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('aplique', aplique._id),
+                Api.deleteUrl('sintetico', sintetico._id),
                 true
             );
 
@@ -88,14 +85,17 @@ const Modal = ({ aplique, onClose }) => {
             {type === 'adm' ? (
                 <div className="modal-content" onClick={handleModalClick}>
                     <p onClick={onClose} className="botaoFechar"></p>
-                    <button className="botaoDeletar" onClick={deletarAplique}>
+                    <button className="botaoDeletar" onClick={deletarSintetico}>
                         Deletar
                     </button>
-                    <h2>Detalhes do Aplique</h2>
+                    <h2>Detalhes do Sintetico</h2>
                     <div className="aplique-content-modal">
                         <div>
-                            <img src={aplique.imagem} alt="imagem do aplique" />
-                            <p>{aplique.codigo}</p>
+                            <img
+                                src={sintetico.imagem}
+                                alt="imagem do sintetico"
+                            />
+                            <p>{sintetico.codigo}</p>
                         </div>
                         <form
                             onSubmit={handleSubmit}
@@ -106,14 +106,6 @@ const Modal = ({ aplique, onClose }) => {
                                 value={codigo}
                                 onChange={(e) => setCodigo(e.target.value)}
                                 type="text"
-                                required
-                            />
-
-                            <label>Quantidade:</label>
-                            <input
-                                value={quantidade}
-                                onChange={(e) => setQuantidade(e.target.value)}
-                                type="number"
                                 required
                             />
 
@@ -128,13 +120,25 @@ const Modal = ({ aplique, onClose }) => {
                                 <option value="false">Não</option>
                             </select>
 
-                            <label>Ordem:</label>
-                            <input
-                                value={ordem}
-                                onChange={(e) => setOrdem(e.target.value)}
-                                type="number"
-                                required
-                            />
+                            <label>Cor:</label>
+                            <select
+                                value={cor}
+                                onChange={(e) => setCor(e.target.value)}
+                            >
+                                <option value="Amarelo">Amarelo</option>
+                                <option value="Azul">Azul</option>
+                                <option value="Bege">Bege</option>
+                                <option value="Branco">Branco</option>
+                                <option value="Cinza">Cinza</option>
+                                <option value="Laranja">Laranja</option>
+                                <option value="Lilas">Lilas</option>
+                                <option value="Mostarda">Mostarda</option>
+                                <option value="Rosa">Rosa</option>
+                                <option value="Tiffany">Tiffany</option>
+                                <option value="Verde">Verde</option>
+                                <option value="Vermelho">Vermelho</option>
+                                <option value="Externo">Externo</option>
+                            </select>
 
                             <button type="submit">Atualizar</button>
                         </form>
@@ -144,13 +148,11 @@ const Modal = ({ aplique, onClose }) => {
             ) : (
                 <div className="modal-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
-                    <img src={aplique.imagem} alt="Imagem do aplique" />
-                    <p>{aplique.codigo}</p>
+                    <img src={sintetico.imagem} alt="Imagem do sintetico" />
+                    <p>{sintetico.codigo}</p>
                 </div>
             )}
             {isLoading && <Loading />}
         </div>
     );
 };
-
-export default Modal;

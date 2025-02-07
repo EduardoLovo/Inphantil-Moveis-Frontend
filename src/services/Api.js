@@ -7,11 +7,11 @@ export const Api = {
     loginUrl: () => `${Api.baseUrl}/login/`,
 
     // Rotas Apliques
-    readAllApliquesUrl: () => Api.baseUrl + '/apliques',
-    addApliquesUrl: () => Api.baseUrl + '/apliques/create',
-    readByIdUrl: (id) => Api.baseUrl + '/apliques/getById/' + id,
-    updateUrl: (id) => Api.baseUrl + '/apliques/updateOne/' + id,
-    deleteAplicUrl: (id) => Api.baseUrl + '/apliques/deleteOne/' + id,
+    readAllUrl: (rota) => Api.baseUrl + `/${rota}`,
+    addUrl: (rota) => Api.baseUrl + `/${rota}/create`,
+    readByIdUrl: (rota, id) => Api.baseUrl + `/${rota}/getById/` + id,
+    updateUrl: (rota, id) => Api.baseUrl + `/${rota}/updateOne/` + id,
+    deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/deleteOne/` + id,
 
     // Instância do Axios com configuração padrão
     instance: axios.create({
@@ -23,14 +23,20 @@ export const Api = {
 
     // Configuração do token para requisições autenticadas
     authConfig: (isMultipart = false) => {
+        const token = JwtHandler.getJwt();
+        if (!token) {
+            throw new Error('Token JWT não encontrado');
+        }
+
         const headers = {
-            Authorization: `Bearer ${JwtHandler.getJwt()}`,
+            Authorization: `Bearer ${token}`,
         };
 
         if (isMultipart) {
             headers['Content-Type'] = 'multipart/form-data';
+        } else {
+            headers['Content-Type'] = 'application/json';
         }
-
         return { headers };
     },
 
@@ -40,7 +46,6 @@ export const Api = {
 
     post: (url, body, auth = false, isMultipart = false) => {
         const config = auth ? Api.authConfig(isMultipart) : {};
-
         return Api.instance.post(url, body, config);
     },
 

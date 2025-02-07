@@ -3,12 +3,11 @@ import { Api } from '../../../services/Api';
 import { Loading } from '../../../components/Loading/Loading';
 import styles from '../../../styles/Formulario.module.css';
 
-export const ApliquesCreate = () => {
+export const SinteticoCreate = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [codigo, setCodigo] = useState('');
-    const [quantidade, setQuantidade] = useState('');
     const [estoque, setEstoque] = useState('');
-    const [ordem, setOrdem] = useState('');
+    const [cor, setCor] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
@@ -31,19 +30,12 @@ export const ApliquesCreate = () => {
         const formData = new FormData();
         formData.append('codigo', codigo);
         formData.append('imagem', selectedImage); // O backend espera req.file
-        formData.append('quantidade', parseInt(quantidade));
         formData.append('estoque', estoque); // Booleano
-        formData.append('ordem', parseInt(ordem));
-
-        for (let pair of formData.entries()) {
-            console.log(
-                `Chave: ${pair[0]}, Valor: ${pair[1]}, Tipo: ${typeof pair[1]}`
-            );
-        }
+        formData.append('cor', cor);
 
         try {
             const response = await Api.post(
-                Api.addUrl('aplique'),
+                Api.addUrl('sintetico'),
                 formData,
                 true,
                 true
@@ -60,6 +52,7 @@ export const ApliquesCreate = () => {
         } catch (error) {
             // Em caso de erro durante a requisição
             console.error('Erro na requisição:', error);
+
             setError(
                 error.response
                     ? error.response.data.message
@@ -73,7 +66,7 @@ export const ApliquesCreate = () => {
         <div className={styles.containerFormulario}>
             {isLoading && <Loading />}
             <div>
-                <h1>Adicionar novo Aplique</h1>
+                <h1>Adicionar novo Sintetico</h1>
             </div>
             <div>
                 <form onSubmit={handleSubmit} className=".containerFormulario">
@@ -93,32 +86,38 @@ export const ApliquesCreate = () => {
                         required
                     />
 
-                    <label>Quantidade:</label>
-                    <input
-                        value={quantidade}
-                        onChange={(e) => setQuantidade(e.target.value)}
-                        type="number"
-                        required
-                    />
-
                     <label>Estoque:</label>
                     <select
                         value={estoque}
                         onChange={(e) => setEstoque(e.target.value === 'true')}
                         required
                     >
-                        <option value=""></option>
+                        <option></option>
                         <option value="true">Sim</option>
                         <option value="false">Não</option>
                     </select>
 
-                    <label>Ordem:</label>
-                    <input
-                        value={ordem}
-                        onChange={(e) => setOrdem(e.target.value)}
-                        type="number"
+                    <label>Cor:</label>
+                    <select
+                        value={cor}
+                        onChange={(e) => setCor(e.target.value)}
                         required
-                    />
+                    >
+                        <option></option>
+                        <option value="Amarelo">Amarelo</option>
+                        <option value="Azul">Azul</option>
+                        <option value="Bege">Bege</option>
+                        <option value="Branco">Branco</option>
+                        <option value="Cinza">Cinza</option>
+                        <option value="Laranja">Laranja</option>
+                        <option value="Lilas">Lilas</option>
+                        <option value="Mostarda">Mostarda</option>
+                        <option value="Rosa">Rosa</option>
+                        <option value="Tiffany">Tiffany</option>
+                        <option value="Verde">Verde</option>
+                        <option value="Vermelho">Vermelho</option>
+                        <option value="Externo">Externo</option>
+                    </select>
 
                     <button type="submit">Salvar</button>
                 </form>

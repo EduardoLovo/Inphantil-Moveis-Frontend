@@ -16,14 +16,17 @@ const MenuPrincipal = () => {
                     <a href="/">Inicio</a>
                 </li>
                 <li>
-                    <a href="/adicionar-novo-aplique">Novo aplique</a>
+                    <a href="/adicionar-novo-aplique">Novo Aplique</a>
+                </li>
+                <li>
+                    <a href="/adicionar-novo-sintetico">Novo Sintetico</a>
                 </li>
 
                 <li>
                     <a href="/catalogo-de-apliques">Catalogo de Apliques</a>
                 </li>
                 <li>
-                    <a href="/">Catalogo de Materiais</a>
+                    <a href="/catalogo-de-sinteticos">Catalogo de Materiais</a>
                 </li>
                 <li>
                     <a href="/">Catalogo de Lençois</a>
