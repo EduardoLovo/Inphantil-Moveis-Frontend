@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Api } from '../../services/Api';
-import { Loading } from '../../components/Loading/Loading';
-import styles from '../../styles/Formulario.module.css';
+import { Api } from '../../../services/Api';
+import { Loading } from '../../../components/Loading/Loading';
+import styles from '../../../styles/Formulario.module.css';
 
 export const ApliquesCreate = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -34,6 +34,11 @@ export const ApliquesCreate = () => {
         formData.append('estoque', estoque === 'true'); // Booleano
         formData.append('ordem', parseInt(ordem));
 
+        console.log(formData);
+        for (let pair of formData.entries()) {
+            console.log(pair[0], pair[1]);
+        }
+
         try {
             const response = await Api.post(
                 Api.addApliquesUrl(),
@@ -65,7 +70,7 @@ export const ApliquesCreate = () => {
                 <h1>Adicionar novo Aplique</h1>
             </div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className=".containerFormulario">
                     <label>Código:</label>
                     <input
                         value={codigo}

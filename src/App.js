@@ -3,8 +3,9 @@ import './App.css';
 import Login from './pages/Login/Login';
 import Home from './pages/Home';
 import PrivateRoute from './components/PrivateRoute';
-import { ApliquesCreate } from './pages/ApliquesCreate';
 import MenuPrincipal from './components/MenuPrincipal/MenuPrincipal';
+import { ApliquesCreate } from './pages/Apliques/ApliquesCreate';
+import { ApliquesCatalogo } from './pages/Apliques/ApliquesCatalogo';
 
 function App() {
     return (
@@ -29,7 +30,10 @@ function App() {
                     }
                 />
                 <Route path="/login" element={<Login />} />
-                <Route path="/" element={<Home />} />
+                <Route
+                    path="/catalogo-de-apliques"
+                    element={<ApliquesCatalogo />}
+                />
             </Routes>
         </div>
     );
