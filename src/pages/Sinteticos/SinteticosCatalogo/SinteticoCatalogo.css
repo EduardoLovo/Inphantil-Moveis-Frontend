@@ -1,0 +1,31 @@
+.menuDoCatalogoSintetico {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+.menuDoCatalogoSintetico button {
+    width: 80px;
+    height: 40px;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px;
+    background-color: rgb(150, 150, 150);
+    cursor: pointer;
+}
+
+.menuDoCatalogoSintetico button:hover {
+    background-color: rgba(255, 255, 135, 1);
+}
+
+/* Aviso Catalogo */
+.avisoCatalogoSintetico {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}

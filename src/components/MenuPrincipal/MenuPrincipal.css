@@ -59,14 +59,35 @@
 }
 
 /* Ajustes de responsividade */
-@media (max-width: 768px) {
+/* Oculta o menu em telas pequenas */
+@media (max-width: 480px) {
     .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding-top: 10px;
+        width: 0;
+        overflow: hidden;
+        transition: width 0.3s ease-in-out;
+        position: fixed;
+        height: 100%;
     }
-    .menu li {
-        padding: 10px;
+
+    .sidebar.open {
+        width: 250px;
+    }
+
+    /* Botão hambúrguer */
+    .menu-toggle {
+        position: absolute;
+        width: 100%;
+        top: 10px;
+        left: 10px;
+        background: #d3c013;
+        border: none;
+        cursor: pointer;
+        font-size: 30px;
+        color: white;
+        z-index: 999;
+    }
+
+    .containerApp {
+        margin-left: 0;
     }
 }

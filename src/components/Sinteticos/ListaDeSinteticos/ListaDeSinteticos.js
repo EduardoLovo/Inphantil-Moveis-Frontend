@@ -3,7 +3,8 @@ import { Loading } from '../../Loading/Loading';
 import { CardSinteticos } from '../CardSinteticos/CardSinteticos';
 import { Api } from '../../../services/Api';
 
-export const ListaDeSinteticos = () => {
+export const ListaDeSinteticos = (props) => {
+    const cor = props.cor;
     const [sinteticos, setSinteticos] = useState([]);
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
@@ -38,7 +39,20 @@ export const ListaDeSinteticos = () => {
                     {type !== 'adm' && sintetico.estoque === false ? (
                         ''
                     ) : (
-                        <CardSinteticos sintetico={sintetico} />
+                        <div>
+                            {!cor ? (
+                                <CardSinteticos sintetico={sintetico} />
+                            ) : (
+                                <div>
+                                    {sintetico.cor === cor && (
+                                        <CardSinteticos
+                                            sintetico={sintetico}
+                                            key={index}
+                                        />
+                                    )}
+                                </div>
+                            )}
+                        </div>
                     )}
                 </div>
             ))}

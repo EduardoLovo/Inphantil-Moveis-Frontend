@@ -12,6 +12,9 @@ import { TecidosParaLencolCatalogo } from './pages/Tecidos/TecidosCatalogo';
 import { TecidoParaLencolCreate } from './pages/Tecidos/TecidoCreate';
 import { LencolProntaEntregaCatalogo } from './pages/LencolProntaEntrega/LencolProntaEntregaCatalogo';
 import { LencolProntaEntregaCreate } from './pages/LencolProntaEntrega/LencolProntaEntregaCreate';
+import Cama3D from './pages/Camas3D/Camas3D';
+import { CalculadoraNova } from './pages/Calculadoras/CalculadoraNova';
+import { Calculadora6040 } from './pages/Calculadoras/Calculadora6040';
 
 function App() {
     return (
@@ -80,6 +83,11 @@ function App() {
                         </PrivateRoute>
                     }
                 />
+                {/* Rota Cama 3D */}
+                <Route path="/camas-3D" element={<Cama3D />} />
+                {/* Rotas calculadoras */}
+                <Route path="/calculadora-nova" element={<CalculadoraNova />} />
+                <Route path="/calculadora-6040" element={<Calculadora6040 />} />
             </Routes>
         </div>
     );
