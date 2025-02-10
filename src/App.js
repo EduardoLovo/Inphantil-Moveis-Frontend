@@ -8,6 +8,10 @@ import { ApliquesCreate } from './pages/Apliques/ApliquesCreate';
 import { ApliquesCatalogo } from './pages/Apliques/ApliquesCatalogo';
 import { SinteticoCatalogo } from './pages/Sinteticos/SinteticosCatalogo';
 import { SinteticoCreate } from './pages/Sinteticos/SinteticoCreate';
+import { TecidosParaLencolCatalogo } from './pages/Tecidos/TecidosCatalogo';
+import { TecidoParaLencolCreate } from './pages/Tecidos/TecidoCreate';
+import { LencolProntaEntregaCatalogo } from './pages/LencolProntaEntrega/LencolProntaEntregaCatalogo';
+import { LencolProntaEntregaCreate } from './pages/LencolProntaEntrega/LencolProntaEntregaCreate';
 
 function App() {
     return (
@@ -47,6 +51,32 @@ function App() {
                     element={
                         <PrivateRoute redirectTo="/login">
                             <SinteticoCreate />
+                        </PrivateRoute>
+                    }
+                />
+                {/* Rotas Tecidos */}
+                <Route
+                    path="/catalogo-de-tecidos-para-lencol"
+                    element={<TecidosParaLencolCatalogo />}
+                />
+                <Route
+                    path="/adicionar-novo-tecido-para-lencol"
+                    element={
+                        <PrivateRoute redirectTo="/login">
+                            <TecidoParaLencolCreate />
+                        </PrivateRoute>
+                    }
+                />
+                {/* Rotas Lençois */}
+                <Route
+                    path="/catalogo-de-lencol-pronta-entrega"
+                    element={<LencolProntaEntregaCatalogo />}
+                />
+                <Route
+                    path="/adicionar-novo-lencol-pronta-entrega"
+                    element={
+                        <PrivateRoute redirectTo="/login">
+                            <LencolProntaEntregaCreate />
                         </PrivateRoute>
                     }
                 />

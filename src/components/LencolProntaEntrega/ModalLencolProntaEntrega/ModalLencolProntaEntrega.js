@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
-import './ModalSinteticos.css';
 
-export const ModalSinteticos = ({ sintetico, onClose }) => {
-    const [codigo, setCodigo] = useState(sintetico.codigo);
-    const [estoque, setEstoque] = useState(sintetico.estoque);
-    const [cor, setCor] = useState(sintetico.ordem);
+export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
+    const [codigo, setCodigo] = useState(lencol.codigo);
+    const [quantidade, setQuantidade] = useState(lencol.quantidade);
+    const [cor, setCor] = useState(lencol.cor);
+    const [tamanho, setTamanho] = useState(lencol.tamanho);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregament
 
@@ -25,13 +25,14 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
         const payload = {
             codigo,
-            estoque,
+            quantidade,
             cor,
+            tamanho,
         };
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('sintetico', sintetico._id),
+                Api.updateUrl('lencol-pronta-entrega', lencol._id),
                 payload,
                 true
             );
@@ -54,12 +55,12 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
         }
     };
 
-    const deletarSintetico = async (e) => {
+    const deletarAplique = async (e) => {
         e.preventDefault();
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('sintetico', sintetico._id),
+                Api.deleteUrl('lencol-pronta-entrega', lencol._id),
                 true
             );
 
@@ -84,19 +85,16 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
             {type === 'adm' ? (
-                <div className="modal-content modalsintetico" onClick={handleModalClick}>
+                <div className="modal-content" onClick={handleModalClick}>
                     <p onClick={onClose} className="botaoFechar"></p>
-                    <button className="botaoDeletar" onClick={deletarSintetico}>
+                    <button className="botaoDeletar" onClick={deletarAplique}>
                         Deletar
                     </button>
-                    <h2>Detalhes do Sintetico</h2>
+                    <h2>Detalhes do Aplique</h2>
                     <div className="aplique-content-modal">
                         <div>
-                            <img
-                                src={sintetico.imagem}
-                                alt="imagem do sintetico"
-                            />
-                            <p>{sintetico.codigo}</p>
+                            <img src={lencol.imagem} alt="imagem do aplique" />
+                            <p>{lencol.codigo}</p>
                         </div>
                         <form
                             onSubmit={handleSubmit}
@@ -110,35 +108,48 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                                 required
                             />
 
-                            <label>Estoque:</label>
-                            <select
-                                value={estoque}
-                                onChange={(e) =>
-                                    setEstoque(e.target.value === 'true')
-                                }
-                            >
-                                <option value="true">Sim</option>
-                                <option value="false">Não</option>
-                            </select>
+                            <label>Quantidade:</label>
+                            <input
+                                value={quantidade}
+                                onChange={(e) => setQuantidade(e.target.value)}
+                                type="number"
+                                required
+                            />
 
                             <label>Cor:</label>
                             <select
                                 value={cor}
                                 onChange={(e) => setCor(e.target.value)}
+                                required
                             >
-                                <option value="Amarelo">Amarelo</option>
-                                <option value="Azul">Azul</option>
+                                <option></option>
+                                <option value="Azul AZ3">Azul AZ3</option>
+                                <option value="Azul Claro">Azul Claro</option>
                                 <option value="Bege">Bege</option>
                                 <option value="Branco">Branco</option>
                                 <option value="Cinza">Cinza</option>
-                                <option value="Laranja">Laranja</option>
-                                <option value="Lilas">Lilas</option>
-                                <option value="Mostarda">Mostarda</option>
+                                <option value="Palha">Palha</option>
+                                <option value="Prata">Prata</option>
                                 <option value="Rosa">Rosa</option>
-                                <option value="Tiffany">Tiffany</option>
+                                <option value="Rosa Bebe">Rosa Bebe</option>
                                 <option value="Verde">Verde</option>
-                                <option value="Vermelho">Vermelho</option>
-                                <option value="Externo">Externo</option>
+                            </select>
+
+                            <label>Tamanho:</label>
+                            <select
+                                value={tamanho}
+                                onChange={(e) => setTamanho(e.target.value)}
+                                required
+                            >
+                                <option value=""></option>
+                                <option value="Berco">Berço</option>
+                                <option value="Junior">Junior</option>
+                                <option value="Solteiro">Solteiro</option>
+                                <option value="Solteirao">Solteirão</option>
+                                <option value="Viuva">Viuva</option>
+                                <option value="Casal">Casal</option>
+                                <option value="Queen">Queen</option>
+                                <option value="King">King</option>
                             </select>
 
                             <button type="submit">Atualizar</button>
@@ -149,8 +160,8 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
             ) : (
                 <div className="modal-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
-                    <img src={sintetico.imagem} alt="Imagem do sintetico" />
-                    <p>{sintetico.codigo}</p>
+                    <img src={lencol.imagem} alt="Imagem do aplique" />
+                    <p>{lencol.codigo}</p>
                 </div>
             )}
             {isLoading && <Loading />}

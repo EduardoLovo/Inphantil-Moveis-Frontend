@@ -2,6 +2,7 @@ import React from 'react';
 import './MenuPrincipal.css';
 import { JwtHandler } from '../../services/jwt_handler/jwt_handler';
 import LogoutButton from '../Logout/Logout';
+import { Link } from 'react-router-dom';
 
 const MenuPrincipal = () => {
     const isLogged = JwtHandler.isJwtValid();
@@ -9,30 +10,49 @@ const MenuPrincipal = () => {
     return (
         <div className="sidebar">
             <div>
-                <p>Imagem</p>
+                <img src="/images/logo.png" alt="logo" />
             </div>
             <ul className="menu">
                 <li>
-                    <a href="/">Inicio</a>
+                    <Link to="/">Inicio</Link>
                 </li>
                 <li>
-                    <a href="/adicionar-novo-aplique">Novo Aplique</a>
+                    <Link to="/adicionar-novo-aplique">Novo Aplique</Link>
                 </li>
                 <li>
-                    <a href="/adicionar-novo-sintetico">Novo Sintetico</a>
+                    <Link to="/adicionar-novo-sintetico">Novo Sintetico</Link>
+                </li>
+                <li>
+                    <Link to="/adicionar-novo-tecido-para-lencol">
+                        Novo Tecido
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/adicionar-novo-lencol-pronta-entrega">
+                        Novo Lençol
+                    </Link>
                 </li>
 
                 <li>
-                    <a href="/catalogo-de-apliques">Catalogo de Apliques</a>
+                    <Link to="/catalogo-de-apliques">Catálogo de Apliques</Link>
                 </li>
                 <li>
-                    <a href="/catalogo-de-sinteticos">Catalogo de Materiais</a>
+                    <Link to="/catalogo-de-sinteticos">
+                        Catálogo de Materiais
+                    </Link>
                 </li>
                 <li>
-                    <a href="/">Catalogo de Lençois</a>
+                    <Link to="/catalogo-de-tecidos-para-lencol">
+                        Catálogo de Tecidos
+                    </Link>
                 </li>
                 <li>
-                    <a href="/">Catalogo Pantone</a>
+                    <Link to="/catalogo-de-lencol-pronta-entrega">
+                        Catálogo de Lençois
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/">Catálogo Pantone</Link>
                 </li>
             </ul>
             <div>{isLogged && <LogoutButton />}</div>

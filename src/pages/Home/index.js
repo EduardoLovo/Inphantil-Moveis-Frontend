@@ -4,7 +4,7 @@ import './Home.css';
 const Home = () => {
     return (
         <div className="neon-text">
-            <h1>Envio de Arquissvos</h1>
+            <h1>Inicio</h1>
         </div>
     );
 };

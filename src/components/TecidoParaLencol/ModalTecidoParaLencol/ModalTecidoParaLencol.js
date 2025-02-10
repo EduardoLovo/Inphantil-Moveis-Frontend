@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
-import './ModalSinteticos.css';
 
-export const ModalSinteticos = ({ sintetico, onClose }) => {
-    const [codigo, setCodigo] = useState(sintetico.codigo);
-    const [estoque, setEstoque] = useState(sintetico.estoque);
-    const [cor, setCor] = useState(sintetico.ordem);
+const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
+    const [codigo, setCodigo] = useState(tecidoParaLencol.codigo);
+    const [quantidade, setQuantidade] = useState(tecidoParaLencol.quantidade);
+    const [estoque, setEstoque] = useState(tecidoParaLencol.estoque);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregament
 
@@ -25,13 +24,13 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
         const payload = {
             codigo,
+            quantidade,
             estoque,
-            cor,
         };
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('sintetico', sintetico._id),
+                Api.updateUrl('tecidoParaLencol', tecidoParaLencol._id),
                 payload,
                 true
             );
@@ -54,12 +53,12 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
         }
     };
 
-    const deletarSintetico = async (e) => {
+    const deletarAplique = async (e) => {
         e.preventDefault();
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('sintetico', sintetico._id),
+                Api.deleteUrl('tecidoParaLencol', tecidoParaLencol._id),
                 true
             );
 
@@ -84,19 +83,19 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
             {type === 'adm' ? (
-                <div className="modal-content modalsintetico" onClick={handleModalClick}>
+                <div className="modal-content" onClick={handleModalClick}>
                     <p onClick={onClose} className="botaoFechar"></p>
-                    <button className="botaoDeletar" onClick={deletarSintetico}>
+                    <button className="botaoDeletar" onClick={deletarAplique}>
                         Deletar
                     </button>
-                    <h2>Detalhes do Sintetico</h2>
+                    <h2>Detalhes do Tecido</h2>
                     <div className="aplique-content-modal">
                         <div>
                             <img
-                                src={sintetico.imagem}
-                                alt="imagem do sintetico"
+                                src={tecidoParaLencol.imagem}
+                                alt="imagem do aplique"
                             />
-                            <p>{sintetico.codigo}</p>
+                            <p>{tecidoParaLencol.codigo}</p>
                         </div>
                         <form
                             onSubmit={handleSubmit}
@@ -107,6 +106,14 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                                 value={codigo}
                                 onChange={(e) => setCodigo(e.target.value)}
                                 type="text"
+                                required
+                            />
+
+                            <label>Quantidade:</label>
+                            <input
+                                value={quantidade}
+                                onChange={(e) => setQuantidade(e.target.value)}
+                                type="number"
                                 required
                             />
 
@@ -121,26 +128,6 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                                 <option value="false">Não</option>
                             </select>
 
-                            <label>Cor:</label>
-                            <select
-                                value={cor}
-                                onChange={(e) => setCor(e.target.value)}
-                            >
-                                <option value="Amarelo">Amarelo</option>
-                                <option value="Azul">Azul</option>
-                                <option value="Bege">Bege</option>
-                                <option value="Branco">Branco</option>
-                                <option value="Cinza">Cinza</option>
-                                <option value="Laranja">Laranja</option>
-                                <option value="Lilas">Lilas</option>
-                                <option value="Mostarda">Mostarda</option>
-                                <option value="Rosa">Rosa</option>
-                                <option value="Tiffany">Tiffany</option>
-                                <option value="Verde">Verde</option>
-                                <option value="Vermelho">Vermelho</option>
-                                <option value="Externo">Externo</option>
-                            </select>
-
                             <button type="submit">Atualizar</button>
                         </form>
                     </div>
@@ -149,11 +136,16 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
             ) : (
                 <div className="modal-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
-                    <img src={sintetico.imagem} alt="Imagem do sintetico" />
-                    <p>{sintetico.codigo}</p>
+                    <img
+                        src={tecidoParaLencol.imagem}
+                        alt="Imagem do aplique"
+                    />
+                    <p>{tecidoParaLencol.codigo}</p>
                 </div>
             )}
             {isLoading && <Loading />}
         </div>
     );
 };
+
+export default ModalTecidoParaLencois;

@@ -3,12 +3,12 @@ import { Api } from '../../../services/Api';
 import { Loading } from '../../../components/Loading/Loading';
 import styles from '../../../styles/Formulario.module.css';
 
-export const ApliquesCreate = () => {
+export const LencolProntaEntregaCreate = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [codigo, setCodigo] = useState('');
     const [quantidade, setQuantidade] = useState('');
-    const [estoque, setEstoque] = useState('');
-    const [ordem, setOrdem] = useState('');
+    const [cor, setCor] = useState('');
+    const [tamanho, setTamanho] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
@@ -32,12 +32,12 @@ export const ApliquesCreate = () => {
         formData.append('codigo', codigo);
         formData.append('imagem', selectedImage); // O backend espera req.file
         formData.append('quantidade', parseInt(quantidade));
-        formData.append('estoque', estoque); // Booleano
-        formData.append('ordem', parseInt(ordem));
+        formData.append('cor', cor);
+        formData.append('tamanho', tamanho);
 
         try {
             const response = await Api.post(
-                Api.addUrl('aplique'),
+                Api.addUrl('lencol-pronta-entrega'),
                 formData,
                 true,
                 true
@@ -67,7 +67,7 @@ export const ApliquesCreate = () => {
         <div className={styles.containerFormulario}>
             {isLoading && <Loading />}
             <div>
-                <h1>Adicionar novo Aplique</h1>
+                <h1>Adicionar novo Lençol pronta-entrega</h1>
             </div>
             <div>
                 <form onSubmit={handleSubmit} className=".containerFormulario">
@@ -95,24 +95,41 @@ export const ApliquesCreate = () => {
                         required
                     />
 
-                    <label>Estoque:</label>
+                    <label>Cor:</label>
                     <select
-                        value={estoque}
-                        onChange={(e) => setEstoque(e.target.value === 'true')}
+                        value={cor}
+                        onChange={(e) => setCor(e.target.value)}
+                        required
+                    >
+                        <option></option>
+                        <option value="Azul AZ3">Azul AZ3</option>
+                        <option value="Azul Claro">Azul Claro</option>
+                        <option value="Bege">Bege</option>
+                        <option value="Branco">Branco</option>
+                        <option value="Cinza">Cinza</option>
+                        <option value="Palha">Palha</option>
+                        <option value="Prata">Prata</option>
+                        <option value="Rosa">Rosa</option>
+                        <option value="Rosa Bebe">Rosa Bebe</option>
+                        <option value="Verde">Verde</option>
+                    </select>
+
+                    <label>Tamanho:</label>
+                    <select
+                        value={tamanho}
+                        onChange={(e) => setTamanho(e.target.value)}
                         required
                     >
                         <option value=""></option>
-                        <option value="true">Sim</option>
-                        <option value="false">Não</option>
+                        <option value="Berco">Berço</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Solteirao">Solteirão</option>
+                        <option value="Viuva">Viuva</option>
+                        <option value="Casal">Casal</option>
+                        <option value="Queen">Queen</option>
+                        <option value="King">King</option>
                     </select>
-
-                    <label>Ordem:</label>
-                    <input
-                        value={ordem}
-                        onChange={(e) => setOrdem(e.target.value)}
-                        type="number"
-                        required
-                    />
 
                     <button type="submit">Salvar</button>
                 </form>

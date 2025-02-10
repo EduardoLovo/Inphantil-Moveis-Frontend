@@ -3,12 +3,11 @@ import { Api } from '../../../services/Api';
 import { Loading } from '../../../components/Loading/Loading';
 import styles from '../../../styles/Formulario.module.css';
 
-export const ApliquesCreate = () => {
+export const TecidoParaLencolCreate = () => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [codigo, setCodigo] = useState('');
+    const [cor, setCor] = useState('');
     const [quantidade, setQuantidade] = useState('');
     const [estoque, setEstoque] = useState('');
-    const [ordem, setOrdem] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
@@ -29,15 +28,14 @@ export const ApliquesCreate = () => {
 
         // Criando FormData
         const formData = new FormData();
-        formData.append('codigo', codigo);
+        formData.append('cor', cor);
         formData.append('imagem', selectedImage); // O backend espera req.file
         formData.append('quantidade', parseInt(quantidade));
         formData.append('estoque', estoque); // Booleano
-        formData.append('ordem', parseInt(ordem));
 
         try {
             const response = await Api.post(
-                Api.addUrl('aplique'),
+                Api.addUrl('tecido-para-lencol'),
                 formData,
                 true,
                 true
@@ -71,10 +69,10 @@ export const ApliquesCreate = () => {
             </div>
             <div>
                 <form onSubmit={handleSubmit} className=".containerFormulario">
-                    <label>Código:</label>
+                    <label>Cor:</label>
                     <input
-                        value={codigo}
-                        onChange={(e) => setCodigo(e.target.value)}
+                        value={cor}
+                        onChange={(e) => setCor(e.target.value)}
                         type="text"
                         required
                     />
@@ -105,14 +103,6 @@ export const ApliquesCreate = () => {
                         <option value="true">Sim</option>
                         <option value="false">Não</option>
                     </select>
-
-                    <label>Ordem:</label>
-                    <input
-                        value={ordem}
-                        onChange={(e) => setOrdem(e.target.value)}
-                        type="number"
-                        required
-                    />
 
                     <button type="submit">Salvar</button>
                 </form>
