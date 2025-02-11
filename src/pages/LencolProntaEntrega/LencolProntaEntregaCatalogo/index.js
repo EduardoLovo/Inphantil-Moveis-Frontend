@@ -4,7 +4,7 @@ import { ListaLencolProntaEntrega } from '../../../components/LencolProntaEntreg
 export const LencolProntaEntregaCatalogo = () => {
     return (
         <div>
-            <h1 className="titulo">Catalogo de Lencois</h1>
+            <h1 className="titulo">Catálogo de Lencois</h1>
             <div>
                 <ListaLencolProntaEntrega />
             </div>

@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import './ModalSinteticos.css';
+import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
 
 export const ModalSinteticos = ({ sintetico, onClose }) => {
+    const isLogged = JwtHandler.isJwtValid();
+
     const [codigo, setCodigo] = useState(sintetico.codigo);
     const [estoque, setEstoque] = useState(sintetico.estoque);
     const [cor, setCor] = useState(sintetico.ordem);
@@ -83,8 +86,17 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
-            {type === 'adm' ? (
-                <div className="modal-content modalsintetico" onClick={handleModalClick}>
+            {type !== 'adm' || !isLogged ? (
+                <div className="modal-cliente">
+                    <p onClick={onClose} className="botaoFechar"></p>
+                    <img src={sintetico.imagem} alt="Imagem do sintetico" />
+                    <p>{sintetico.codigo}</p>
+                </div>
+            ) : (
+                <div
+                    className="modal-content modalsintetico"
+                    onClick={handleModalClick}
+                >
                     <p onClick={onClose} className="botaoFechar"></p>
                     <button className="botaoDeletar" onClick={deletarSintetico}>
                         Deletar
@@ -145,12 +157,6 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                         </form>
                     </div>
                     {error && <p style={{ color: 'red' }}>{error}</p>}
-                </div>
-            ) : (
-                <div className="modal-cliente">
-                    <p onClick={onClose} className="botaoFechar"></p>
-                    <img src={sintetico.imagem} alt="Imagem do sintetico" />
-                    <p>{sintetico.codigo}</p>
                 </div>
             )}
             {isLoading && <Loading />}

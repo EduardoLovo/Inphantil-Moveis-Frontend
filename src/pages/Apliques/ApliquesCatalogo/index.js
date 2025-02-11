@@ -5,7 +5,7 @@ import '../../../styles/Inphantil.css';
 export const ApliquesCatalogo = () => {
     return (
         <div>
-            <h1 className="titulo">Catalogo de Apliques</h1>
+            <h1 className="titulo">Catálogo de Apliques</h1>
             <div>
                 <ListaDeApliques />
             </div>

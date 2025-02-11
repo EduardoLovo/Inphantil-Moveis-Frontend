@@ -6,6 +6,8 @@ export const SinteticoCatalogo = () => {
     const [cor, setCor] = useState('');
     return (
         <div>
+            <h1 className="titulo">Catálogo de Cores</h1>
+
             <div className="menuDoCatalogoSintetico">
                 <button onClick={() => setCor('Amarelo')}>Amarelo</button>
                 <button onClick={() => setCor('Azul')}>Azul</button>

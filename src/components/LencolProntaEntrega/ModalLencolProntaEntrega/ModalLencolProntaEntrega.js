@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
+import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
 
 export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
+    const isLogged = JwtHandler.isJwtValid();
     const [codigo, setCodigo] = useState(lencol.codigo);
     const [quantidade, setQuantidade] = useState(lencol.quantidade);
     const [cor, setCor] = useState(lencol.cor);
@@ -84,7 +86,13 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
 
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
-            {type === 'adm' ? (
+            {type !== 'adm' || !isLogged ? (
+                <div className="modal-cliente">
+                    <p onClick={onClose} className="botaoFechar"></p>
+                    <img src={lencol.imagem} alt="Imagem do aplique" />
+                    <p>{lencol.codigo}</p>
+                </div>
+            ) : (
                 <div className="modal-content" onClick={handleModalClick}>
                     <p onClick={onClose} className="botaoFechar"></p>
                     <button className="botaoDeletar" onClick={deletarAplique}>
@@ -156,12 +164,6 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
                         </form>
                     </div>
                     {error && <p style={{ color: 'red' }}>{error}</p>}
-                </div>
-            ) : (
-                <div className="modal-cliente">
-                    <p onClick={onClose} className="botaoFechar"></p>
-                    <img src={lencol.imagem} alt="Imagem do aplique" />
-                    <p>{lencol.codigo}</p>
                 </div>
             )}
             {isLoading && <Loading />}

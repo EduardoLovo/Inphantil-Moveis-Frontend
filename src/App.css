@@ -1,5 +1,7 @@
 .containerApp {
     margin-left: 250px;
+    background-color: #eaeaea;
+    min-height: 100vh;
 }
 @media (max-width: 480px) {
     .containerApp {

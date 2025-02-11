@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
+import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
 
 const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
+    const isLogged = JwtHandler.isJwtValid();
     const [codigo, setCodigo] = useState(tecidoParaLencol.codigo);
     const [quantidade, setQuantidade] = useState(tecidoParaLencol.quantidade);
     const [estoque, setEstoque] = useState(tecidoParaLencol.estoque);
@@ -82,7 +84,16 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
 
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
-            {type === 'adm' ? (
+            {type !== 'adm' || !isLogged ? (
+                <div className="modal-cliente">
+                    <p onClick={onClose} className="botaoFechar"></p>
+                    <img
+                        src={tecidoParaLencol.imagem}
+                        alt="Imagem do aplique"
+                    />
+                    <p>{tecidoParaLencol.cor}</p>
+                </div>
+            ) : (
                 <div className="modal-content" onClick={handleModalClick}>
                     <p onClick={onClose} className="botaoFechar"></p>
                     <button className="botaoDeletar" onClick={deletarAplique}>
@@ -132,15 +143,6 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
                         </form>
                     </div>
                     {error && <p style={{ color: 'red' }}>{error}</p>}
-                </div>
-            ) : (
-                <div className="modal-cliente">
-                    <p onClick={onClose} className="botaoFechar"></p>
-                    <img
-                        src={tecidoParaLencol.imagem}
-                        alt="Imagem do aplique"
-                    />
-                    <p>{tecidoParaLencol.codigo}</p>
                 </div>
             )}
             {isLoading && <Loading />}

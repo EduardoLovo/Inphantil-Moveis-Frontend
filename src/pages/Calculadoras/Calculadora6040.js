@@ -89,7 +89,7 @@ export const Calculadora6040 = () => {
                             />
                         </div>
 
-                        <input type="submit" value="Calcular"></input>
+                        <button type="submit">Calcular</button>
                     </form>
                     {resultado && <section>{resultado}</section>}
                 </div>

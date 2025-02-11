@@ -15,6 +15,7 @@ import { LencolProntaEntregaCreate } from './pages/LencolProntaEntrega/LencolPro
 import Cama3D from './pages/Camas3D/Camas3D';
 import { CalculadoraNova } from './pages/Calculadoras/CalculadoraNova';
 import { Calculadora6040 } from './pages/Calculadoras/Calculadora6040';
+import { PantoneCatalogo } from './pages/Pantone/PantoneCatalogo';
 
 function App() {
     return (
@@ -83,6 +84,16 @@ function App() {
                         </PrivateRoute>
                     }
                 />
+                {/* Rotas Pantone */}
+                <Route path="/catalogo-pantone" element={<PantoneCatalogo />} />
+                {/* <Route
+                    path="/adicionar-novo-lencol-pronta-entrega"
+                    element={
+                        <PrivateRoute redirectTo="/login">
+                            <LencolProntaEntregaCreate />
+                        </PrivateRoute>
+                    }
+                /> */}
                 {/* Rota Cama 3D */}
                 <Route path="/camas-3D" element={<Cama3D />} />
                 {/* Rotas calculadoras */}

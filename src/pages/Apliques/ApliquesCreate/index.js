@@ -64,59 +64,66 @@ export const ApliquesCreate = () => {
     };
 
     return (
-        <div className={styles.containerFormulario}>
-            {isLoading && <Loading />}
-            <div>
-                <h1>Adicionar novo Aplique</h1>
-            </div>
-            <div>
-                <form onSubmit={handleSubmit} className=".containerFormulario">
-                    <label>Código:</label>
-                    <input
-                        value={codigo}
-                        onChange={(e) => setCodigo(e.target.value)}
-                        type="text"
-                        required
-                    />
-
-                    <label>Imagem:</label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        required
-                    />
-
-                    <label>Quantidade:</label>
-                    <input
-                        value={quantidade}
-                        onChange={(e) => setQuantidade(e.target.value)}
-                        type="number"
-                        required
-                    />
-
-                    <label>Estoque:</label>
-                    <select
-                        value={estoque}
-                        onChange={(e) => setEstoque(e.target.value === 'true')}
-                        required
+        <div className={styles.displayflex}>
+            <div className={styles.containerFormulario}>
+                {isLoading && <Loading />}
+                <div>
+                    <h1>Adicionar novo Aplique</h1>
+                </div>
+                <div>
+                    <form
+                        onSubmit={handleSubmit}
+                        className=".containerFormulario"
                     >
-                        <option value=""></option>
-                        <option value="true">Sim</option>
-                        <option value="false">Não</option>
-                    </select>
+                        <label>Código:</label>
+                        <input
+                            value={codigo}
+                            onChange={(e) => setCodigo(e.target.value)}
+                            type="text"
+                            required
+                        />
 
-                    <label>Ordem:</label>
-                    <input
-                        value={ordem}
-                        onChange={(e) => setOrdem(e.target.value)}
-                        type="number"
-                        required
-                    />
+                        <label>Imagem:</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            required
+                        />
 
-                    <button type="submit">Salvar</button>
-                </form>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                        <label>Quantidade:</label>
+                        <input
+                            value={quantidade}
+                            onChange={(e) => setQuantidade(e.target.value)}
+                            type="number"
+                            required
+                        />
+
+                        <label>Estoque:</label>
+                        <select
+                            value={estoque}
+                            onChange={(e) =>
+                                setEstoque(e.target.value === 'true')
+                            }
+                            required
+                        >
+                            <option value=""></option>
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+
+                        <label>Ordem:</label>
+                        <input
+                            value={ordem}
+                            onChange={(e) => setOrdem(e.target.value)}
+                            type="number"
+                            required
+                        />
+
+                        <button type="submit">Salvar</button>
+                    </form>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                </div>
             </div>
         </div>
     );
