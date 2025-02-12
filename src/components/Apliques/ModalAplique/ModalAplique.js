@@ -95,7 +95,7 @@ const Modal = ({ aplique, onClose }) => {
                     <p>{aplique.codigo}</p>
                 </div>
             ) : (
-                <div className="modal-content" onClick={handleModalClick}>
+                <div className="modal-content " onClick={handleModalClick}>
                     <p onClick={onClose} className="botaoFechar"></p>
                     <button className="botaoDeletar" onClick={deletarAplique}>
                         Deletar

@@ -65,7 +65,7 @@ export const TecidoParaLencolCreate = () => {
         <div className={styles.containerFormulario}>
             {isLoading && <Loading />}
             <div>
-                <h1>Adicionar novo Aplique</h1>
+                <h1>Adicionar novo Tecido</h1>
             </div>
             <div>
                 <form onSubmit={handleSubmit} className=".containerFormulario">

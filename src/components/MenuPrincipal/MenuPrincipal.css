@@ -60,7 +60,7 @@
 
 /* Ajustes de responsividade */
 /* Oculta o menu em telas pequenas */
-@media (max-width: 480px) {
+@media (max-width: 700px) {
     .sidebar {
         width: 0;
         overflow: hidden;

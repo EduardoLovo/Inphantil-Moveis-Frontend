@@ -1,0 +1,31 @@
+.contentCardTecido {
+    transition: transform 0.2s ease-in;
+    text-align: center;
+    margin: 15px;
+}
+
+.contentCardTecido:hover {
+    transform: scale(1.02);
+}
+
+.contentCardTecido img {
+    width: 400px;
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.26);
+}
+
+@media (max-width: 700px) {
+    .contentCardTecido img {
+        width: 280px;
+        height: 160px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.26);
+    }
+}

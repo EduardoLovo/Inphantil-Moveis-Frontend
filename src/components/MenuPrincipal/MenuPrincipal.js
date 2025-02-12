@@ -47,6 +47,8 @@ const MenuPrincipal = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    console.log(isLogged);
+
     return (
         <>
             {/* Botão Hambúrguer */}
@@ -55,7 +57,7 @@ const MenuPrincipal = () => {
                     ☰
                 </button>
             )}
-            {type !== 'adm' || !isLogged ? (
+            {!isLogged && (
                 <div
                     ref={menuRef}
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
@@ -64,6 +66,79 @@ const MenuPrincipal = () => {
                         <img src="/images/logo.png" alt="logo" />
                     </div>
                     <ul className="menu">
+                        <li>
+                            <Link onClick={toggleMenu} to="/">
+                                Inicio
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={toggleMenu} to="/camas-3D">
+                                Camas 3D
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-apliques"
+                            >
+                                Catálogo de Apliques
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-apliques-para-cabana"
+                            >
+                                Catálogo de Apliques para Cabana
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-sinteticos"
+                            >
+                                Catálogo de Materiais
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-tecidos-para-lencol"
+                            >
+                                Catálogo de Tecidos
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-lencol-pronta-entrega"
+                            >
+                                Catálogo de Lençois
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={toggleMenu} to="/catalogo-pantone">
+                                Catálogo Pantone
+                            </Link>
+                        </li>
+                    </ul>
+                    <div>{isLogged && <LogoutButton />}</div>
+                </div>
+            )}
+            {type !== 'adm' && isLogged && (
+                <div
+                    ref={menuRef}
+                    className={`sidebar ${menuAberto ? 'open' : ''}`}
+                >
+                    <div>
+                        <img src="/images/logo.png" alt="logo" />
+                    </div>
+                    <ul className="menu">
+                        <li>
+                            <Link onClick={toggleMenu} to="/camas-3D">
+                                Camas 3D
+                            </Link>
+                        </li>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -101,15 +176,22 @@ const MenuPrincipal = () => {
                                 Catálogo Pantone
                             </Link>
                         </li>
+
                         <li>
-                            <Link onClick={toggleMenu} to="/camas-3D">
-                                Camas 3D
+                            <Link onClick={toggleMenu} to="/calculadora-nova">
+                                Calculadora Nova
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={toggleMenu} to="/calculadora-6040">
+                                Calculadora 6040
                             </Link>
                         </li>
                     </ul>
                     <div>{isLogged && <LogoutButton />}</div>
                 </div>
-            ) : (
+            )}
+            {type === 'adm' && isLogged && (
                 <div
                     ref={menuRef}
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
@@ -119,8 +201,73 @@ const MenuPrincipal = () => {
                     </div>
                     <ul className="menu">
                         <li>
-                            <Link onClick={toggleMenu} to="/">
-                                Inicio
+                            <Link
+                                onClick={toggleMenu}
+                                to="/apliques-para-comprar"
+                            >
+                                Apliques para Comprar
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/apliques-para-cortar"
+                            >
+                                Apliques para Cortar
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link onClick={toggleMenu} to="/camas-3D">
+                                Camas 3D
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-apliques"
+                            >
+                                Catálogo de Apliques
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-sinteticos"
+                            >
+                                Catálogo de Materiais
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-tecidos-para-lencol"
+                            >
+                                Catálogo de Tecidos
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-lencol-pronta-entrega"
+                            >
+                                Catálogo de Lençois
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={toggleMenu} to="/catalogo-pantone">
+                                Catálogo Pantone
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link onClick={toggleMenu} to="/calculadora-nova">
+                                Calculadora Nova
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={toggleMenu} to="/calculadora-6040">
+                                Calculadora 6040
                             </Link>
                         </li>
                         <li>
@@ -159,53 +306,9 @@ const MenuPrincipal = () => {
                         <li>
                             <Link
                                 onClick={toggleMenu}
-                                to="/catalogo-de-apliques"
+                                to="/adicionar-novo-pantone"
                             >
-                                Catálogo de Apliques
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                onClick={toggleMenu}
-                                to="/catalogo-de-sinteticos"
-                            >
-                                Catálogo de Materiais
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                onClick={toggleMenu}
-                                to="/catalogo-de-tecidos-para-lencol"
-                            >
-                                Catálogo de Tecidos
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                onClick={toggleMenu}
-                                to="/catalogo-de-lencol-pronta-entrega"
-                            >
-                                Catálogo de Lençois
-                            </Link>
-                        </li>
-                        <li>
-                            <Link onClick={toggleMenu} to="/catalogo-pantone">
-                                Catálogo Pantone
-                            </Link>
-                        </li>
-                        <li>
-                            <Link onClick={toggleMenu} to="/camas-3D">
-                                Camas 3D
-                            </Link>
-                        </li>
-                        <li>
-                            <Link onClick={toggleMenu} to="/calculadora-nova">
-                                Calculadora Nova
-                            </Link>
-                        </li>
-                        <li>
-                            <Link onClick={toggleMenu} to="/calculadora-6040">
-                                Calculadora 6040
+                                Novo Pantone
                             </Link>
                         </li>
                     </ul>

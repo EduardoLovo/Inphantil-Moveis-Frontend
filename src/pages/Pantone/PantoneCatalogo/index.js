@@ -5,7 +5,7 @@ import { ListaDePantone } from '../../../components/Pantone/ListaDePantone/Lista
 export const PantoneCatalogo = () => {
     return (
         <div>
-            <h1 className="titulo">Catálogo de Pantone</h1>
+            <h1 className="titulo">Catálogo Pantone</h1>
             <div>
                 <ListaDePantone />
             </div>

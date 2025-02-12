@@ -27,8 +27,9 @@ export const ListaDePantone = () => {
         loadData();
     }, []);
 
-    const sortedPantone = pantones.sort((a, b) => a.ordem - b.ordem);
-
+    const sortedPantone = pantones.sort((a, b) =>
+        a.codigo.localeCompare(b.codigo)
+    );
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}

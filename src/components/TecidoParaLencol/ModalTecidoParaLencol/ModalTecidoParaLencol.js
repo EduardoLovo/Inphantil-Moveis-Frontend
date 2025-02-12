@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
+import './ModalTecidoParaLencol.css';
 
 const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
@@ -32,7 +33,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('tecidoParaLencol', tecidoParaLencol._id),
+                Api.updateUrl('tecido-para-lencol', tecidoParaLencol._id),
                 payload,
                 true
             );
@@ -60,7 +61,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('tecidoParaLencol', tecidoParaLencol._id),
+                Api.deleteUrl('tecido-para-lencol', tecidoParaLencol._id),
                 true
             );
 
@@ -85,7 +86,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
             {type !== 'adm' || !isLogged ? (
-                <div className="modal-cliente">
+                <div className="modal-cliente tecido-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
                     <img
                         src={tecidoParaLencol.imagem}
@@ -94,7 +95,10 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
                     <p>{tecidoParaLencol.cor}</p>
                 </div>
             ) : (
-                <div className="modal-content" onClick={handleModalClick}>
+                <div
+                    className="modal-content modal-tecido"
+                    onClick={handleModalClick}
+                >
                     <p onClick={onClose} className="botaoFechar"></p>
                     <button className="botaoDeletar" onClick={deletarAplique}>
                         Deletar

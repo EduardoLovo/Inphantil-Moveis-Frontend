@@ -28,8 +28,8 @@ export const ListaTecidoParaLencol = () => {
         loadData();
     }, []);
 
-    const sortedTecidoParaLencol = tecidoParaLencol.sort(
-        (a, b) => a.ordem - b.ordem
+    const sortedTecidoParaLencol = tecidoParaLencol.sort((a, b) =>
+        a.cor.localeCompare(b.cor)
     );
 
     return (

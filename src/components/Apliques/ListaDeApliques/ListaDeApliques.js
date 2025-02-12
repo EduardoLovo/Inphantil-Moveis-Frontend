@@ -3,11 +3,14 @@ import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import { CardApliques } from '../CardApliques/CardApliques';
 import './ListaDeApliques.css';
+import { Filtro } from '../../Filtro';
 
-export const ListaDeApliques = () => {
+export const ListaDeApliques = (props) => {
+    const tipoDaLista = props.tipoDaLista;
     const [apliques, setApliques] = useState([]);
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
+    const [texto, setTexto] = useState('');
 
     const type = localStorage.getItem('user');
 
@@ -29,19 +32,70 @@ export const ListaDeApliques = () => {
 
     const sortedApliques = apliques.sort((a, b) => a.ordem - b.ordem);
 
+    const onChange = (e) => {
+        setTexto(e.target.value);
+    };
+
     return (
-        <div className="contentListaDeApliques">
+        <div>
             {isLoading && <Loading />}
-            {sortedApliques.map((aplique, index) => (
-                <div key={index}>
-                    {type !== 'adm' && aplique.estoque === false ? (
-                        ''
-                    ) : (
-                        <CardApliques aplique={aplique} />
-                    )}
+            <div className="inputPesquisa">
+                <input
+                    type="text"
+                    className=""
+                    onChange={onChange}
+                    value={texto}
+                    placeholder="Pesquisar por código"
+                />
+            </div>
+            {!texto ? (
+                <div className="contentListaDeApliques">
+                    {sortedApliques.map((aplique, index) => (
+                        <div key={index}>
+                            {type !== 'adm' &&
+                            aplique.estoque === false &&
+                            aplique.quantidade === 0 ? (
+                                ''
+                            ) : (
+                                <div>
+                                    {tipoDaLista === 'corte' ? (
+                                        <div>
+                                            {aplique.quantidade < 3 &&
+                                                aplique.estoque === true && (
+                                                    <CardApliques
+                                                        aplique={aplique}
+                                                    />
+                                                )}
+                                        </div>
+                                    ) : tipoDaLista === 'compra' ? (
+                                        <div>
+                                            {aplique.quantidade <= 5 &&
+                                                aplique.estoque === false && (
+                                                    <CardApliques
+                                                        aplique={aplique}
+                                                    />
+                                                )}
+                                        </div>
+                                    ) : tipoDaLista === 'cabana' ? (
+                                        <div>
+                                            {aplique.estoque === true && (
+                                                <CardApliques
+                                                    aplique={aplique}
+                                                />
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <CardApliques aplique={aplique} />
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
                 </div>
-            ))}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            ) : (
+                <Filtro texto={texto} apliques={sortedApliques} />
+            )}
         </div>
     );
 };

@@ -16,6 +16,10 @@ import Cama3D from './pages/Camas3D/Camas3D';
 import { CalculadoraNova } from './pages/Calculadoras/CalculadoraNova';
 import { Calculadora6040 } from './pages/Calculadoras/Calculadora6040';
 import { PantoneCatalogo } from './pages/Pantone/PantoneCatalogo';
+import { ApliquesParaCortar } from './pages/Apliques/ApliquesParaCortar/ApliquesParaCortar';
+import { ApliquesParaComprar } from './pages/Apliques/ApliquesParaComprar/ApliquesparaComprar';
+import { ApliquesParaCabana } from './pages/Apliques/ApliquesParaCabana/ApliquesParaCabana';
+import { PantoneCreate } from './pages/Pantone/PantoneCreate';
 
 function App() {
     return (
@@ -38,10 +42,26 @@ function App() {
                     element={<ApliquesCatalogo />}
                 />
                 <Route
+                    path="/apliques-para-comprar"
+                    element={<ApliquesParaComprar />}
+                />
+                <Route
+                    path="/catalogo-de-apliques-para-cabana"
+                    element={<ApliquesParaCabana />}
+                />
+                <Route
                     path="/adicionar-novo-aplique"
                     element={
                         <PrivateRoute redirectTo="/login">
                             <ApliquesCreate />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/apliques-para-cortar"
+                    element={
+                        <PrivateRoute redirectTo="/login">
+                            <ApliquesParaCortar />
                         </PrivateRoute>
                     }
                 />
@@ -86,14 +106,14 @@ function App() {
                 />
                 {/* Rotas Pantone */}
                 <Route path="/catalogo-pantone" element={<PantoneCatalogo />} />
-                {/* <Route
-                    path="/adicionar-novo-lencol-pronta-entrega"
+                <Route
+                    path="/adicionar-novo-pantone"
                     element={
                         <PrivateRoute redirectTo="/login">
-                            <LencolProntaEntregaCreate />
+                            <PantoneCreate />
                         </PrivateRoute>
                     }
-                /> */}
+                />
                 {/* Rota Cama 3D */}
                 <Route path="/camas-3D" element={<Cama3D />} />
                 {/* Rotas calculadoras */}

@@ -8,7 +8,7 @@ const ModalPantone = ({ pantone, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
     const [codigo, setCodigo] = useState(pantone.codigo);
     const [estoque, setEstoque] = useState(pantone.estoque);
-    const [cor, setCor] = useState(pantone.ordem);
+    const [cor, setCor] = useState(pantone.cor);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregament
 
@@ -86,13 +86,16 @@ const ModalPantone = ({ pantone, onClose }) => {
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
             {type !== 'adm' || !isLogged ? (
-                <div className="modal-cliente">
+                <div className="modal-cliente tecido-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
                     <img src={pantone.imagem} alt="Imagem do pantone" />
                     <p>{pantone.codigo}</p>
                 </div>
             ) : (
-                <div className="modal-content" onClick={handleModalClick}>
+                <div
+                    className="modal-content modal-tecido"
+                    onClick={handleModalClick}
+                >
                     <p onClick={onClose} className="botaoFechar"></p>
                     <button className="botaoDeletar" onClick={deletarPantone}>
                         Deletar

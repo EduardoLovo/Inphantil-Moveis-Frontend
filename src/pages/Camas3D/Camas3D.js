@@ -33,7 +33,11 @@ function Cama3D() {
             0.1,
             100
         );
-        camera.position.set(2.7, 1, -1);
+        if (window.innerWidth < 481) {
+            camera.position.set(5.9, 2, -1);
+        } else {
+            camera.position.set(2.7, 1, -1);
+        }
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);

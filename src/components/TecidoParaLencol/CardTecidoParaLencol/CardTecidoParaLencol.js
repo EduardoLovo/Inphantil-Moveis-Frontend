@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ModalTecidoParaLencois from '../ModalTecidoParaLencol/ModalTecidoParaLencol';
+import './CardTecidoParaLencol.css';
 
 export const CardTecidoParaLencol = (props) => {
     const tecidoParaLencol = props.tecidoParaLencol;
@@ -16,9 +17,9 @@ export const CardTecidoParaLencol = (props) => {
 
     return (
         <div>
-            <div className="contentCard" onClick={openModal}>
+            <div className="contentCardTecido" onClick={openModal}>
                 <img src={tecidoParaLencol.imagem} alt="Imagem do tecido" />
-                <p>{tecidoParaLencol.codigo}</p>
+                <p>{tecidoParaLencol.cor}</p>
             </div>
 
             {isModalOpen && (
