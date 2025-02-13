@@ -37,8 +37,8 @@ const MenuPrincipal = () => {
     // Fecha o menu ao redimensionar a tela
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth < 481);
-            if (window.innerWidth >= 481) {
+            setIsMobile(window.innerWidth < 700);
+            if (window.innerWidth >= 700) {
                 setMenuAberto(false); // Fecha o menu automaticamente se a tela aumentar
             }
         };
@@ -53,9 +53,11 @@ const MenuPrincipal = () => {
         <>
             {/* Botão Hambúrguer */}
             {isMobile && (
-                <button className="menu-toggle" onClick={toggleMenu}>
-                    ☰
-                </button>
+                <div className="content-menu-toggle">
+                    <button className="menu-toggle" onClick={toggleMenu}>
+                        ☰
+                    </button>
+                </div>
             )}
             {!isLogged && (
                 <div
@@ -63,7 +65,9 @@ const MenuPrincipal = () => {
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
                 >
                     <div>
-                        <img src="/images/logo.png" alt="logo" />
+                        <Link onClick={toggleMenu} to="/">
+                            <img src="/images/logo.png" alt="logo" />
+                        </Link>
                     </div>
                     <ul className="menu">
                         <li>
@@ -131,7 +135,9 @@ const MenuPrincipal = () => {
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
                 >
                     <div>
-                        <img src="/images/logo.png" alt="logo" />
+                        <Link onClick={toggleMenu} to="/">
+                            <img src="/images/logo.png" alt="logo" />
+                        </Link>{' '}
                     </div>
                     <ul className="menu">
                         <li>
@@ -197,7 +203,9 @@ const MenuPrincipal = () => {
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
                 >
                     <div>
-                        <img src="/images/logo.png" alt="logo" />
+                        <Link onClick={toggleMenu} to="/">
+                            <img src="/images/logo.png" alt="logo" />
+                        </Link>{' '}
                     </div>
                     <ul className="menu">
                         <li>

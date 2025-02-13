@@ -3,7 +3,8 @@ import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import { CardLencolProntaEntrega } from '../CardLencolProntaEntrega/CardLencolProntaEntrega';
 
-export const ListaLencolProntaEntrega = () => {
+export const ListaLencolProntaEntrega = (props) => {
+    const tamanho = props.tamanho;
     const [lencoisProntaEntrega, setLencoisProntaEntrega] = useState([]);
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
@@ -37,7 +38,9 @@ export const ListaLencolProntaEntrega = () => {
             {isLoading && <Loading />}
             {sortedLencoisProntaEntrega.map((lencol, index) => (
                 <div key={index}>
-                    <CardLencolProntaEntrega lencol={lencol} />
+                    {tamanho === lencol.tamanho && (
+                        <CardLencolProntaEntrega lencol={lencol} />
+                    )}
                 </div>
             ))}
             {error && <p style={{ color: 'red' }}>{error}</p>}

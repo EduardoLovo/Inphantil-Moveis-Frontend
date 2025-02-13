@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListaDeApliques } from '../../../components/Apliques/ListaDeApliques/ListaDeApliques';
 import '../../../styles/Inphantil.css';
+import './ApliquesCatalogo.css';
 
 export const ApliquesCatalogo = () => {
     return (

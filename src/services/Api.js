@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { JwtHandler } from './jwt_handler/jwt_handler';
 export const Api = {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://inphantil-moveis-backend.vercel.app',
 
     // Rota Login
     loginUrl: () => `${Api.baseUrl}/login/`,
@@ -15,7 +15,9 @@ export const Api = {
 
     // Instância do Axios com configuração padrão
     instance: axios.create({
-        baseURL: 'http://localhost:3000',
+        // baseURL: 'http://localhost:3000',
+        baseURL: 'https://inphantil-moveis-backend.vercel.app',
+
         headers: {
             'Content-Type': 'application/json',
         },

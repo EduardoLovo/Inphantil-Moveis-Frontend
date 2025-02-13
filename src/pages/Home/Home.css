@@ -1,0 +1,8 @@
+.contentHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contentHome img {
+    width: 50%;
+}
