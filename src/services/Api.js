@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { JwtHandler } from './jwt_handler/jwt_handler';
 export const Api = {
-    // baseUrl: 'https://inphantil-moveis-backend.vercel.app',
-    baseURL: 'http://localhost:3000',
+    baseUrl: 'https://inphantil-moveis-backend.vercel.app',
+    // baseURL: 'http://localhost:3000',
 
     // Rota Login
     loginUrl: () => `${Api.baseUrl}/login/`,
