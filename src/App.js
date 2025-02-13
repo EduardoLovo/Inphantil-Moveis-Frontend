@@ -28,14 +28,8 @@ function App() {
 
             <Routes>
                 <Route path="/login" element={<Login />} />
-                <Route
-                    path="/"
-                    element={
-                        <PrivateRoute redirectTo="/login">
-                            <Home />
-                        </PrivateRoute>
-                    }
-                />
+
+                <Route path="/" element={<Home />} />
                 {/* Rotas Apliques */}
                 <Route
                     path="/catalogo-de-apliques"
