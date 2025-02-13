@@ -47,7 +47,7 @@ const MenuPrincipal = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    console.log(isLogged);
+    console.log(type);
 
     return (
         <>

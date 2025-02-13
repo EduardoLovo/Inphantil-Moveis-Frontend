@@ -9,6 +9,7 @@ const LogoutButton = () => {
         JwtHandler.clearJwt(); // Remove o token JWT
         navigate('/login'); // Redireciona para a página de login
         window.location.reload();
+        localStorage.clear();
     };
 
     return (

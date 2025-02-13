@@ -88,7 +88,7 @@ const Modal = ({ aplique, onClose }) => {
 
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
-            {type !== 'adm' || !isLogged ? (
+            {type !== 'adm' && !isLogged ? (
                 <div className="modal-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
                     <img src={aplique.imagem} alt="Imagem do aplique" />
