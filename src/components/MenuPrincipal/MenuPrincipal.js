@@ -129,7 +129,7 @@ const MenuPrincipal = () => {
                     <div>{isLogged && <LogoutButton />}</div>
                 </div>
             )}
-            {type !== 'adm' && isLogged && (
+            {type === 'Vendas' && isLogged && (
                 <div
                     ref={menuRef}
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
@@ -197,7 +197,7 @@ const MenuPrincipal = () => {
                     <div>{isLogged && <LogoutButton />}</div>
                 </div>
             )}
-            {type === 'adm' && isLogged && (
+            {type === 'Adm' && isLogged && (
                 <div
                     ref={menuRef}
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
