@@ -6,11 +6,17 @@ import styles from '../../styles/Formulario.module.css';
 import { Loading } from '../../components/Loading/Loading';
 
 const Login = () => {
+    const isLogged = JwtHandler.isJwtValid();
+
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const navigate = useNavigate();
+
+    if (isLogged) {
+        navigate('/');
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -22,10 +28,12 @@ const Login = () => {
             // Armazena o token JWT no localStorage
             JwtHandler.setJwt(response.data.token);
 
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+
             // Redireciona para a página protegida
             navigate('/');
             window.location.reload();
-            console.log('login efetuado');
+            // console.log('login efetuado');
             setIsLoading(false);
         } catch (error) {
             setError('Credenciais inválidas. Tente novamente.');

@@ -9,7 +9,12 @@ const MenuPrincipal = () => {
     const [menuAberto, setMenuAberto] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 481);
     const menuRef = useRef(null); // Referência ao menu
-    const type = localStorage.getItem('user');
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // const tipo = user.tipo;
+    const userRaw = localStorage.getItem('user');
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
+    const tipo = user?.tipo || 'desconhecido';
 
     const toggleMenu = () => {
         setMenuAberto(!menuAberto);
@@ -46,8 +51,6 @@ const MenuPrincipal = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
-    console.log(type);
 
     return (
         <>
@@ -125,11 +128,48 @@ const MenuPrincipal = () => {
                                 Catálogo Pantone
                             </Link>
                         </li>
+
+                        <li>
+                            <a
+                                href="https://www.inphantil.com.br/informacoes/"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                Informações
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.inphantil.com.br/"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                Inphantil Site
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.instagram.com/inphantil/"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://api.whatsapp.com/send?phone=5561982388828"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                WhatsApp
+                            </a>
+                        </li>
                     </ul>
                     <div>{isLogged && <LogoutButton />}</div>
                 </div>
             )}
-            {type === 'vendas' && isLogged && (
+            {isLogged && tipo === 'vendas' && (
                 <div
                     ref={menuRef}
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
@@ -197,7 +237,7 @@ const MenuPrincipal = () => {
                     <div>{isLogged && <LogoutButton />}</div>
                 </div>
             )}
-            {type === 'adm' && isLogged && (
+            {isLogged && tipo === 'adm' && (
                 <div
                     ref={menuRef}
                     className={`sidebar ${menuAberto ? 'open' : ''}`}
