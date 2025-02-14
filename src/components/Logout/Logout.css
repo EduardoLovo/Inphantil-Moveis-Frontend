@@ -1,5 +1,5 @@
 .botaoSair {
-    max-width: 200px;
+    max-width: 180px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
 }

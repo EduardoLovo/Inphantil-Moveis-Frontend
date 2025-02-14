@@ -1,0 +1,66 @@
+.texto-composicoes {
+    padding: 0 0 15px 15px;
+}
+
+.texto-composicoes h5 {
+    color: rgb(110, 58, 255);
+    font-size: 20px;
+}
+.resultadoComposicoes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 25px 0;
+    position: relative;
+}
+
+.novo-tecido {
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    margin-left: 45px;
+    /* transform: translate(-50%, -50%); */
+}
+
+.resultadoComposicoes button:hover {
+    background-color: rgb(107, 107, 0);
+}
+
+.lista-de-tecidos,
+.lista-de-apliques {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.lista-de-apliques img {
+    width: 300px;
+    height: 380px;
+}
+
+.resultadoComposicoes img {
+    width: 30%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .texto-composicoes h5 {
+        font-size: 16px;
+    }
+
+    .resultadoComposicoes img {
+        height: 150px;
+    }
+
+    .lista-de-apliques img {
+        width: 200px;
+        height: 300px;
+    }
+
+    .resultadoComposicoes button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

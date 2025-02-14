@@ -20,6 +20,7 @@ import { ApliquesParaCortar } from './pages/Apliques/ApliquesParaCortar/Apliques
 import { ApliquesParaComprar } from './pages/Apliques/ApliquesParaComprar/ApliquesparaComprar';
 import { ApliquesParaCabana } from './pages/Apliques/ApliquesParaCabana/ApliquesParaCabana';
 import { PantoneCreate } from './pages/Pantone/PantoneCreate';
+import { ComposicaoTecidoComAplique } from './pages/Composicao/ComposicaoTecidoComAplique';
 
 function App() {
     return (
@@ -107,6 +108,11 @@ function App() {
                             <PantoneCreate />
                         </PrivateRoute>
                     }
+                />
+                {/* Rotas Composições */}
+                <Route
+                    path="/composicao-tecido-com-aplique"
+                    element={<ComposicaoTecidoComAplique />}
                 />
                 {/* Rota Cama 3D */}
                 <Route path="/camas-3D" element={<Cama3D />} />
