@@ -12,7 +12,10 @@ export const ListaDeApliques = (props) => {
     const [error, setError] = useState('');
     const [texto, setTexto] = useState('');
 
-    const type = localStorage.getItem('user');
+    const userRaw = localStorage.getItem('user');
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
+    const tipo = user?.tipo || 'desconhecido';
 
     const loadData = async () => {
         try {
@@ -52,7 +55,7 @@ export const ListaDeApliques = (props) => {
                 <div className="contentListaDeApliques">
                     {sortedApliques.map((aplique, index) => (
                         <div key={index}>
-                            {type !== 'adm' &&
+                            {tipo !== 'adm' &&
                             aplique.estoque === false &&
                             aplique.quantidade === 0 ? (
                                 ''
