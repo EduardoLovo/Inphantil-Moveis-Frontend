@@ -63,12 +63,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: ce;
     }
 
     .novo-tecido {
-        /* font-size: 14px;
-        padding: 8px; */
-        /* transform: translate(-50%, -50%); */
+        margin-left: 0;
     }
 }
