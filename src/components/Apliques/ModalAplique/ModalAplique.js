@@ -22,7 +22,8 @@ const Modal = ({ aplique, onClose }) => {
         e.stopPropagation(); // Evita que o clique no modal feche ele
     };
 
-    const type = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
+    const tipo = user.tipo;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -88,7 +89,7 @@ const Modal = ({ aplique, onClose }) => {
 
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
-            {type !== 'adm' && !isLogged ? (
+            {tipo !== 'adm' && !isLogged ? (
                 <div className="modal-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
                     <img src={aplique.imagem} alt="Imagem do aplique" />
