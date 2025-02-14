@@ -91,8 +91,11 @@ export const ComposicaoTecidoComAplique = () => {
             </div>
 
             {resultado && (
-                <div className='contentResultado'>
-                    <button onClick={() => setEscolha('')} className='novo-tecido'>
+                <div className="contentResultado">
+                    <button
+                        onClick={() => setEscolha('')}
+                        className="novo-tecido"
+                    >
                         Escolher outro tecido
                     </button>
                     <div className="resultadoComposicoes">
@@ -119,13 +122,20 @@ export const ComposicaoTecidoComAplique = () => {
             {escolha === 'aplique' && (
                 <div className="lista-de-apliques">
                     {apliques.map((aplique, index) => (
-                        <div key={index} className="contentCardTecido">
-                            <img
-                                src={aplique.imagem}
-                                alt="Imagem do aplique"
-                                onClick={apliqueEscolhido}
-                            />
-                            <p>{aplique.codigo}</p>
+                        <div key={index}>
+                            {aplique.estoque === false &&
+                            aplique.quantidade === 0 ? (
+                                ''
+                            ) : (
+                                <div className="contentCardTecido">
+                                    <img
+                                        src={aplique.imagem}
+                                        alt="Imagem do aplique"
+                                        onClick={apliqueEscolhido}
+                                    />
+                                    <p>{aplique.codigo}</p>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
