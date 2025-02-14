@@ -16,8 +16,8 @@ export const Api = {
 
     // Instância do Axios com configuração padrão
     instance: axios.create({
-        baseURL: 'http://localhost:3000',
-        // baseURL: 'https://inphantil-moveis-backend.vercel.app',
+        // baseURL: 'http://localhost:3000',
+        baseURL: 'https://inphantil-moveis-backend.vercel.app',
 
         headers: {
             'Content-Type': 'application/json',
