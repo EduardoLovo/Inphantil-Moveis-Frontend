@@ -91,7 +91,7 @@ export const ComposicaoTecidoComAplique = () => {
             </div>
 
             {resultado && (
-                <div>
+                <div className='contentResultado'>
                     <button onClick={() => setEscolha('')} className='novo-tecido'>
                         Escolher outro tecido
                     </button>

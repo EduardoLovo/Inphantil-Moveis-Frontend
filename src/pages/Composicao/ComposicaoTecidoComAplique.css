@@ -23,7 +23,7 @@
     /* transform: translate(-50%, -50%); */
 }
 
-.resultadoComposicoes button:hover {
+.novo-tecido:hover {
     background-color: rgb(107, 107, 0);
 }
 
@@ -59,8 +59,16 @@
         height: 300px;
     }
 
-    .resultadoComposicoes button {
-        font-size: 14px;
-        padding: 8px;
+    .contentResultado {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: ce;
+    }
+
+    .novo-tecido {
+        /* font-size: 14px;
+        padding: 8px; */
+        /* transform: translate(-50%, -50%); */
     }
 }
