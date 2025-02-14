@@ -13,6 +13,11 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregament
 
+    const userRaw = localStorage.getItem('user');
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
+    const tipo = user?.tipo || 'desconhecido';
+
     const handleOverlayClick = () => {
         onClose(); // Fecha o modal ao clicar no fundo
     };
@@ -20,8 +25,6 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
     const handleModalClick = (e) => {
         e.stopPropagation(); // Evita que o clique no modal feche ele
     };
-
-    const type = localStorage.getItem('user');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -86,7 +89,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
-            {type !== 'adm' || !isLogged ? (
+            {tipo === 'vendas' || !isLogged ? (
                 <div className="modal-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
                     <img src={sintetico.imagem} alt="Imagem do sintetico" />
