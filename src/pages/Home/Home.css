@@ -6,3 +6,10 @@
 .contentHome img {
     width: 50%;
 }
+
+@media (max-width: 700px) {
+    .contentHome {
+        height: 100vh;
+        /* padding-top: 150px; */
+    }
+}
