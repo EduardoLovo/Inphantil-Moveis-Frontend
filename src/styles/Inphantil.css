@@ -1,3 +1,9 @@
 .titulo {
     padding: 2rem;
 }
+
+@media (max-width: 768px) {
+    .titulo {
+        padding-top: 90px;
+    }
+}

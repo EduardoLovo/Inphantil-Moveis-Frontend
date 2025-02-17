@@ -47,53 +47,57 @@ export const Calculadora6040 = () => {
     };
 
     return (
-        <div className="contentCalculadoraCamaPhant">
-            <div className="sombra">
-                <h1>Calculadora Á Vista / Prazo</h1>
+        <div className="padding-top">
+            <div className="contentCalculadoraCamaPhant">
+                <div className="sombra">
+                    <h1>Calculadora Á Vista / Prazo</h1>
 
-                <div className="contentCalculadoraCamaPhantFormEResultado">
-                    <form
-                        onSubmit={calcular}
-                        className="formularioCalculadoraCamaPhant"
-                    >
-                        <div className="mb-3">
-                            <label>Valor da entrada</label>
-                            <input
-                                type="text"
-                                id="ve"
-                                step="0.01"
-                                min="0.00"
-                                value={`R$ ${valorEntrada}`}
-                                onChange={(e) =>
-                                    setValorEntrada(
-                                        formatarMedida(e.target.value)
-                                    )
-                                }
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label>Valor total (sem o valor do frete)</label>
-                            <input
-                                type="text"
-                                id="vt"
-                                step="0.01"
-                                min="0.00"
-                                value={`R$ ${valorTotal}`}
-                                onChange={(e) =>
-                                    setValorTotal(
-                                        formatarMedida(e.target.value)
-                                    )
-                                }
-                                required
-                            />
-                        </div>
+                    <div className="contentCalculadoraCamaPhantFormEResultado">
+                        <form
+                            onSubmit={calcular}
+                            className="formularioCalculadoraCamaPhant"
+                        >
+                            <div className="mb-3">
+                                <label>Valor da entrada</label>
+                                <input
+                                    type="text"
+                                    id="ve"
+                                    step="0.01"
+                                    min="0.00"
+                                    value={`R$ ${valorEntrada}`}
+                                    onChange={(e) =>
+                                        setValorEntrada(
+                                            formatarMedida(e.target.value)
+                                        )
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label>
+                                    Valor total (sem o valor do frete)
+                                </label>
+                                <input
+                                    type="text"
+                                    id="vt"
+                                    step="0.01"
+                                    min="0.00"
+                                    value={`R$ ${valorTotal}`}
+                                    onChange={(e) =>
+                                        setValorTotal(
+                                            formatarMedida(e.target.value)
+                                        )
+                                    }
+                                    required
+                                />
+                            </div>
 
-                        <button type="submit">Calcular</button>
-                    </form>
-                    {resultado && <section>{resultado}</section>}
+                            <button type="submit">Calcular</button>
+                        </form>
+                        {resultado && <section>{resultado}</section>}
+                    </div>
                 </div>
-            </div>
+            </div>{' '}
         </div>
     );
 };
