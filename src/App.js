@@ -24,102 +24,112 @@ import { ComposicaoTecidoComAplique } from './pages/Composicao/ComposicaoTecidoC
 
 function App() {
     return (
-        <div className="containerApp">
+        <div>
             <MenuPrincipal />
+            <div className="containerApp">
+                <Routes>
+                    <Route path="/login" element={<Login />} />
 
-            <Routes>
-                <Route path="/login" element={<Login />} />
-
-                <Route path="/" element={<Home />} />
-                {/* Rotas Apliques */}
-                <Route
-                    path="/catalogo-de-apliques"
-                    element={<ApliquesCatalogo />}
-                />
-                <Route
-                    path="/apliques-para-comprar"
-                    element={<ApliquesParaComprar />}
-                />
-                <Route
-                    path="/catalogo-de-apliques-para-cabana"
-                    element={<ApliquesParaCabana />}
-                />
-                <Route
-                    path="/adicionar-novo-aplique"
-                    element={
-                        <PrivateRoute redirectTo="/login">
-                            <ApliquesCreate />
-                        </PrivateRoute>
-                    }
-                />
-                <Route
-                    path="/apliques-para-cortar"
-                    element={
-                        <PrivateRoute redirectTo="/login">
-                            <ApliquesParaCortar />
-                        </PrivateRoute>
-                    }
-                />
-                {/* Rotas Sinteticos */}
-                <Route
-                    path="/catalogo-de-sinteticos"
-                    element={<SinteticoCatalogo />}
-                />
-                <Route
-                    path="/adicionar-novo-sintetico"
-                    element={
-                        <PrivateRoute redirectTo="/login">
-                            <SinteticoCreate />
-                        </PrivateRoute>
-                    }
-                />
-                {/* Rotas Tecidos */}
-                <Route
-                    path="/catalogo-de-tecidos-para-lencol"
-                    element={<TecidosParaLencolCatalogo />}
-                />
-                <Route
-                    path="/adicionar-novo-tecido-para-lencol"
-                    element={
-                        <PrivateRoute redirectTo="/login">
-                            <TecidoParaLencolCreate />
-                        </PrivateRoute>
-                    }
-                />
-                {/* Rotas Lençois */}
-                <Route
-                    path="/catalogo-de-lencol-pronta-entrega"
-                    element={<LencolProntaEntregaCatalogo />}
-                />
-                <Route
-                    path="/adicionar-novo-lencol-pronta-entrega"
-                    element={
-                        <PrivateRoute redirectTo="/login">
-                            <LencolProntaEntregaCreate />
-                        </PrivateRoute>
-                    }
-                />
-                {/* Rotas Pantone */}
-                <Route path="/catalogo-pantone" element={<PantoneCatalogo />} />
-                <Route
-                    path="/adicionar-novo-pantone"
-                    element={
-                        <PrivateRoute redirectTo="/login">
-                            <PantoneCreate />
-                        </PrivateRoute>
-                    }
-                />
-                {/* Rotas Composições */}
-                <Route
-                    path="/composicao-tecido-com-aplique"
-                    element={<ComposicaoTecidoComAplique />}
-                />
-                {/* Rota Cama 3D */}
-                <Route path="/camas-3D" element={<Cama3D />} />
-                {/* Rotas calculadoras */}
-                <Route path="/calculadora-nova" element={<CalculadoraNova />} />
-                <Route path="/calculadora-6040" element={<Calculadora6040 />} />
-            </Routes>
+                    <Route path="/" element={<Home />} />
+                    {/* Rotas Apliques */}
+                    <Route
+                        path="/catalogo-de-apliques"
+                        element={<ApliquesCatalogo />}
+                    />
+                    <Route
+                        path="/apliques-para-comprar"
+                        element={<ApliquesParaComprar />}
+                    />
+                    <Route
+                        path="/catalogo-de-apliques-para-cabana"
+                        element={<ApliquesParaCabana />}
+                    />
+                    <Route
+                        path="/adicionar-novo-aplique"
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <ApliquesCreate />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/apliques-para-cortar"
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <ApliquesParaCortar />
+                            </PrivateRoute>
+                        }
+                    />
+                    {/* Rotas Sinteticos */}
+                    <Route
+                        path="/catalogo-de-sinteticos"
+                        element={<SinteticoCatalogo />}
+                    />
+                    <Route
+                        path="/adicionar-novo-sintetico"
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <SinteticoCreate />
+                            </PrivateRoute>
+                        }
+                    />
+                    {/* Rotas Tecidos */}
+                    <Route
+                        path="/catalogo-de-tecidos-para-lencol"
+                        element={<TecidosParaLencolCatalogo />}
+                    />
+                    <Route
+                        path="/adicionar-novo-tecido-para-lencol"
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <TecidoParaLencolCreate />
+                            </PrivateRoute>
+                        }
+                    />
+                    {/* Rotas Lençois */}
+                    <Route
+                        path="/catalogo-de-lencol-pronta-entrega"
+                        element={<LencolProntaEntregaCatalogo />}
+                    />
+                    <Route
+                        path="/adicionar-novo-lencol-pronta-entrega"
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <LencolProntaEntregaCreate />
+                            </PrivateRoute>
+                        }
+                    />
+                    {/* Rotas Pantone */}
+                    <Route
+                        path="/catalogo-pantone"
+                        element={<PantoneCatalogo />}
+                    />
+                    <Route
+                        path="/adicionar-novo-pantone"
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <PantoneCreate />
+                            </PrivateRoute>
+                        }
+                    />
+                    {/* Rotas Composições */}
+                    <Route
+                        path="/composicao-tecido-com-aplique"
+                        element={<ComposicaoTecidoComAplique />}
+                    />
+                    {/* Rota Cama 3D */}
+                    <Route path="/camas-3D" element={<Cama3D />} />
+                    {/* Rotas calculadoras */}
+                    <Route
+                        path="/calculadora-nova"
+                        element={<CalculadoraNova />}
+                    />
+                    <Route
+                        path="/calculadora-6040"
+                        element={<Calculadora6040 />}
+                    />
+                </Routes>
+            </div>
         </div>
     );
 }

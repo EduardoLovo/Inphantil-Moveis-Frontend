@@ -62,8 +62,9 @@ button {
 /* 📱 Responsividade */
 @media (max-width: 480px) {
     .containerFormulario {
-        width: 90%;
-        padding: 15px;
+        width: 100%;
+        /* padding: 15px; */
+        padding-top: 50px;
     }
 
     .containerFormulario h1 {
