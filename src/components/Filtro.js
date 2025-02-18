@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { CardApliques } from './Apliques/CardApliques/CardApliques';
 
 export const Filtro = (props) => {
+    // const isLogged = JwtHandler.isJwtValid();
+    const userRaw = localStorage.getItem('user');
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
+    const tipo = user?.tipo || 'desconhecido';
+
     const apliques = props.apliques;
     const texto = props.texto;
 
@@ -36,7 +42,13 @@ export const Filtro = (props) => {
                 <div className="container">
                     {filtrado.map((aplique, index) => (
                         <div className="col " key={index}>
-                            <CardApliques aplique={aplique} />
+                            {tipo !== 'adm' &&
+                            aplique.estoque === false &&
+                            aplique.quantidade === 0 ? (
+                                ''
+                            ) : (
+                                <CardApliques aplique={aplique} />
+                            )}
                         </div>
                     ))}
                 </div>

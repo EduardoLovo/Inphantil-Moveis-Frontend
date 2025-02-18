@@ -9,8 +9,7 @@ const MenuPrincipal = () => {
     const [menuAberto, setMenuAberto] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 481);
     const menuRef = useRef(null); // Referência ao menu
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // const tipo = user.tipo;
+    
     const userRaw = localStorage.getItem('user');
     const user = userRaw ? JSON.parse(userRaw) : null;
 
