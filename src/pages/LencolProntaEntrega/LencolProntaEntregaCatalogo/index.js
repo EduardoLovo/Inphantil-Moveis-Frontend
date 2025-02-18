@@ -17,6 +17,7 @@ export const LencolProntaEntregaCatalogo = () => {
                     Solteirão
                 </button>
                 <button onClick={() => setTamanho('Viuva')}>Viuva</button>
+                <button onClick={() => setTamanho('Casal')}>Casal</button>
                 <button onClick={() => setTamanho('Queen')}>Queen</button>
                 <button onClick={() => setTamanho('King')}>King</button>
             </div>

@@ -39,9 +39,9 @@ export const Filtro = (props) => {
             {texto === '' ? (
                 ''
             ) : (
-                <div className="container">
+                <div className="contentListaDeApliques">
                     {filtrado.map((aplique, index) => (
-                        <div className="col " key={index}>
+                        <div className="" key={index}>
                             {tipo !== 'adm' &&
                             aplique.estoque === false &&
                             aplique.quantidade === 0 ? (
