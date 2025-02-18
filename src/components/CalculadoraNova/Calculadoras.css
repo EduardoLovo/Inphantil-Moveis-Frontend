@@ -86,9 +86,6 @@ h3 {
 
 /* Responsividade */
 @media (min-width: 768px) {
-    .contentCalculadoraCamaPhant {
-        margin-top: 150px;
-    }
     .contentCalculadoraCamaPhantFormEResultado {
         flex-direction: row;
     }
