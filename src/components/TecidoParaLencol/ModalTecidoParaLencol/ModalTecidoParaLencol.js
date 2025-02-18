@@ -6,7 +6,7 @@ import './ModalTecidoParaLencol.css';
 
 const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
-    const [codigo, setCodigo] = useState(tecidoParaLencol.codigo);
+    const [cor, setCor] = useState(tecidoParaLencol.cor);
     const [quantidade, setQuantidade] = useState(tecidoParaLencol.quantidade);
     const [estoque, setEstoque] = useState(tecidoParaLencol.estoque);
     const [error, setError] = useState('');
@@ -29,7 +29,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
         e.preventDefault();
 
         const payload = {
-            codigo,
+            cor,
             quantidade,
             estoque,
         };
@@ -119,10 +119,10 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
                             onSubmit={handleSubmit}
                             className="containerFormulario"
                         >
-                            <label>Código:</label>
+                            <label>Cor:</label>
                             <input
-                                value={codigo}
-                                onChange={(e) => setCodigo(e.target.value)}
+                                value={cor}
+                                onChange={(e) => setCor(e.target.value)}
                                 type="text"
                                 required
                             />
