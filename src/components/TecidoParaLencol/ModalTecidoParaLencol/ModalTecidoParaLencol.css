@@ -11,3 +11,14 @@
     width: 800px;
     height: 450px;
 }
+
+@media (max-width: 700px) {
+    .modal-tecido {
+        width: 90%;
+    }
+
+    .modal-tecido img {
+        width: 260px;
+        height: 150px;
+    }
+}
