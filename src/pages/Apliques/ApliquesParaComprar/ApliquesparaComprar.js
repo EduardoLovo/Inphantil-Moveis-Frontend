@@ -30,7 +30,7 @@ export const ApliquesParaComprar = () => {
         <div>
             {isLoading && <Loading />}
 
-            <h1 className="titulo">Catálogo de Apliques</h1>
+            <h1 className="titulo">Apliques para comprar</h1>
             <div className="contentListaDeApliques">
                 {sortedApliques.map((aplique, index) => (
                     <div key={index}>
