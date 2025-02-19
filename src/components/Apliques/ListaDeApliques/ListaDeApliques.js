@@ -70,15 +70,6 @@ export const ListaDeApliques = (props) => {
                                                     />
                                                 )}
                                         </div>
-                                    ) : tipoDaLista === 'compra' ? (
-                                        <div>
-                                            {aplique.quantidade <= 5 &&
-                                                aplique.estoque === false && (
-                                                    <CardApliques
-                                                        aplique={aplique}
-                                                    />
-                                                )}
-                                        </div>
                                     ) : tipoDaLista === 'cabana' ? (
                                         <div>
                                             {aplique.estoque === true && (
