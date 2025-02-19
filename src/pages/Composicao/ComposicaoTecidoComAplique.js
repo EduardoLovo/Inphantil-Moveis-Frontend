@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Api } from '../../services/Api';
 import './ComposicaoTecidoComAplique.css';
+import { Filtro } from '../../components/Filtro';
 
 export const ComposicaoTecidoComAplique = () => {
     const [apliques, setApliques] = useState([]);
@@ -11,6 +12,7 @@ export const ComposicaoTecidoComAplique = () => {
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
     const [escolha, setEscolha] = useState('');
+    const [texto, setTexto] = useState('');
 
     // Tecidos
     const loadDataTecido = async () => {
@@ -69,11 +71,28 @@ export const ComposicaoTecidoComAplique = () => {
         });
     };
 
-    // const sortedTecidoParaLencol = tecidoParaLencol.sort((a, b) =>
-    //     a.cor.localeCompare(b.cor)
-    // );
-    // const sortedApliques = apliques.sort((a, b) => a.ordem - b.ordem);
+    const onChange = (e) => {
+        setTexto(e.target.value);
+    };
 
+    const [filtrado, setFiltrado] = useState([]);
+
+    useEffect(() => {
+        const results = apliques.filter((resp) =>
+            resp.codigo.toLowerCase().includes(texto.toLowerCase())
+        );
+        setFiltrado(results);
+
+        // eslint-disable-next-line
+    }, [texto]);
+
+    function compare(a, b) {
+        if (a.codigo < b.codigo) return -1;
+        if (a.codigo > b.coodigo) return 1;
+        return 0;
+    }
+
+    filtrado.sort(compare);
     return (
         <div className="contentComposicoes">
             <h1 className="titulo">Composições </h1>
@@ -120,24 +139,57 @@ export const ComposicaoTecidoComAplique = () => {
                 </div>
             )}
             {escolha === 'aplique' && (
-                <div className="lista-de-apliques">
-                    {apliques.map((aplique, index) => (
-                        <div key={index}>
-                            {aplique.estoque === false &&
-                            aplique.quantidade === 0 ? (
-                                ''
-                            ) : (
-                                <div className="contentCardTecido">
-                                    <img
-                                        src={aplique.imagem}
-                                        alt="Imagem do aplique"
-                                        onClick={apliqueEscolhido}
-                                    />
-                                    <p>{aplique.codigo}</p>
+                <div>
+                    <div className="inputPesquisa">
+                        <input
+                            type="text"
+                            className=""
+                            onChange={onChange}
+                            value={texto}
+                            placeholder="Pesquisar por código"
+                        />
+                    </div>
+                    {!texto ? (
+                        <div className="lista-de-apliques">
+                            {apliques.map((aplique, index) => (
+                                <div key={index}>
+                                    {aplique.estoque === false &&
+                                    aplique.quantidade === 0 ? (
+                                        ''
+                                    ) : (
+                                        <div className="contentCardTecido">
+                                            <img
+                                                src={aplique.imagem}
+                                                alt="Imagem do aplique"
+                                                onClick={apliqueEscolhido}
+                                            />
+                                            <p>{aplique.codigo}</p>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
+                            ))}
                         </div>
-                    ))}
+                    ) : (
+                        <div className="lista-de-apliques">
+                            {filtrado.map((aplique, index) => (
+                                <div key={index}>
+                                    {aplique.estoque === false &&
+                                    aplique.quantidade === 0 ? (
+                                        ''
+                                    ) : (
+                                        <div className="contentCardTecido">
+                                            <img
+                                                src={aplique.imagem}
+                                                alt="Imagem do aplique"
+                                                onClick={apliqueEscolhido}
+                                            />
+                                            <p>{aplique.codigo}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
         </div>

@@ -24,7 +24,6 @@ export const Filtro = (props) => {
         // eslint-disable-next-line
     }, [texto]);
 
-    console.log(filtrado);
 
     function compare(a, b) {
         if (a.codigo < b.codigo) return -1;
