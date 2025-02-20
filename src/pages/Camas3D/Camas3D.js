@@ -82,7 +82,7 @@ function Cama3D() {
                 model.castShadow = true;
                 model.receiveShadow = true;
                 model.position.set(0, 0, 0);
-                model.scale.set(1, 1, 1);
+                model.scale.set(1, 0.8, 1);
                 scene.add(model);
                 setIsLoading(false); // Define como carregando ao mudar
             },
@@ -98,11 +98,6 @@ function Cama3D() {
         controls.enableDamping = true;
         controls.dampingFactor = 0.25;
 
-        // const handleResize = () => {
-        //     renderer.setSize(window.innerWidth, window.innerHeight);
-        //     camera.aspect = window.innerWidth / window.innerHeight;
-        //     camera.updateProjectionMatrix();
-        // };
         if (sceneRef.current) {
             const container = sceneRef.current; // Div pai
             renderer.setSize(container.clientWidth, container.clientHeight);
@@ -204,8 +199,11 @@ function Cama3D() {
                 <button className="btnV3-B3" onClick={mudar} id="V3-B3">
                     VD22 - B6
                 </button>
-                <button className="" onClick={mudar} id="Quarto3d2">
-                    Quarto
+                <button className="btnQuartoRosa" onClick={mudar} id="Quarto3d2">
+                    Quarto Rosa
+                </button>
+                <button className="btnQuartoAzul" onClick={mudar} id="quartoAzul">
+                    Quarto Azul
                 </button>
             </div>
             <div ref={sceneRef} className="imagemCama" />

@@ -178,6 +178,13 @@
     margin-left: 10px;
 }
 
+.btnQuartoRosa {
+    background-color: #bb7fd3;
+}
+.btnQuartoAzul {
+    background-color: #629bcf;
+}
+
 @keyframes is-rotating {
     to {
         transform: rotate(1turn);
