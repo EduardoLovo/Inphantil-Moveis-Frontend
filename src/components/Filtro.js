@@ -24,7 +24,6 @@ export const Filtro = (props) => {
         // eslint-disable-next-line
     }, [texto]);
 
-
     function compare(a, b) {
         if (a.codigo < b.codigo) return -1;
         if (a.codigo > b.coodigo) return 1;
@@ -46,7 +45,7 @@ export const Filtro = (props) => {
                             aplique.quantidade === 0 ? (
                                 ''
                             ) : (
-                                <CardApliques aplique={aplique} />
+                                <CardApliques aplique={aplique} tipo={tipo} />
                             )}
                         </div>
                     ))}
