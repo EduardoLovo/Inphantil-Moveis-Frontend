@@ -4,6 +4,7 @@ import Modal from '../ModalAplique/ModalAplique';
 
 export const CardApliques = (props) => {
     const aplique = props.aplique;
+    const tipo = props.tipo;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,8 +18,25 @@ export const CardApliques = (props) => {
 
     return (
         <div>
-            <div className="contentCard" onClick={openModal}>
-                <img src={aplique.imagem} alt="Imagem do aplique" />
+            <div
+                className={` contentCard ${
+                    tipo === 'adm' && aplique.estoque === true
+                        ? 'sombra-verde'
+                        : tipo === 'adm' &&
+                          aplique.estoque === false &&
+                          'sombra-vermelha'
+                }`}
+                onClick={openModal}
+            >
+                <img
+                    src={aplique.imagem}
+                    alt="Imagem do aplique"
+                    // className={` contentCard ${
+                    //     tipo === 'adm' && aplique.estoque === true
+                    //         ? 'sombra-verde'
+                    //         : aplique.estoque === false && 'sombra-vermelha'
+                    // }`}
+                />
                 <p>{aplique.codigo}</p>
             </div>
 

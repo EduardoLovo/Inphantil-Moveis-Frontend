@@ -79,7 +79,10 @@ export const ListaDeApliques = (props) => {
                                             )}
                                         </div>
                                     ) : (
-                                        <CardApliques aplique={aplique} />
+                                        <CardApliques
+                                            aplique={aplique}
+                                            tipo={tipo}
+                                        />
                                     )}
                                 </div>
                             )}
