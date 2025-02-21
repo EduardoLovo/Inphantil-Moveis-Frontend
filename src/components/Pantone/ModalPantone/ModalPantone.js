@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
+import { toast } from 'react-toastify';
 
 const ModalPantone = ({ pantone, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
@@ -46,6 +47,7 @@ const ModalPantone = ({ pantone, onClose }) => {
                 console.log('Enviado com sucesso');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Pantone deletado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar
@@ -73,6 +75,7 @@ const ModalPantone = ({ pantone, onClose }) => {
                 console.log('Deletado com sucesso');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Pantone deletado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar

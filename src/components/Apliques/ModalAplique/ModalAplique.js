@@ -3,6 +3,7 @@ import './ModalAplique.css';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
+import { toast } from 'react-toastify';
 
 const Modal = ({ aplique, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
@@ -51,6 +52,7 @@ const Modal = ({ aplique, onClose }) => {
                 console.log('Enviado com sucesso');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Aplique atualizado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar
@@ -78,6 +80,7 @@ const Modal = ({ aplique, onClose }) => {
                 console.log('Deletado com sucesso');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Aplique deletado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar

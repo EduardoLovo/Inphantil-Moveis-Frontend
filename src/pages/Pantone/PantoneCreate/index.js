@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../../components/Loading/Loading';
 import styles from '../../../styles/Formulario.module.css';
+import { toast } from 'react-toastify';
 
 export const PantoneCreate = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -44,7 +45,11 @@ export const PantoneCreate = () => {
             // Verifica se a resposta foi bem-sucedida
             if (response.status === 201) {
                 console.log('Enviado com sucesso');
+                setCodigo('');
+                setEstoque('');
+                setCor('');
                 setIsLoading(false); // Define como carregando ao mudar
+                toast.success('Pantone adicionado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar

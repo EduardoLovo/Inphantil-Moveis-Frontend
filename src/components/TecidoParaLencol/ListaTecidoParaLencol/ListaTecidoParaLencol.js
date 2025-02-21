@@ -5,7 +5,7 @@ import { CardTecidoParaLencol } from '../CardTecidoParaLencol/CardTecidoParaLenc
 
 export const ListaTecidoParaLencol = () => {
     const [tecidoParaLencol, setTecidoParaLencol] = useState([]);
-    const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
+    const [isLoading, setIsLoading] = useState(true); // Estado de carregamento
     const [error, setError] = useState('');
 
     const type = localStorage.getItem('user');
@@ -31,6 +31,8 @@ export const ListaTecidoParaLencol = () => {
     const sortedTecidoParaLencol = tecidoParaLencol.sort((a, b) =>
         a.cor.localeCompare(b.cor)
     );
+
+    console.log(sortedTecidoParaLencol);
 
     return (
         <div className="contentListaDeApliques">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Api } from '../../../services/Api';
 import { Loading } from '../../../components/Loading/Loading';
 import styles from '../../../styles/Formulario.module.css';
+import { toast } from 'react-toastify';
 
 export const TecidoParaLencolCreate = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -33,6 +34,8 @@ export const TecidoParaLencolCreate = () => {
         formData.append('quantidade', parseInt(quantidade));
         formData.append('estoque', estoque); // Booleano
 
+        console.log(formData);
+
         try {
             const response = await Api.post(
                 Api.addUrl('tecido-para-lencol'),
@@ -44,7 +47,11 @@ export const TecidoParaLencolCreate = () => {
             // Verifica se a resposta foi bem-sucedida
             if (response.status === 201) {
                 console.log('Enviado com sucesso');
+                setCor('');
+                setQuantidade('');
+                setEstoque('');
                 setIsLoading(false); // Define como carregando ao mudar
+                toast.success('Tecido adicionada com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar

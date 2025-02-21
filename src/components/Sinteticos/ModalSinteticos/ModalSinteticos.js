@@ -3,6 +3,7 @@ import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import './ModalSinteticos.css';
 import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
+import { toast } from 'react-toastify';
 
 export const ModalSinteticos = ({ sintetico, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
@@ -47,6 +48,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                 console.log('Enviado com sucesso');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Sintetico atualizado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar
@@ -74,6 +76,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                 console.log('Deletado com sucesso');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Sintetico deletado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar

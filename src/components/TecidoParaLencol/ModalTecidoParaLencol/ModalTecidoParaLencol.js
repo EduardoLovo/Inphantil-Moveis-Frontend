@@ -3,6 +3,7 @@ import { Api } from '../../../services/Api';
 import { Loading } from '../../Loading/Loading';
 import { JwtHandler } from '../../../services/jwt_handler/jwt_handler';
 import './ModalTecidoParaLencol.css';
+import { toast } from 'react-toastify';
 
 const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
@@ -33,6 +34,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
             quantidade,
             estoque,
         };
+        console.log(payload);
 
         try {
             const response = await Api.patch(
@@ -44,8 +46,12 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
             // Verifica se a resposta foi bem-sucedida
             if (response.status === 200) {
                 console.log('Enviado com sucesso');
+                setCor('');
+                setQuantidade('');
+                setEstoque('');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Tecido atualizado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar
@@ -73,6 +79,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
                 console.log('Deletado com sucesso');
                 setIsLoading(false); // Define como carregando ao mudar
                 window.location.reload();
+                toast.success('Tecido deletado com sucesso!');
             } else {
                 setError(error.response.data.message);
                 setIsLoading(false); // Define como carregando ao mudar

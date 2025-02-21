@@ -21,11 +21,24 @@ import { ApliquesParaComprar } from './pages/Apliques/ApliquesParaComprar/Apliqu
 import { ApliquesParaCabana } from './pages/Apliques/ApliquesParaCabana/ApliquesParaCabana';
 import { PantoneCreate } from './pages/Pantone/PantoneCreate';
 import { ComposicaoTecidoComAplique } from './pages/Composicao/ComposicaoTecidoComAplique';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     return (
         <div>
             <MenuPrincipal />
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div className="containerApp">
                 <Routes>
                     <Route path="/login" element={<Login />} />
