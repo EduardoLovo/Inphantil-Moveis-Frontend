@@ -28,15 +28,7 @@ export const CardApliques = (props) => {
                 }`}
                 onClick={openModal}
             >
-                <img
-                    src={aplique.imagem}
-                    alt="Imagem do aplique"
-                    // className={` contentCard ${
-                    //     tipo === 'adm' && aplique.estoque === true
-                    //         ? 'sombra-verde'
-                    //         : aplique.estoque === false && 'sombra-vermelha'
-                    // }`}
-                />
+                <img src={aplique.imagem} alt="Imagem do aplique" />
                 <p>{aplique.codigo}</p>
             </div>
 

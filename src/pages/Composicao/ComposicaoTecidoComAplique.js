@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Api } from '../../services/Api';
 import './ComposicaoTecidoComAplique.css';
-import { Filtro } from '../../components/Filtro';
+import { Loading } from '../../components/Loading/Loading';
 
 export const ComposicaoTecidoComAplique = () => {
     const [apliques, setApliques] = useState([]);
@@ -95,6 +95,8 @@ export const ComposicaoTecidoComAplique = () => {
     filtrado.sort(compare);
     return (
         <div className="contentComposicoes">
+            {isLoading && <Loading />}
+
             <h1 className="titulo">Composições </h1>
 
             <div className="texto-composicoes">
@@ -192,6 +194,7 @@ export const ComposicaoTecidoComAplique = () => {
                     )}
                 </div>
             )}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
 };

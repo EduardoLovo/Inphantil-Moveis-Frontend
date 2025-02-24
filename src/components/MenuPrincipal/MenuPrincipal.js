@@ -9,7 +9,7 @@ const MenuPrincipal = () => {
     const [menuAberto, setMenuAberto] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 481);
     const menuRef = useRef(null); // Referência ao menu
-    
+
     const userRaw = localStorage.getItem('user');
     const user = userRaw ? JSON.parse(userRaw) : null;
 
@@ -211,6 +211,14 @@ const MenuPrincipal = () => {
                         <li>
                             <Link
                                 onClick={toggleMenu}
+                                to="/catalogo-de-apliques-para-cabana"
+                            >
+                                Catálogo de Apliques para Cabana
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
                                 to="/catalogo-de-sinteticos"
                             >
                                 Catálogo de Materiais
@@ -299,6 +307,14 @@ const MenuPrincipal = () => {
                                 to="/catalogo-de-apliques"
                             >
                                 Catálogo de Apliques
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-apliques-para-cabana"
+                            >
+                                Catálogo de Apliques para Cabana
                             </Link>
                         </li>
                         <li>
