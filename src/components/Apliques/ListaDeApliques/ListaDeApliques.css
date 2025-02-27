@@ -17,9 +17,30 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.26);
 }
 
+.input-checkbox {
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.input-checkbox input[type='checkbox'] {
+    width: 20px; /* Largura */
+    height: 20px; /* Altura */
+}
+
+.input-checkbox label {
+    margin-left: 5px;
+}
+
 @media (max-width: 700px) {
     .inputPesquisa {
         position: static;
         margin: 0 29% 10px;
+    }
+    .input-checkbox {
+        padding-left: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
     }
 }

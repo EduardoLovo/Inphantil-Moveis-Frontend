@@ -11,6 +11,7 @@ export const ListaDeApliques = (props) => {
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
     const [texto, setTexto] = useState('');
+    const [ordenado, setOrdenado] = useState(false); // Estado do checkbox
 
     const userRaw = localStorage.getItem('user');
     const user = userRaw ? JSON.parse(userRaw) : null;
@@ -33,10 +34,17 @@ export const ListaDeApliques = (props) => {
         loadData();
     }, []);
 
-    const sortedApliques = apliques.sort((a, b) => a.ordem - b.ordem);
+    // Aplica a ordenação dinamicamente quando o checkbox for marcado
+    const sortedApliques = ordenado
+        ? [...apliques].sort((a, b) => a.codigo.localeCompare(b.codigo)) // Ordena pelo código
+        : [...apliques].sort((a, b) => a.ordem - b.ordem); // Ordena pela ordem numérica
 
     const onChange = (e) => {
         setTexto(e.target.value);
+    };
+
+    const mudarOrdem = () => {
+        setOrdenado((prev) => !prev); // Alterna a ordenação ao clicar no checkbox
     };
 
     return (
@@ -51,6 +59,16 @@ export const ListaDeApliques = (props) => {
                     placeholder="Pesquisar por código"
                 />
             </div>
+            {tipo !== 'desconhecido' && (
+                <div className="input-checkbox">
+                    <input
+                        type="checkbox"
+                        checked={ordenado}
+                        onChange={mudarOrdem}
+                    />
+                    <label>Ordem numérica</label>
+                </div>
+            )}
             {!texto ? (
                 <div className="contentListaDeApliques">
                     {sortedApliques.map((aplique, index) => (
