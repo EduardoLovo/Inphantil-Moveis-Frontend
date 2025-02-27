@@ -11,7 +11,6 @@ export const ComposicaoDeSintetico = () => {
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
     const [escolha, setEscolha] = useState('');
-    const [texto, setTexto] = useState('');
 
     // Sinteticos
     const loadDataTecido = async () => {
@@ -51,10 +50,6 @@ export const ComposicaoDeSintetico = () => {
         });
     };
 
-    const onChange = (e) => {
-        setTexto(e.target.value);
-    };
-
     return (
         <div className="contentComposicoes">
             {isLoading && <Loading />}
@@ -70,7 +65,7 @@ export const ComposicaoDeSintetico = () => {
                     <p>
                         Muito importante! O tom da cor do material, pode mudar
                         de acordo com a tela do seu dispositivo.
-                    </p>{' '}
+                    </p>
                 </h5>
             </div>
 
@@ -91,10 +86,10 @@ export const ComposicaoDeSintetico = () => {
             {escolha === '' && (
                 <div className="lista-de-tecidos">
                     {sinteticos.map((sintetico, index) => (
-                        <div key={index} className="contentCard">
+                        <div key={index}>
                             {sintetico.estoque === true &&
                             sintetico.cor === 'Externo' ? (
-                                <div>
+                                <div className="contentCard">
                                     <img
                                         src={sintetico.imagem}
                                         alt="imagem do tecido"
@@ -110,26 +105,24 @@ export const ComposicaoDeSintetico = () => {
                 </div>
             )}
             {escolha === 'interno' && (
-                <div>
-                    <div className="lista-de-apliques">
-                        {sinteticos.map((sintetico, index) => (
-                            <div key={index}>
-                                {sintetico.estoque === false &&
-                                sintetico.cor === 'externo' ? (
-                                    ''
-                                ) : (
-                                    <div className="contentCardTecido">
-                                        <img
-                                            src={sintetico.imagem}
-                                            alt="Imagem do aplique"
-                                            onClick={internoEscolhido}
-                                        />
-                                        <p>{sintetico.codigo}</p>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                <div className="lista-de-apliques">
+                    {sinteticos.map((sintetico, index) => (
+                        <div key={index}>
+                            {sintetico.estoque === false &&
+                            sintetico.cor === 'externo' ? (
+                                ''
+                            ) : (
+                                <div className="contentCardTecido">
+                                    <img
+                                        src={sintetico.imagem}
+                                        alt="Imagem do aplique"
+                                        onClick={internoEscolhido}
+                                    />
+                                    <p>{sintetico.codigo}</p>
+                                </div>
+                            )}
+                        </div>
+                    ))}
                 </div>
             )}
             {error && <p style={{ color: 'red' }}>{error}</p>}
