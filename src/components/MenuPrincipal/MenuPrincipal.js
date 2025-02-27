@@ -93,6 +93,14 @@ const MenuPrincipal = () => {
                         <li>
                             <Link
                                 onClick={toggleMenu}
+                                to="/composicao-de-sinteticos"
+                            >
+                                Composição de Materiais
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
                                 to="/catalogo-de-apliques"
                             >
                                 Catálogo de Apliques
@@ -203,6 +211,14 @@ const MenuPrincipal = () => {
                         <li>
                             <Link
                                 onClick={toggleMenu}
+                                to="/composicao-de-sinteticos"
+                            >
+                                Composição de Materiais
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
                                 to="/catalogo-de-apliques"
                             >
                                 Catálogo de Apliques
@@ -299,6 +315,14 @@ const MenuPrincipal = () => {
                                 to="/composicao-tecido-com-aplique"
                             >
                                 Composição de Lençois
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/composicao-de-sinteticos"
+                            >
+                                Composição de Materiais
                             </Link>
                         </li>
                         <li>

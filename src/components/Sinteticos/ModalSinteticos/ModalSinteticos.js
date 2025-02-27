@@ -10,7 +10,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
     const [codigo, setCodigo] = useState(sintetico.codigo);
     const [estoque, setEstoque] = useState(sintetico.estoque);
-    const [cor, setCor] = useState(sintetico.ordem);
+    const [cor, setCor] = useState(sintetico.cor);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregament
 
@@ -143,7 +143,9 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                             <select
                                 value={cor}
                                 onChange={(e) => setCor(e.target.value)}
+                                required
                             >
+                                <option value=""></option>
                                 <option value="Amarelo">Amarelo</option>
                                 <option value="Azul">Azul</option>
                                 <option value="Bege">Bege</option>

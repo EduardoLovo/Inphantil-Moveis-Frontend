@@ -22,6 +22,7 @@ import { ApliquesParaCabana } from './pages/Apliques/ApliquesParaCabana/Apliques
 import { PantoneCreate } from './pages/Pantone/PantoneCreate';
 import { ComposicaoTecidoComAplique } from './pages/Composicao/ComposicaoTecidoComAplique';
 import { ToastContainer } from 'react-toastify';
+import { ComposicaoDeSintetico } from './pages/Composicao/ComposicaoDeSintetico';
 
 function App() {
     return (
@@ -129,6 +130,10 @@ function App() {
                     <Route
                         path="/composicao-tecido-com-aplique"
                         element={<ComposicaoTecidoComAplique />}
+                    />
+                    <Route
+                        path="/composicao-de-sinteticos"
+                        element={<ComposicaoDeSintetico />}
                     />
                     {/* Rota Cama 3D */}
                     <Route path="/camas-3D" element={<Cama3D />} />
