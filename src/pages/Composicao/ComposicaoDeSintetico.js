@@ -84,45 +84,51 @@ export const ComposicaoDeSintetico = () => {
                 </div>
             )}
             {escolha === '' && (
-                <div className="lista-de-tecidos">
-                    {sinteticos.map((sintetico, index) => (
-                        <div key={index}>
-                            {sintetico.estoque === true &&
-                            sintetico.cor === 'Externo' ? (
-                                <div className="contentCard">
-                                    <img
-                                        src={sintetico.imagem}
-                                        alt="imagem do tecido"
-                                        onClick={externoEscolhido}
-                                    />
-                                    <p>{sintetico.codigo}</p>
-                                </div>
-                            ) : (
-                                ''
-                            )}
-                        </div>
-                    ))}
+                <div>
+                    <h2>Externos</h2>
+                    <div className="lista-de-tecidos">
+                        {sinteticos.map((sintetico, index) => (
+                            <div key={index}>
+                                {sintetico.estoque === true &&
+                                sintetico.cor === 'Externo' ? (
+                                    <div className="contentCard">
+                                        <img
+                                            src={sintetico.imagem}
+                                            alt="imagem do tecido"
+                                            onClick={externoEscolhido}
+                                        />
+                                        <p>{sintetico.codigo}</p>
+                                    </div>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                        ))}
+                    </div>{' '}
                 </div>
             )}
             {escolha === 'interno' && (
-                <div className="lista-de-apliques">
-                    {sinteticos.map((sintetico, index) => (
-                        <div key={index}>
-                            {sintetico.estoque === false &&
-                            sintetico.cor === 'externo' ? (
-                                ''
-                            ) : (
-                                <div className="contentCardTecido">
-                                    <img
-                                        src={sintetico.imagem}
-                                        alt="Imagem do aplique"
-                                        onClick={internoEscolhido}
-                                    />
-                                    <p>{sintetico.codigo}</p>
-                                </div>
-                            )}
-                        </div>
-                    ))}
+                <div>
+                    <h2>Internos</h2>
+                    <div className="lista-de-apliques">
+                        {sinteticos.map((sintetico, index) => (
+                            <div key={index}>
+                                {sintetico.estoque === false &&
+                                sintetico.cor === 'externo' ? (
+                                    ''
+                                ) : (
+                                    <div className="contentCardTecido">
+                                        <img
+                                            src={sintetico.imagem}
+                                            alt="Imagem do aplique"
+                                            onClick={internoEscolhido}
+                                        />
+                                        <p>{sintetico.codigo}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
             {error && <p style={{ color: 'red' }}>{error}</p>}
