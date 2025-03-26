@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
     const [codigo, setCodigo] = useState(lencol.codigo);
+    const [imagem, setImagem] = useState(lencol.imagem);
     const [quantidade, setQuantidade] = useState(lencol.quantidade);
     const [cor, setCor] = useState(lencol.cor);
     const [tamanho, setTamanho] = useState(lencol.tamanho);
@@ -31,6 +32,7 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
 
         const payload = {
             codigo,
+            imagem,
             quantidade,
             cor,
             tamanho,
@@ -118,6 +120,13 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
                             <input
                                 value={codigo}
                                 onChange={(e) => setCodigo(e.target.value)}
+                                type="text"
+                                required
+                            />
+                            <label>Imagem:</label>
+                            <input
+                                value={imagem}
+                                onChange={(e) => setImagem(e.target.value)}
                                 type="text"
                                 required
                             />
