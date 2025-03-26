@@ -52,8 +52,10 @@ export const Api = {
         return Api.instance.post(url, body, config);
     },
 
-    patch: (url, body, auth = false) =>
-        Api.instance.patch(url, body, auth ? Api.authConfig() : {}),
+    patch: (url, body, auth = false, isMultipart = false) => {
+        const config = auth ? Api.authConfig(isMultipart) : {};
+        return Api.instance.patch(url, body, config);
+    },
 
     delete: (url, auth = false) =>
         Api.instance.delete(url, auth ? Api.authConfig() : {}),

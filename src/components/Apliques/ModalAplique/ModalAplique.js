@@ -9,6 +9,7 @@ const Modal = ({ aplique, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
 
     const [codigo, setCodigo] = useState(aplique.codigo);
+    const [imagem, setImagem] = useState(aplique.imagem);
     const [quantidade, setQuantidade] = useState(aplique.quantidade);
     const [estoque, setEstoque] = useState(aplique.estoque);
     const [ordem, setOrdem] = useState(aplique.ordem);
@@ -28,13 +29,12 @@ const Modal = ({ aplique, onClose }) => {
         e.stopPropagation(); // Evita que o clique no modal feche ele
     };
 
-    console.log(tipo);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const payload = {
             codigo,
+            imagem,
             quantidade,
             estoque,
             ordem,
@@ -122,6 +122,13 @@ const Modal = ({ aplique, onClose }) => {
                             <input
                                 value={codigo}
                                 onChange={(e) => setCodigo(e.target.value)}
+                                type="text"
+                                required
+                            />
+                            <label>Imagem:</label>
+                            <input
+                                value={imagem}
+                                onChange={(e) => setImagem(e.target.value)}
                                 type="text"
                                 required
                             />
