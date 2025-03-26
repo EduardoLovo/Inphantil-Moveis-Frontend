@@ -9,6 +9,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
 
     const [codigo, setCodigo] = useState(sintetico.codigo);
+    const [imagem, setImagem] = useState(sintetico.imagem);
     const [estoque, setEstoque] = useState(sintetico.estoque);
     const [cor, setCor] = useState(sintetico.cor);
     const [error, setError] = useState('');
@@ -32,6 +33,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
         const payload = {
             codigo,
+            imagem,
             estoque,
             cor,
         };
@@ -124,6 +126,13 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                             <input
                                 value={codigo}
                                 onChange={(e) => setCodigo(e.target.value)}
+                                type="text"
+                                required
+                            />
+                            <label>Imagem:</label>
+                            <input
+                                value={imagem}
+                                onChange={(e) => setImagem(e.target.value)}
                                 type="text"
                                 required
                             />

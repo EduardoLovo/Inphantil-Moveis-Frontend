@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
     const [cor, setCor] = useState(tecidoParaLencol.cor);
+    const [imagem, setImagem] = useState(tecidoParaLencol.imagem);
     const [quantidade, setQuantidade] = useState(tecidoParaLencol.quantidade);
     const [estoque, setEstoque] = useState(tecidoParaLencol.estoque);
     const [error, setError] = useState('');
@@ -31,6 +32,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
 
         const payload = {
             cor,
+            imagem,
             quantidade,
             estoque,
         };
@@ -130,6 +132,13 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
                             <input
                                 value={cor}
                                 onChange={(e) => setCor(e.target.value)}
+                                type="text"
+                                required
+                            />
+                            <label>Imagem:</label>
+                            <input
+                                value={imagem}
+                                onChange={(e) => setImagem(e.target.value)}
                                 type="text"
                                 required
                             />
