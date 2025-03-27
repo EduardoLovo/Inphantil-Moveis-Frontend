@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 const ModalPantone = ({ pantone, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
     const [codigo, setCodigo] = useState(pantone.codigo);
+    const [imagem, setImagem] = useState(pantone.imagem);
     const [estoque, setEstoque] = useState(pantone.estoque);
     const [cor, setCor] = useState(pantone.cor);
     const [error, setError] = useState('');
@@ -31,6 +32,7 @@ const ModalPantone = ({ pantone, onClose }) => {
 
         const payload = {
             codigo,
+            imagem,
             estoque,
             cor,
         };
@@ -120,6 +122,13 @@ const ModalPantone = ({ pantone, onClose }) => {
                             <input
                                 value={codigo}
                                 onChange={(e) => setCodigo(e.target.value)}
+                                type="text"
+                                required
+                            />
+                            <label>Imagem:</label>
+                            <input
+                                value={imagem}
+                                onChange={(e) => setImagem(e.target.value)}
                                 type="text"
                                 required
                             />
