@@ -1,0 +1,8 @@
+.contentCard-lencol-prontaentrega {
+    transition: transform 0.2s ease-in;
+    text-align: center;
+    margin: 15px;
+}
+.contentCard-lencol-prontaentrega img {
+    width: 350px;
+}
