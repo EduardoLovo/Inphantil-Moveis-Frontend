@@ -23,6 +23,7 @@ import { PantoneCreate } from './pages/Pantone/PantoneCreate';
 import { ComposicaoTecidoComAplique } from './pages/Composicao/ComposicaoTecidoComAplique';
 import { ToastContainer } from 'react-toastify';
 import { ComposicaoDeSintetico } from './pages/Composicao/ComposicaoDeSintetico';
+import { Desenhos } from './pages/Desenhos/Desenhos';
 
 function App() {
     return (
@@ -146,6 +147,8 @@ function App() {
                         path="/calculadora-6040"
                         element={<Calculadora6040 />}
                     />
+                    {/* Rotas desenhos */}
+                    <Route path="/desenhos" element={<Desenhos />} />
                 </Routes>
             </div>
         </div>
