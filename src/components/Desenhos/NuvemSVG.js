@@ -2,7 +2,7 @@ import React from 'react';
 import './DesenhosSVG.css';
 export const NuvemSVG = ({ color, color2, onClick }) => {
     return (
-        <div className='contentSVG'> 
+        <div className="contentSVG">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 // xml:space="preserve"

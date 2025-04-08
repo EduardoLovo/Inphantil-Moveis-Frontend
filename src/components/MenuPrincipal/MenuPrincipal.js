@@ -217,6 +217,11 @@ const MenuPrincipal = () => {
                             </Link>
                         </li>
                         <li>
+                            <Link onClick={toggleMenu} to="/desenhos">
+                                Desenhos
+                            </Link>
+                        </li>
+                        <li>
                             <Link
                                 onClick={toggleMenu}
                                 to="/catalogo-de-apliques"
@@ -323,6 +328,11 @@ const MenuPrincipal = () => {
                                 to="/composicao-de-sinteticos"
                             >
                                 Composição de Materiais
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={toggleMenu} to="/desenhos">
+                                Desenhos
                             </Link>
                         </li>
                         <li>

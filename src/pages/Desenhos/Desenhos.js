@@ -1,24 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import html2canvas from 'html2canvas';
 import './Desenhos.css';
-import { NuvemSVG } from '../../components/Desenhos/Nuvem';
+import { NuvemSVG } from '../../components/Desenhos/NuvemSVG';
+import { MontanhaSVG } from '../../components/Desenhos/MontanhaSVG';
+import { toast } from 'react-toastify';
 
 export const Desenhos = () => {
     const [selectedColor, setSelectedColor] = useState('#ccc'); // Cor selecionada no input
     const [appliedColor, setAppliedColor] = useState('#ccc'); // Cor aplicada no SVG
     const [appliedColor2, setAppliedColor2] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor3, setAppliedColor3] = useState('#ccc'); // Cor aplicada no SVG
     const [codigoCor, setCodigoCor] = useState(''); // Cor aplicada no SVG
     const [codigoCor2, setCodigoCor2] = useState(''); // Cor aplicada no SVG
+    const [codigoCor3, setCodigoCor3] = useState(''); // Cor aplicada no SVG
+    const [tipoDoDesenho, setTipoDoDesenho] = useState(''); // Cor aplicada no SVG
 
     // Ao clicar na imagem, a cor do input é aplicada ao SVG
     const handleSVGClick = (e) => {
         const cor = e.target.id;
-        console.log(e.target.id);
-        console.log(selectedColor);
 
         if (cor === 'cor1') {
             setAppliedColor(selectedColor);
-        } else {
+        } else if (cor === 'cor2') {
             setAppliedColor2(selectedColor);
+        } else {
+            setAppliedColor3(selectedColor);
         }
     };
 
@@ -210,7 +216,7 @@ export const Desenhos = () => {
         },
         {
             codigo: 't12',
-            hex: '#dbb6d9',
+            hex: '#BDD6D9',
         },
         {
             codigo: 'vd1',
@@ -269,10 +275,32 @@ export const Desenhos = () => {
     useEffect(() => {
         setCodigoCor(listaDeCores.find((cor) => cor.hex === appliedColor));
         setCodigoCor2(listaDeCores.find((cor) => cor.hex === appliedColor2));
-    }, [appliedColor, appliedColor2]);
+        setCodigoCor3(listaDeCores.find((cor) => cor.hex === appliedColor3));
+    }, [appliedColor, appliedColor2, appliedColor3]);
+
+    const divRef = useRef(null);
+
+    const copiarPrint = async () => {
+        const el = divRef.current;
+        if (!el) return;
+
+        const canvas = await html2canvas(el);
+        canvas.toBlob(async (blob) => {
+            if (blob) {
+                try {
+                    await navigator.clipboard.write([
+                        new ClipboardItem({ 'image/png': blob }),
+                    ]);
+                    toast.success('Imagem copiada!');
+                } catch (err) {
+                    console.error('Erro ao copiar:', err);
+                }
+            }
+        });
+    };
 
     return (
-        <div>
+        <div className="contentDesenhos">
             <h1>Escolha uma cor e clique na imagem para aplicar</h1>
             <div className="botoesCoresDesenho">
                 {listaDeCores.map((cor, index) => (
@@ -290,18 +318,67 @@ export const Desenhos = () => {
                     </button>
                 ))}
             </div>
-            <NuvemSVG
-                color={appliedColor}
-                color2={appliedColor2}
-                onClick={handleSVGClick}
-            />
-            <div className='resultadoNomeDasCores'>
-                <p>
-                    {codigoCor?.codigo?.toUpperCase()} -{' '}
-                    {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                    {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                    {codigoCor?.codigo?.toUpperCase()}
-                </p>
+            <div className="opcoesRadio">
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="nuvem"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'nuvem'}
+                    />
+                    Nuvem
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="montanha"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'montanha'}
+                    />
+                    Montanha
+                </label>
+                <button className="btnPrint" onClick={copiarPrint}>
+                    📸 Tirar print e copiar
+                </button>
+            </div>
+
+            <div ref={divRef}>
+                <div>
+                    {tipoDoDesenho === '' ? (
+                        ''
+                    ) : tipoDoDesenho === 'nuvem' ? (
+                        <NuvemSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                        />
+                    ) : (
+                        <MontanhaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                        />
+                    )}
+                </div>
+                <div className="resultadoNomeDasCores">
+                    {tipoDoDesenho === 'nuvem' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor3?.codigo?.toUpperCase()}
+                        </p>
+                    )}
+                </div>
             </div>
         </div>
     );

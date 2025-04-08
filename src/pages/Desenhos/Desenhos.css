@@ -1,10 +1,13 @@
+.contentDesenhos h1 {
+    padding: 15px 30px;
+}
 button {
-    padding: 10px 20px;
+    padding: 10px;
     margin: 8px;
     border: 2px solid #ccc;
     cursor: pointer;
     transition: 0.3s;
-    width: 100px;
+    width: 70px;
 }
 
 button.selected {
@@ -159,7 +162,7 @@ button.selected {
     background-color: #00adad;
 }
 .t12 {
-    background-color: #dbb6d9;
+    background-color: #bdd6d9;
 }
 .vd1 {
     background-color: #817d6a;
@@ -205,4 +208,22 @@ button.selected {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.resultadoNomeDasCores p {
+    padding-bottom: 2rem;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.opcoesRadio {
+    padding: 20px;
+}
+
+.opcoesRadio label {
+    margin-right: 25px;
+}
+
+.btnPrint {
+    width: 200px;
 }
