@@ -4,6 +4,253 @@ import './Desenhos.css';
 import { NuvemSVG } from '../../components/Desenhos/NuvemSVG';
 import { MontanhaSVG } from '../../components/Desenhos/MontanhaSVG';
 import { toast } from 'react-toastify';
+import { EncaixeSVG } from '../../components/Desenhos/EncaixeSVG';
+import { CamaSVG } from '../../components/Desenhos/CamaSvg';
+import { PicoSVG } from '../../components/Desenhos/PicoSVG';
+
+const listaDeCores = [
+    { codigo: 'am1', hex: '#ffd653' },
+    {
+        codigo: 'am14',
+        hex: '#f4e0ad',
+    },
+    {
+        codigo: 'am19',
+        hex: '#eedc9c',
+    },
+    {
+        codigo: 'am21',
+        hex: '#e6d3a6',
+    },
+    {
+        codigo: 'am24',
+        hex: '#e7e0d1',
+    },
+    {
+        codigo: 'az1',
+        hex: '#3b3d4b',
+    },
+    {
+        codigo: 'az3',
+        hex: '#586c8a',
+    },
+    {
+        codigo: 'az5',
+        hex: '#415997',
+    },
+    {
+        codigo: 'az6',
+        hex: '#718db1',
+    },
+    {
+        codigo: 'az10',
+        hex: '#9ebdd0',
+    },
+    {
+        codigo: 'az11',
+        hex: '#c4ced6',
+    },
+    {
+        codigo: 'b3',
+        hex: '#a49d90',
+    },
+    {
+        codigo: 'b6',
+        hex: '#c4bcad',
+    },
+    {
+        codigo: 'b8',
+        hex: '#dad6cb',
+    },
+    {
+        codigo: 'b10',
+        hex: '#e1d7c6',
+    },
+    {
+        codigo: 'b19',
+        hex: '#baaa95',
+    },
+    {
+        codigo: 'bc1',
+        hex: '#ffffff',
+    },
+    {
+        codigo: 'bc6',
+        hex: '#e9e9e7',
+    },
+    {
+        codigo: 'cz1',
+        hex: '#505557',
+    },
+    {
+        codigo: 'cz3',
+        hex: '#999a98',
+    },
+    {
+        codigo: 'cz6',
+        hex: '#b4b7ba',
+    },
+    {
+        codigo: 'cz25n',
+        hex: '#c7c8ca',
+    },
+    {
+        codigo: 'cz26n',
+        hex: '#c8cacb',
+    },
+    {
+        codigo: 'l2',
+        hex: '#795999',
+    },
+    {
+        codigo: 'l3',
+        hex: '#bca0cc',
+    },
+    {
+        codigo: 'l5',
+        hex: '#c4aed0',
+    },
+    {
+        codigo: 'l11',
+        hex: '#d4c7d9',
+    },
+    {
+        codigo: 'lj1',
+        hex: '#d26a3e',
+    },
+    {
+        codigo: 'lj3',
+        hex: '#f6ad99',
+    },
+    {
+        codigo: 'lj7',
+        hex: '#ebc594',
+    },
+    {
+        codigo: 'lj11',
+        hex: '#de948f',
+    },
+    {
+        codigo: 'lj21',
+        hex: '#f8bf9a',
+    },
+    {
+        codigo: 'm3',
+        hex: '#bc9d6e',
+    },
+    {
+        codigo: 'r1',
+        hex: '#ce567e',
+    },
+    {
+        codigo: 'r12',
+        hex: '#e0c7d2',
+    },
+    {
+        codigo: 'r16',
+        hex: '#d4a299',
+    },
+    {
+        codigo: 'r17',
+        hex: '#cda7a0',
+    },
+    {
+        codigo: 'r22',
+        hex: '#efc5be',
+    },
+    {
+        codigo: 'r24',
+        hex: '#e7b7cf',
+    },
+    {
+        codigo: 'r25',
+        hex: '#ce9694',
+    },
+    {
+        codigo: 'r32',
+        hex: '#decdbf',
+    },
+    {
+        codigo: 'r33',
+        hex: '#ead2c6',
+    },
+    {
+        codigo: 'rb1',
+        hex: '#e1b8b9',
+    },
+    {
+        codigo: 'rb2',
+        hex: '#e9c8ca',
+    },
+    {
+        codigo: 'rb4',
+        hex: '#eed7d9',
+    },
+    {
+        codigo: 't1',
+        hex: '#94dbe0',
+    },
+    {
+        codigo: 't2',
+        hex: '#00adad',
+    },
+    {
+        codigo: 't12',
+        hex: '#BDD6D9',
+    },
+    {
+        codigo: 'vd1',
+        hex: '#817d6a',
+    },
+    {
+        codigo: 'vd6n',
+        hex: '#808a73',
+    },
+    {
+        codigo: 'vd7n',
+        hex: '#829e86',
+    },
+    {
+        codigo: 'vd16',
+        hex: '#a7ceb9',
+    },
+    {
+        codigo: 'vd21',
+        hex: '#a3bca6',
+    },
+    {
+        codigo: 'vd22',
+        hex: '#a3ac9b',
+    },
+    {
+        codigo: 'vd23',
+        hex: '#a8decc',
+    },
+    {
+        codigo: 'vd25',
+        hex: '#bfcab4',
+    },
+    {
+        codigo: 'vd36',
+        hex: '#a8d0bd',
+    },
+    {
+        codigo: 'vd39',
+        hex: '#bdd5bc',
+    },
+    {
+        codigo: 'vm1',
+        hex: '#7a393e',
+    },
+    {
+        codigo: 'vm3',
+        hex: '#863339',
+    },
+    {
+        codigo: 'vm5',
+        hex: '#cc333d',
+    },
+];
 
 export const Desenhos = () => {
     const [selectedColor, setSelectedColor] = useState('#ccc'); // Cor selecionada no input
@@ -27,250 +274,6 @@ export const Desenhos = () => {
             setAppliedColor3(selectedColor);
         }
     };
-
-    const listaDeCores = [
-        { codigo: 'am1', hex: '#ffd653' },
-        {
-            codigo: 'am14',
-            hex: '#f4e0ad',
-        },
-        {
-            codigo: 'am19',
-            hex: '#eedc9c',
-        },
-        {
-            codigo: 'am21',
-            hex: '#e6d3a6',
-        },
-        {
-            codigo: 'am24',
-            hex: '#e7e0d1',
-        },
-        {
-            codigo: 'az1',
-            hex: '#3b3d4b',
-        },
-        {
-            codigo: 'az3',
-            hex: '#586c8a',
-        },
-        {
-            codigo: 'az5',
-            hex: '#415997',
-        },
-        {
-            codigo: 'az6',
-            hex: '#718db1',
-        },
-        {
-            codigo: 'az10',
-            hex: '#9ebdd0',
-        },
-        {
-            codigo: 'az11',
-            hex: '#c4ced6',
-        },
-        {
-            codigo: 'b3',
-            hex: '#a49d90',
-        },
-        {
-            codigo: 'b6',
-            hex: '#c4bcad',
-        },
-        {
-            codigo: 'b8',
-            hex: '#dad6cb',
-        },
-        {
-            codigo: 'b10',
-            hex: '#e1d7c6',
-        },
-        {
-            codigo: 'b19',
-            hex: '#baaa95',
-        },
-        {
-            codigo: 'bc1',
-            hex: '#ffffff',
-        },
-        {
-            codigo: 'bc6',
-            hex: '#e9e9e7',
-        },
-        {
-            codigo: 'cz1',
-            hex: '#505557',
-        },
-        {
-            codigo: 'cz3',
-            hex: '#999a98',
-        },
-        {
-            codigo: 'cz6',
-            hex: '#b4b7ba',
-        },
-        {
-            codigo: 'cz25n',
-            hex: '#c7c8ca',
-        },
-        {
-            codigo: 'cz26n',
-            hex: '#c8cacb',
-        },
-        {
-            codigo: 'l2',
-            hex: '#795999',
-        },
-        {
-            codigo: 'l3',
-            hex: '#bca0cc',
-        },
-        {
-            codigo: 'l5',
-            hex: '#c4aed0',
-        },
-        {
-            codigo: 'l11',
-            hex: '#d4c7d9',
-        },
-        {
-            codigo: 'lj1',
-            hex: '#d26a3e',
-        },
-        {
-            codigo: 'lj3',
-            hex: '#f6ad99',
-        },
-        {
-            codigo: 'lj7',
-            hex: '#ebc594',
-        },
-        {
-            codigo: 'lj11',
-            hex: '#de948f',
-        },
-        {
-            codigo: 'lj21',
-            hex: '#f8bf9a',
-        },
-        {
-            codigo: 'm3',
-            hex: '#bc9d6e',
-        },
-        {
-            codigo: 'r1',
-            hex: '#ce567e',
-        },
-        {
-            codigo: 'r12',
-            hex: '#e0c7d2',
-        },
-        {
-            codigo: 'r16',
-            hex: '#d4a299',
-        },
-        {
-            codigo: 'r17',
-            hex: '#cda7a0',
-        },
-        {
-            codigo: 'r22',
-            hex: '#efc5be',
-        },
-        {
-            codigo: 'r24',
-            hex: '#e7b7cf',
-        },
-        {
-            codigo: 'r25',
-            hex: '#ce9694',
-        },
-        {
-            codigo: 'r32',
-            hex: '#decdbf',
-        },
-        {
-            codigo: 'r33',
-            hex: '#ead2c6',
-        },
-        {
-            codigo: 'rb1',
-            hex: '#e1b8b9',
-        },
-        {
-            codigo: 'rb2',
-            hex: '#e9c8ca',
-        },
-        {
-            codigo: 'rb4',
-            hex: '#eed7d9',
-        },
-        {
-            codigo: 't1',
-            hex: '#94dbe0',
-        },
-        {
-            codigo: 't2',
-            hex: '#00adad',
-        },
-        {
-            codigo: 't12',
-            hex: '#BDD6D9',
-        },
-        {
-            codigo: 'vd1',
-            hex: '#817d6a',
-        },
-        {
-            codigo: 'vd6n',
-            hex: '#808a73',
-        },
-        {
-            codigo: 'vd7n',
-            hex: '#829e86',
-        },
-        {
-            codigo: 'vd16',
-            hex: '#a7ceb9',
-        },
-        {
-            codigo: 'vd21',
-            hex: '#a3bca6',
-        },
-        {
-            codigo: 'vd22',
-            hex: '#a3ac9b',
-        },
-        {
-            codigo: 'vd23',
-            hex: '#a8decc',
-        },
-        {
-            codigo: 'vd25',
-            hex: '#bfcab4',
-        },
-        {
-            codigo: 'vd36',
-            hex: '#a8d0bd',
-        },
-        {
-            codigo: 'vd39',
-            hex: '#bdd5bc',
-        },
-        {
-            codigo: 'vm1',
-            hex: '#7a393e',
-        },
-        {
-            codigo: 'vm3',
-            hex: '#863339',
-        },
-        {
-            codigo: 'vm5',
-            hex: '#cc333d',
-        },
-    ];
 
     useEffect(() => {
         setCodigoCor(listaDeCores.find((cor) => cor.hex === appliedColor));
@@ -298,6 +301,8 @@ export const Desenhos = () => {
             }
         });
     };
+
+    console.log(tipoDoDesenho);
 
     return (
         <div className="contentDesenhos">
@@ -339,6 +344,37 @@ export const Desenhos = () => {
                     />
                     Montanha
                 </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="encaixe"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'encaixe'}
+                    />
+                    Encaixe
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="pico"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'pico'}
+                    />
+                    Pico
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="cama"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'cama'}
+                    />
+                    Cama
+                </label>
+
                 <button className="btnPrint" onClick={copiarPrint}>
                     📸 Tirar print e copiar
                 </button>
@@ -354,13 +390,34 @@ export const Desenhos = () => {
                             color2={appliedColor2}
                             onClick={handleSVGClick}
                         />
-                    ) : (
+                    ) : tipoDoDesenho === 'montanha' ? (
                         <MontanhaSVG
                             color={appliedColor}
                             color2={appliedColor2}
                             color3={appliedColor3}
                             onClick={handleSVGClick}
                         />
+                    ) : tipoDoDesenho === 'encaixe' ? (
+                        <EncaixeSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'cama' ? (
+                        <CamaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'pico' ? (
+                        <PicoSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                        />
+                    ) : (
+                        ''
                     )}
                 </div>
                 <div className="resultadoNomeDasCores">
@@ -371,12 +428,30 @@ export const Desenhos = () => {
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
                             {codigoCor?.codigo?.toUpperCase()}
                         </p>
-                    ) : (
+                    ) : tipoDoDesenho === 'montanha' ? (
                         <p>
                             {codigoCor?.codigo?.toUpperCase()} -{' '}
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
                             {codigoCor3?.codigo?.toUpperCase()}
                         </p>
+                    ) : tipoDoDesenho === 'encaixe' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'cama' ? (
+                        <p>
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'pico' ? (
+                        <p>
+                            {codigoCor3?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : (
+                        ''
                     )}
                 </div>
             </div>
