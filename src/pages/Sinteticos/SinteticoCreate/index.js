@@ -5,40 +5,32 @@ import styles from '../../../styles/Formulario.module.css';
 import { toast } from 'react-toastify';
 
 export const SinteticoCreate = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
+    // const [selectedImage, setSelectedImage] = useState(null);
     const [codigo, setCodigo] = useState('');
+    const [imagem, setImagem] = useState('');
     const [estoque, setEstoque] = useState('');
     const [cor, setCor] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
-    const handleFileChange = (e) => {
-        setSelectedImage(e.target.files[0]);
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true); // Define como carregando ao mudar
+        setIsLoading(true); //
+        //  Define como carregando ao mudar
 
-        // Verifica se uma imagem foi selecionada
-        if (!selectedImage) {
-            alert('Por favor, selecione uma imagem.');
-            setIsLoading(false); // Define como carregando ao mudar
-            return;
-        }
+        const payload = {
+            codigo,
+            imagem,
+            estoque,
+            cor,
+        };
 
-        // Criando FormData
-        const formData = new FormData();
-        formData.append('codigo', codigo);
-        formData.append('imagem', selectedImage); // O backend espera req.file
-        formData.append('estoque', estoque); // Booleano
-        formData.append('cor', cor);
+        console.log(payload);
 
         try {
             const response = await Api.post(
                 Api.addUrl('sintetico'),
-                formData,
-                true,
+                payload,
                 true
             );
 
@@ -47,6 +39,7 @@ export const SinteticoCreate = () => {
                 console.log('Enviado com sucesso');
                 setCodigo('');
                 setEstoque('');
+                setImagem('');
                 setCor('');
                 setIsLoading(false); // Define como carregando ao mudar
                 toast.success('Sintetico adicionado com sucesso!');
@@ -85,9 +78,9 @@ export const SinteticoCreate = () => {
 
                     <label>Imagem:</label>
                     <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
+                        value={imagem}
+                        type="text"
+                        onChange={(e) => setImagem(e.target.value)}
                         required
                     />
 

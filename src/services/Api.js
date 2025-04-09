@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { JwtHandler } from './jwt_handler/jwt_handler';
 export const Api = {
-    baseUrl: 'https://inphantil-moveis-backend.vercel.app',
-    // baseUrl: 'http://localhost:3000',
+    // baseUrl: 'https://inphantil-moveis-backend.vercel.app',
+    baseUrl: 'http://localhost:3000',
 
     // Rota Login
     loginUrl: () => `${Api.baseUrl}/login/`,
@@ -14,16 +14,6 @@ export const Api = {
     updateUrl: (rota, id) => Api.baseUrl + `/${rota}/updateOne/` + id,
     deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/deleteOne/` + id,
 
-    // Instância do Axios com configuração padrão
-    instance: axios.create({
-        // baseURL: 'http://localhost:3000',
-        baseURL: 'https://inphantil-moveis-backend.vercel.app',
-
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }),
-
     // Configuração do token para requisições autenticadas
     authConfig: (isMultipart = false) => {
         const token = JwtHandler.getJwt();
@@ -33,30 +23,33 @@ export const Api = {
 
         const headers = {
             Authorization: `Bearer ${token}`,
+            'Content-Type': isMultipart
+                ? 'multipart/form-data'
+                : 'application/json',
         };
 
-        if (isMultipart) {
-            headers['Content-Type'] = 'multipart/form-data';
-        } else {
-            headers['Content-Type'] = 'application/json';
-        }
         return { headers };
     },
-
-    // Métodos da API usando Axios
-    get: (url, auth = false) =>
-        Api.instance.get(url, auth ? Api.authConfig() : {}),
-
-    post: (url, body, auth = false, isMultipart = false) => {
-        const config = auth ? Api.authConfig(isMultipart) : {};
-        return Api.instance.post(url, body, config);
-    },
-
-    patch: (url, body, auth = false, isMultipart = false) => {
-        const config = auth ? Api.authConfig(isMultipart) : {};
-        return Api.instance.patch(url, body, config);
-    },
-
-    delete: (url, auth = false) =>
-        Api.instance.delete(url, auth ? Api.authConfig() : {}),
 };
+
+// Só agora crie a instância do axios e os métodos que usam ela
+Api.instance = axios.create({
+    baseURL: Api.baseUrl,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
+
+// Métodos que usam a instance
+Api.get = (url, auth = false) =>
+    Api.instance.get(url, auth ? Api.authConfig() : {});
+Api.post = (url, body, auth = false, isMultipart = false) => {
+    const config = auth ? Api.authConfig(isMultipart) : {};
+    return Api.instance.post(url, body, config);
+};
+Api.patch = (url, body, auth = false, isMultipart = false) => {
+    const config = auth ? Api.authConfig(isMultipart) : {};
+    return Api.instance.patch(url, body, config);
+};
+Api.delete = (url, auth = false) =>
+    Api.instance.delete(url, auth ? Api.authConfig() : {});
