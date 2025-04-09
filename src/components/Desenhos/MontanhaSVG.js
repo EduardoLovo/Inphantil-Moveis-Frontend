@@ -2,7 +2,7 @@ import React from 'react';
 
 export const MontanhaSVG = ({ color, color2, color3, onClick }) => {
     return (
-        <div>
+        <div className="contentSVG">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="300mm"
