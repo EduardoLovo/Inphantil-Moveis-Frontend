@@ -5,42 +5,30 @@ import styles from '../../../styles/Formulario.module.css';
 import { toast } from 'react-toastify';
 
 export const LencolProntaEntregaCreate = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
     const [codigo, setCodigo] = useState('');
+    const [imagem, setImagem] = useState('');
     const [quantidade, setQuantidade] = useState('');
     const [cor, setCor] = useState('');
     const [tamanho, setTamanho] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
-    const handleFileChange = (e) => {
-        setSelectedImage(e.target.files[0]);
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true); // Define como carregando ao mudar
 
-        // Verifica se uma imagem foi selecionada
-        if (!selectedImage) {
-            alert('Por favor, selecione uma imagem.');
-            setIsLoading(false); // Define como carregando ao mudar
-            return;
-        }
-
-        // Criando FormData
-        const formData = new FormData();
-        formData.append('codigo', codigo);
-        formData.append('imagem', selectedImage); // O backend espera req.file
-        formData.append('quantidade', parseInt(quantidade));
-        formData.append('cor', cor);
-        formData.append('tamanho', tamanho);
+        const payload = {
+            codigo,
+            imagem,
+            quantidade,
+            cor,
+            tamanho,
+        };
 
         try {
             const response = await Api.post(
                 Api.addUrl('lencol-pronta-entrega'),
-                formData,
-                true,
+                payload,
                 true
             );
 
@@ -48,6 +36,7 @@ export const LencolProntaEntregaCreate = () => {
             if (response.status === 201) {
                 console.log('Enviado com sucesso');
                 setCodigo('');
+                setImagem('');
                 setQuantidade('');
                 setCor('');
                 setTamanho('');
@@ -87,9 +76,9 @@ export const LencolProntaEntregaCreate = () => {
 
                     <label>Imagem:</label>
                     <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
+                        value={imagem}
+                        onChange={(e) => setImagem(e.target.value)}
+                        type="text"
                         required
                     />
 

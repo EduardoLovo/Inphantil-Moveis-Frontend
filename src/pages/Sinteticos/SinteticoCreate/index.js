@@ -5,7 +5,6 @@ import styles from '../../../styles/Formulario.module.css';
 import { toast } from 'react-toastify';
 
 export const SinteticoCreate = () => {
-    // const [selectedImage, setSelectedImage] = useState(null);
     const [codigo, setCodigo] = useState('');
     const [imagem, setImagem] = useState('');
     const [estoque, setEstoque] = useState('');
@@ -24,8 +23,6 @@ export const SinteticoCreate = () => {
             estoque,
             cor,
         };
-
-        console.log(payload);
 
         try {
             const response = await Api.post(
@@ -50,7 +47,6 @@ export const SinteticoCreate = () => {
         } catch (error) {
             // Em caso de erro durante a requisição
             console.error('Erro na requisição:', error);
-
             setError(
                 error.response
                     ? error.response.data.message

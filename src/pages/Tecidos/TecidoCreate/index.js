@@ -5,42 +5,28 @@ import styles from '../../../styles/Formulario.module.css';
 import { toast } from 'react-toastify';
 
 export const TecidoParaLencolCreate = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
     const [cor, setCor] = useState('');
+    const [imagem, setImagem] = useState('');
     const [quantidade, setQuantidade] = useState('');
     const [estoque, setEstoque] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
-    const handleFileChange = (e) => {
-        setSelectedImage(e.target.files[0]);
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true); // Define como carregando ao mudar
 
-        // Verifica se uma imagem foi selecionada
-        if (!selectedImage) {
-            alert('Por favor, selecione uma imagem.');
-            setIsLoading(false); // Define como carregando ao mudar
-            return;
-        }
-
-        // Criando FormData
-        const formData = new FormData();
-        formData.append('cor', cor);
-        formData.append('imagem', selectedImage); // O backend espera req.file
-        formData.append('quantidade', parseInt(quantidade));
-        formData.append('estoque', estoque); // Booleano
-
-        console.log(formData);
+        const payload = {
+            cor,
+            imagem,
+            quantidade,
+            estoque,
+        };
 
         try {
             const response = await Api.post(
                 Api.addUrl('tecido-para-lencol'),
-                formData,
-                true,
+                payload,
                 true
             );
 
@@ -48,6 +34,7 @@ export const TecidoParaLencolCreate = () => {
             if (response.status === 201) {
                 console.log('Enviado com sucesso');
                 setCor('');
+                setImagem('');
                 setQuantidade('');
                 setEstoque('');
                 setIsLoading(false); // Define como carregando ao mudar
@@ -86,9 +73,9 @@ export const TecidoParaLencolCreate = () => {
 
                     <label>Imagem:</label>
                     <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
+                        value={imagem}
+                        onChange={(e) => setImagem(e.target.value)}
+                        type="text"
                         required
                     />
 
