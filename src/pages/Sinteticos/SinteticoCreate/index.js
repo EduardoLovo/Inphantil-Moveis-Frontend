@@ -14,8 +14,7 @@ export const SinteticoCreate = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true); //
-        //  Define como carregando ao mudar
+        setIsLoading(true); //  Define como carregando ao mudar
 
         const payload = {
             codigo,
@@ -75,8 +74,8 @@ export const SinteticoCreate = () => {
                     <label>Imagem:</label>
                     <input
                         value={imagem}
-                        type="text"
                         onChange={(e) => setImagem(e.target.value)}
+                        type="text"
                         required
                     />
 

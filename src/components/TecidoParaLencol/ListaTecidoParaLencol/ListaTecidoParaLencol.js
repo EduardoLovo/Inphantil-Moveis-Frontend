@@ -32,8 +32,6 @@ export const ListaTecidoParaLencol = () => {
         a.cor.localeCompare(b.cor)
     );
 
-    console.log(sortedTecidoParaLencol);
-
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}

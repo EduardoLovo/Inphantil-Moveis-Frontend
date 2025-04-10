@@ -25,6 +25,8 @@ export const ApliquesCreate = () => {
             ordem,
         };
 
+        console.log(payload);
+
         try {
             const response = await Api.post(
                 Api.addUrl('aplique'),
@@ -89,7 +91,7 @@ export const ApliquesCreate = () => {
                         <label>Quantidade:</label>
                         <input
                             value={quantidade}
-                            onChange={(e) => setQuantidade(e.target.value)}
+                            onChange={(e) => setQuantidade(+e.target.value)}
                             type="number"
                             required
                         />
@@ -110,7 +112,7 @@ export const ApliquesCreate = () => {
                         <label>Ordem:</label>
                         <input
                             value={ordem}
-                            onChange={(e) => setOrdem(e.target.value)}
+                            onChange={(e) => setOrdem(+e.target.value)}
                             type="number"
                             required
                         />

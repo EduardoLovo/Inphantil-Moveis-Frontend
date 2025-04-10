@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { JwtHandler } from './jwt_handler/jwt_handler';
+
 export const Api = {
     baseUrl: 'https://inphantil-moveis-backend.vercel.app',
     // baseUrl: 'http://localhost:3000',
@@ -15,20 +16,18 @@ export const Api = {
     deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/deleteOne/` + id,
 
     // Configuração do token para requisições autenticadas
-    authConfig: (isMultipart = false) => {
+    authConfig: () => {
         const token = JwtHandler.getJwt();
         if (!token) {
             throw new Error('Token JWT não encontrado');
         }
 
-        const headers = {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': isMultipart
-                ? 'multipart/form-data'
-                : 'application/json',
+        return {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
         };
-
-        return { headers };
     },
 };
 
@@ -43,12 +42,12 @@ Api.instance = axios.create({
 // Métodos que usam a instance
 Api.get = (url, auth = false) =>
     Api.instance.get(url, auth ? Api.authConfig() : {});
-Api.post = (url, body, auth = false, isMultipart = false) => {
-    const config = auth ? Api.authConfig(isMultipart) : {};
+Api.post = (url, body, auth = false) => {
+    const config = auth ? Api.authConfig() : {};
     return Api.instance.post(url, body, config);
 };
-Api.patch = (url, body, auth = false, isMultipart = false) => {
-    const config = auth ? Api.authConfig(isMultipart) : {};
+Api.patch = (url, body, auth = false) => {
+    const config = auth ? Api.authConfig() : {};
     return Api.instance.patch(url, body, config);
 };
 Api.delete = (url, auth = false) =>
