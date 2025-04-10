@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const MontanhaUmaParedeSVG = ({ color, color2, onClick }) => {
+export const MontanhaUmaParedeSVG = ({ color, color2, color3, onClick }) => {
     return (
         <div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="2100mm"
+                width="300mm"
                 height="60mm"
                 fill-rule="evenodd"
                 clip-rule="evenodd"

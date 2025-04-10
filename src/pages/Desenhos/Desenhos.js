@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import { EncaixeSVG } from '../../components/Desenhos/EncaixeSVG';
 import { CamaSVG } from '../../components/Desenhos/CamaSvg';
 import { PicoSVG } from '../../components/Desenhos/PicoSVG';
+import { NuvemUmaParedeSVG } from '../../components/Desenhos/NuvemUmaParedeSVG';
+import { MontanhaUmaParedeSVG } from '../../components/Desenhos/MontanhaUmaParedeSVG';
 
 const listaDeCores = [
     { codigo: 'am1', hex: '#ffd653' },
@@ -338,11 +340,31 @@ export const Desenhos = () => {
                     <input
                         type="radio"
                         name="desenho"
+                        value="nuvemUmaParede"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'nuvemUmaParede'}
+                    />
+                    Nuvem (Uma Parede)
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
                         value="montanha"
                         onChange={(e) => setTipoDoDesenho(e.target.value)}
                         checked={tipoDoDesenho === 'montanha'}
                     />
                     Montanha
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="montanhaUmaParede"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'montanhaUmaParede'}
+                    />
+                    Montanha (Uma Parede)
                 </label>
                 <label>
                     <input
@@ -390,8 +412,21 @@ export const Desenhos = () => {
                             color2={appliedColor2}
                             onClick={handleSVGClick}
                         />
+                    ) : tipoDoDesenho === 'nuvemUmaParede' ? (
+                        <NuvemUmaParedeSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                        />
                     ) : tipoDoDesenho === 'montanha' ? (
                         <MontanhaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'montanhaUmaParede' ? (
+                        <MontanhaUmaParedeSVG
                             color={appliedColor}
                             color2={appliedColor2}
                             color3={appliedColor3}
@@ -428,7 +463,18 @@ export const Desenhos = () => {
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
                             {codigoCor?.codigo?.toUpperCase()}
                         </p>
+                    ) : tipoDoDesenho === 'nuvemUmaParede' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()}
+                        </p>
                     ) : tipoDoDesenho === 'montanha' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor3?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'montanhaUmaParede' ? (
                         <p>
                             {codigoCor?.codigo?.toUpperCase()} -{' '}
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
