@@ -8,7 +8,9 @@ export const ListaTecidoParaLencol = () => {
     const [isLoading, setIsLoading] = useState(true); // Estado de carregamento
     const [error, setError] = useState('');
 
-    const type = localStorage.getItem('user');
+    const userRaw = localStorage.getItem('user');
+    const user = userRaw ? JSON.parse(userRaw) : null;
+    const tipo = user?.tipo || 'desconhecido';
 
     const loadData = async () => {
         try {
@@ -32,12 +34,14 @@ export const ListaTecidoParaLencol = () => {
         a.cor.localeCompare(b.cor)
     );
 
+    console.log(tipo);
+
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}
             {sortedTecidoParaLencol.map((tecido, index) => (
                 <div key={index}>
-                    {type !== 'adm' && tecido.estoque === false ? (
+                    {tipo !== 'adm' && tecido.estoque === false ? (
                         ''
                     ) : (
                         <CardTecidoParaLencol tecidoParaLencol={tecido} />

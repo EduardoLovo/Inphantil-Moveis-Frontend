@@ -129,13 +129,19 @@ export const ComposicaoTecidoComAplique = () => {
             {escolha === '' && (
                 <div className="lista-de-tecidos">
                     {tecidoParaLencol.map((tecido, index) => (
-                        <div key={index} className="contentCard">
-                            <img
-                                src={tecido.imagem}
-                                alt="imagem do tecido"
-                                onClick={tecidoEscolhido}
-                            />
-                            <p>{tecido.cor}</p>
+                        <div key={index}>
+                            {tecido.estoque === false ? (
+                                ''
+                            ) : (
+                                <div className="contentCard">
+                                    <img
+                                        src={tecido.imagem}
+                                        alt="imagem do tecido"
+                                        onClick={tecidoEscolhido}
+                                    />
+                                    <p>{tecido.cor}</p>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

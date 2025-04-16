@@ -9,6 +9,7 @@ import { CamaSVG } from '../../components/Desenhos/CamaSvg';
 import { PicoSVG } from '../../components/Desenhos/PicoSVG';
 import { NuvemUmaParedeSVG } from '../../components/Desenhos/NuvemUmaParedeSVG';
 import { MontanhaUmaParedeSVG } from '../../components/Desenhos/MontanhaUmaParedeSVG';
+import { PoltronaSVG } from '../../components/Desenhos/PoltronaSVG';
 
 const listaDeCores = [
     { codigo: 'am1', hex: '#ffd653' },
@@ -396,6 +397,16 @@ export const Desenhos = () => {
                     />
                     Cama
                 </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="poltrona"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'poltrona'}
+                    />
+                    Poltrona
+                </label>
 
                 <button className="btnPrint" onClick={copiarPrint}>
                     📸 Tirar print e copiar
@@ -446,6 +457,13 @@ export const Desenhos = () => {
                         />
                     ) : tipoDoDesenho === 'pico' ? (
                         <PicoSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'poltrona' ? (
+                        <PoltronaSVG
                             color={appliedColor}
                             color2={appliedColor2}
                             color3={appliedColor3}
