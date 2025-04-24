@@ -7,6 +7,8 @@ export const ComposicaoDeSintetico = () => {
     const [sinteticos, setSinteticos] = useState([]);
     const [imagemDoExterno, setImagemDoExterno] = useState('');
     const [imagemDoInterno, setImagemDoInterno] = useState('');
+    const [codigoExterno, setCodigoExterno] = useState('');
+    const [codigoInterno, setCodigoInterno] = useState('');
     const [resultado, setResultado] = useState(false);
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
@@ -32,6 +34,7 @@ export const ComposicaoDeSintetico = () => {
 
     const externoEscolhido = (e) => {
         e.preventDefault();
+        setCodigoExterno(e.target.dataset.codigo);
         setEscolha('interno');
         setImagemDoExterno(e.target.src);
         window.scrollTo({
@@ -42,6 +45,7 @@ export const ComposicaoDeSintetico = () => {
 
     const internoEscolhido = (e) => {
         e.preventDefault();
+        setCodigoInterno(e.target.dataset.codigo);
         setImagemDoInterno(e.target.src);
         setResultado(true);
         window.scrollTo({
@@ -49,6 +53,9 @@ export const ComposicaoDeSintetico = () => {
             behavior: 'smooth', // Suaviza o movimento
         });
     };
+
+    console.log(typeof codigoExterno);
+    console.log(codigoInterno);
 
     return (
         <div className="contentComposicoes">
@@ -81,6 +88,10 @@ export const ComposicaoDeSintetico = () => {
                         <img src={imagemDoExterno} alt="Imagem do tecido" />
                         <img src={imagemDoInterno} alt="Imagem do aplique" />
                     </div>
+                    <div className="codigo-resultado">
+                        <p>{String(codigoExterno).split('-')[0]} </p>
+                        <p>{String(codigoInterno)}</p>
+                    </div>
                 </div>
             )}
             {escolha === '' && (
@@ -96,6 +107,7 @@ export const ComposicaoDeSintetico = () => {
                                             src={sintetico.imagem}
                                             alt="imagem do tecido"
                                             onClick={externoEscolhido}
+                                            data-codigo={sintetico.codigo}
                                         />
                                         <p>{sintetico.codigo}</p>
                                     </div>
@@ -122,6 +134,7 @@ export const ComposicaoDeSintetico = () => {
                                             src={sintetico.imagem}
                                             alt="Imagem do aplique"
                                             onClick={internoEscolhido}
+                                            data-codigo={sintetico.codigo}
                                         />
                                         <p>{sintetico.codigo}</p>
                                     </div>
