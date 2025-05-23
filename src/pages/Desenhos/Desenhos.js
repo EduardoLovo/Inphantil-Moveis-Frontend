@@ -95,11 +95,11 @@ const listaDeCores = [
     },
     {
         codigo: 'cz25n',
-        hex: '#c7c8ca',
+        hex: '#bfc6c9',
     },
     {
         codigo: 'cz26n',
-        hex: '#c8cacb',
+        hex: '#cbcbcb',
     },
     {
         codigo: 'l2',
