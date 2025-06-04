@@ -58,6 +58,7 @@ h3 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    min-width: 100px;
 }
 
 .formularioCalculadoraCamaPhant button:hover {
