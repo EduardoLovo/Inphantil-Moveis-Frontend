@@ -4,6 +4,8 @@ import '../../../styles/Inphantil.css';
 import './ApliquesCatalogo.css';
 
 export const ApliquesCatalogo = () => {
+    console.log('teste de deploy');
+
     return (
         <div>
             <h1 className="titulo">Catálogo de Apliques</h1>
