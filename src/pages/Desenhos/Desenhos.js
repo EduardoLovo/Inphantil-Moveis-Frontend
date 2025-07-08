@@ -335,7 +335,17 @@ export const Desenhos = () => {
                         onChange={(e) => setTipoDoDesenho(e.target.value)}
                         checked={tipoDoDesenho === 'nuvem'}
                     />
-                    Nuvem
+                    Nuvem (Lado direito)
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="nuvem-lado-esquerdo"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'nuvem-lado-esquerdo'}
+                    />
+                    Nuvem (Lado esquerdo)
                 </label>
                 <label>
                     <input
@@ -355,7 +365,17 @@ export const Desenhos = () => {
                         onChange={(e) => setTipoDoDesenho(e.target.value)}
                         checked={tipoDoDesenho === 'montanha'}
                     />
-                    Montanha
+                    Montanha (Lado direito)
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="montanha-lado-esquerdo"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'montanha-lado-esquerdo'}
+                    />
+                    Montanha (Lado esquerdo)
                 </label>
                 <label>
                     <input
@@ -385,7 +405,17 @@ export const Desenhos = () => {
                         onChange={(e) => setTipoDoDesenho(e.target.value)}
                         checked={tipoDoDesenho === 'pico'}
                     />
-                    Pico
+                    Pico (Lado direito)
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="pico-lado-esquerdo"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'pico-lado-esquerdo'}
+                    />
+                    Pico (Lado esquerdo)
                 </label>
                 <label>
                     <input
@@ -422,6 +452,14 @@ export const Desenhos = () => {
                             color={appliedColor}
                             color2={appliedColor2}
                             onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'nuvem-lado-esquerdo' ? (
+                        <NuvemSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
                         />
                     ) : tipoDoDesenho === 'nuvemUmaParede' ? (
                         <NuvemUmaParedeSVG
@@ -435,6 +473,15 @@ export const Desenhos = () => {
                             color2={appliedColor2}
                             color3={appliedColor3}
                             onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'montanha-lado-esquerdo' ? (
+                        <MontanhaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
                         />
                     ) : tipoDoDesenho === 'montanhaUmaParede' ? (
                         <MontanhaUmaParedeSVG
@@ -461,6 +508,15 @@ export const Desenhos = () => {
                             color2={appliedColor2}
                             color3={appliedColor3}
                             onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'pico-lado-esquerdo' ? (
+                        <PicoSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
                         />
                     ) : tipoDoDesenho === 'poltrona' ? (
                         <PoltronaSVG
@@ -481,12 +537,25 @@ export const Desenhos = () => {
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
                             {codigoCor?.codigo?.toUpperCase()}
                         </p>
+                    ) : tipoDoDesenho === 'nuvem-lado-esquerdo' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
                     ) : tipoDoDesenho === 'nuvemUmaParede' ? (
                         <p>
                             {codigoCor?.codigo?.toUpperCase()} -{' '}
                             {codigoCor2?.codigo?.toUpperCase()}
                         </p>
                     ) : tipoDoDesenho === 'montanha' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor3?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'montanha-lado-esquerdo' ? (
                         <p>
                             {codigoCor?.codigo?.toUpperCase()} -{' '}
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
@@ -509,6 +578,12 @@ export const Desenhos = () => {
                             {codigoCor?.codigo?.toUpperCase()}
                         </p>
                     ) : tipoDoDesenho === 'pico' ? (
+                        <p>
+                            {codigoCor3?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'pico-lado-esquerdo' ? (
                         <p>
                             {codigoCor3?.codigo?.toUpperCase()} -{' '}
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}

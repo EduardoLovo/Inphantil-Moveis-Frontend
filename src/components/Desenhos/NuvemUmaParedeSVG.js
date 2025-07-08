@@ -2,7 +2,7 @@ import React from 'react';
 
 export const NuvemUmaParedeSVG = ({ color, color2, onClick }) => {
     return (
-        <div className="contentSVG">
+        <div className="direito">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 // width="300mm"
