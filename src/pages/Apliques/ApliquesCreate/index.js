@@ -61,13 +61,12 @@ export const ApliquesCreate = () => {
     };
 
     return (
-        <div className={styles.displayflex}>
-            <div className={styles.containerFormulario}>
-                {isLoading && <Loading />}
-                <div>
-                    <h1>Adicionar novo Aplique</h1>
-                </div>
-
+        <div className={styles.containerFormulario}>
+            {isLoading && <Loading />}
+            <div>
+                <h1>Adicionar novo Aplique</h1>
+            </div>
+            <div>
                 <form onSubmit={handleSubmit} className=".containerFormulario">
                     <label>Código:</label>
                     <input
@@ -115,7 +114,7 @@ export const ApliquesCreate = () => {
                     <button type="submit">Salvar</button>
                 </form>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-            </div>
+            </div>{' '}
         </div>
     );
 };
