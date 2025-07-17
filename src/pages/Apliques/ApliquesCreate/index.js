@@ -13,19 +13,56 @@ export const ApliquesCreate = () => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
+    const resetForm = () => {
+        setCodigo('');
+        setImagem('');
+        setQuantidade('');
+        setEstoque(null);
+        setOrdem('');
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true); // Define como carregando ao mudar
+        setError('');
+        setIsLoading(true);
 
+        // Validação simples no front
+        if (!codigo.trim()) {
+            setError('Código é obrigatório.');
+            setIsLoading(false);
+            return;
+        }
+        if (!imagem.trim()) {
+            setError('Imagem é obrigatória.');
+            setIsLoading(false);
+            return;
+        }
+        if (quantidade === '' || isNaN(Number(quantidade))) {
+            setError('Quantidade inválida.');
+            setIsLoading(false);
+            return;
+        }
+        if (ordem === '' || isNaN(Number(ordem))) {
+            setError('Ordem inválida.');
+            setIsLoading(false);
+            return;
+        }
+        if (estoque === null) {
+            setError('Selecione se está em estoque.');
+            setIsLoading(false);
+            return;
+        }
+
+        // Converte para tipos esperados pelo backend
         const payload = {
-            codigo,
-            imagem,
-            quantidade,
-            estoque,
-            ordem,
+            codigo: codigo.trim(),
+            imagem: imagem.trim(),
+            quantidade: Number(quantidade),
+            estoque: Boolean(estoque), // já é bool, mas garantimos
+            ordem: Number(ordem),
         };
 
-        console.log(payload);
+        console.log('Payload enviado:', payload);
 
         try {
             const response = await Api.post(
@@ -34,29 +71,27 @@ export const ApliquesCreate = () => {
                 true
             );
 
-            // Verifica se a resposta foi bem-sucedida
-            if (response.status === 201) {
-                console.log('Enviado com sucesso');
-                setCodigo('');
-                setImagem('');
-                setQuantidade('');
-                setEstoque('');
-                setOrdem('');
-                setIsLoading(false); // Define como carregando ao mudar
+            if (response.status === 201 || response.status === 200) {
                 toast.success('Aplique adicionado com sucesso!');
+                resetForm();
             } else {
-                setError(error.response.data.message);
-                setIsLoading(false); // Define como carregando ao mudar
+                const msg =
+                    response.data?.message ??
+                    'Erro inesperado ao criar aplique.';
+                setError(msg);
+                toast.error(msg);
             }
-        } catch (error) {
-            // Em caso de erro durante a requisição
-            console.error('Erro na requisição:', error);
-            setError(
-                error.response
-                    ? error.response.data.message
-                    : 'Erro na requisição'
-            );
-            setIsLoading(false); // Define como carregando ao mudar
+        } catch (err) {
+            console.error('Erro na requisição:', err);
+            const msg =
+                err?.response?.data?.message ??
+                err?.response?.data?.error ??
+                err?.message ??
+                'Erro na requisição.';
+            setError(msg);
+            toast.error(msg);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -94,8 +129,18 @@ export const ApliquesCreate = () => {
 
                     <label>Estoque:</label>
                     <select
-                        value={estoque}
-                        onChange={(e) => setEstoque(e.target.value === 'true')}
+                        value={
+                            estoque === null
+                                ? ''
+                                : estoque === true
+                                ? 'true'
+                                : 'false'
+                        }
+                        onChange={(e) => {
+                            const v = e.target.value;
+                            if (v === '') return setEstoque(null);
+                            setEstoque(v === 'true');
+                        }}
                         required
                     >
                         <option value=""></option>
