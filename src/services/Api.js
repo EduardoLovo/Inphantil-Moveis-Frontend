@@ -2,8 +2,8 @@ import axios from 'axios';
 import { JwtHandler } from './jwt_handler/jwt_handler';
 
 export const Api = {
-    baseUrl: 'https://inphantil-moveis-backend.vercel.app',
-    // baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000',
+    // baseUrl: 'https://inphantil-moveis-backend.vercel.app',
+    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000',
 
     // Rota Login
     loginUrl: () => `${Api.baseUrl}/login/`,
@@ -25,7 +25,6 @@ export const Api = {
         return {
             headers: {
                 Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
             },
         };
     },
@@ -42,10 +41,12 @@ Api.instance = axios.create({
 // Métodos que usam a instance
 Api.get = (url, auth = false) =>
     Api.instance.get(url, auth ? Api.authConfig() : {});
+
 Api.post = (url, body, auth = false) => {
     const config = auth ? Api.authConfig() : {};
     return Api.instance.post(url, body, config);
 };
+
 Api.patch = (url, body, auth = false) => {
     const config = auth ? Api.authConfig() : {};
     return Api.instance.patch(url, body, config);
