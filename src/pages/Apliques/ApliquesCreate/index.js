@@ -13,56 +13,17 @@ export const ApliquesCreate = () => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
-    const resetForm = () => {
-        setCodigo('');
-        setImagem('');
-        setQuantidade('');
-        setEstoque(null);
-        setOrdem('');
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
-        setIsLoading(true);
+        setIsLoading(true); // Define como carregando ao mudar
 
-        // Validação simples no front
-        if (!codigo.trim()) {
-            setError('Código é obrigatório.');
-            setIsLoading(false);
-            return;
-        }
-        if (!imagem.trim()) {
-            setError('Imagem é obrigatória.');
-            setIsLoading(false);
-            return;
-        }
-        if (quantidade === '' || isNaN(Number(quantidade))) {
-            setError('Quantidade inválida.');
-            setIsLoading(false);
-            return;
-        }
-        if (ordem === '' || isNaN(Number(ordem))) {
-            setError('Ordem inválida.');
-            setIsLoading(false);
-            return;
-        }
-        if (estoque === null) {
-            setError('Selecione se está em estoque.');
-            setIsLoading(false);
-            return;
-        }
-
-        // Converte para tipos esperados pelo backend
         const payload = {
-            codigo: codigo.trim(),
-            imagem: imagem.trim(),
-            quantidade: Number(quantidade),
-            estoque: Boolean(estoque), // já é bool, mas garantimos
-            ordem: Number(ordem),
+            codigo,
+            imagem,
+            quantidade,
+            estoque,
+            ordem,
         };
-
-        console.log('Payload enviado:', payload);
 
         try {
             const response = await Api.post(
@@ -71,32 +32,31 @@ export const ApliquesCreate = () => {
                 true
             );
 
-            console.log(response);
-
-            if (response.status === 201 || response.status === 200) {
+            // Verifica se a resposta foi bem-sucedida
+            if (response.status === 201) {
+                console.log('Enviado com sucesso');
+                setCodigo('');
+                setImagem('');
+                setQuantidade('');
+                setEstoque('');
+                setOrdem('');
+                setIsLoading(false); // Define como carregando ao mudar
                 toast.success('Aplique adicionado com sucesso!');
-                resetForm();
             } else {
-                const msg =
-                    response.data?.message ??
-                    'Erro inesperado ao criar aplique.';
-                setError(msg);
-                toast.error(msg);
+                setError(error.response.data.message);
+                setIsLoading(false); // Define como carregando ao mudar
             }
-        } catch (err) {
-            console.error('Erro na requisição:', err);
-            const msg =
-                err?.response?.data?.message ??
-                err?.response?.data?.error ??
-                err?.message ??
-                'Erro na requisição.';
-            setError(msg);
-            toast.error(msg);
-        } finally {
-            setIsLoading(false);
+        } catch (error) {
+            // Em caso de erro durante a requisição
+            console.error('Erro na requisição:', error);
+            setError(
+                error.response
+                    ? error.response.data.message
+                    : 'Erro na requisição'
+            );
+            setIsLoading(false); // Define como carregando ao mudar
         }
     };
-
     return (
         <div className={styles.containerFormulario}>
             {isLoading && <Loading />}
@@ -124,7 +84,7 @@ export const ApliquesCreate = () => {
                     <label>Quantidade:</label>
                     <input
                         value={quantidade}
-                        onChange={(e) => setQuantidade(+e.target.value)}
+                        onChange={(e) => setQuantidade(e.target.value)}
                         type="number"
                         required
                     />
@@ -153,7 +113,7 @@ export const ApliquesCreate = () => {
                     <label>Ordem:</label>
                     <input
                         value={ordem}
-                        onChange={(e) => setOrdem(+e.target.value)}
+                        onChange={(e) => setOrdem(e.target.value)}
                         type="number"
                         required
                     />
