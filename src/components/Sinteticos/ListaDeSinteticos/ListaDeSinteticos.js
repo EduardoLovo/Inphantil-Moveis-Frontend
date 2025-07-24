@@ -9,7 +9,7 @@ export const ListaDeSinteticos = (props) => {
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
 
-    const type = localStorage.getItem('user');
+    const type = JSON.parse(localStorage.getItem('user'));
 
     const loadData = async () => {
         try {
@@ -31,12 +31,14 @@ export const ListaDeSinteticos = (props) => {
         a.codigo.localeCompare(b.codigo)
     );
 
+    console.log(type.tipo);
+
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}
             {sortedSinteticos.map((sintetico, index) => (
                 <div key={index}>
-                    {type !== 'adm' && sintetico.estoque === false ? (
+                    {type.tipo !== 'adm' && sintetico.estoque === false ? (
                         ''
                     ) : (
                         <div>
