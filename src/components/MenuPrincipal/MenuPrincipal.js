@@ -4,6 +4,7 @@ import { JwtHandler } from '../../services/jwt_handler/jwt_handler';
 import LogoutButton from '../Logout/Logout';
 import { Link } from 'react-router-dom';
 
+
 const MenuPrincipal = () => {
     const isLogged = JwtHandler.isJwtValid();
     const [menuAberto, setMenuAberto] = useState(false);

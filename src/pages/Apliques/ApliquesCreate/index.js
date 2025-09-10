@@ -20,10 +20,12 @@ export const ApliquesCreate = () => {
         const payload = {
             codigo,
             imagem,
-            quantidade,
+            quantidade: parseInt(quantidade, 10),
             estoque,
-            ordem,
+            ordem: parseInt(ordem, 10),
         };
+
+        console.log(payload);
 
         try {
             const response = await Api.post(
@@ -91,18 +93,8 @@ export const ApliquesCreate = () => {
 
                     <label>Estoque:</label>
                     <select
-                        value={
-                            estoque === null
-                                ? ''
-                                : estoque === true
-                                ? 'true'
-                                : 'false'
-                        }
-                        onChange={(e) => {
-                            const v = e.target.value;
-                            if (v === '') return setEstoque(null);
-                            setEstoque(v === 'true');
-                        }}
+                        value={estoque}
+                        onChange={(e) => setEstoque(e.target.value === 'true')}
                         required
                     >
                         <option value=""></option>

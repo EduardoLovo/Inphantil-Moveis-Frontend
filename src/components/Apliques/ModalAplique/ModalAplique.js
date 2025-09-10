@@ -21,6 +21,8 @@ const Modal = ({ aplique, onClose }) => {
 
     const tipo = user?.tipo || 'desconhecido';
 
+    console.log(aplique.id);
+
     const handleOverlayClick = () => {
         onClose(); // Fecha o modal ao clicar no fundo
     };
@@ -42,7 +44,7 @@ const Modal = ({ aplique, onClose }) => {
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('aplique', aplique._id),
+                Api.updateUrl('apliques', aplique.id),
                 payload,
                 true
             );
@@ -71,7 +73,7 @@ const Modal = ({ aplique, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('aplique', aplique._id),
+                Api.deleteUrl('apliques', aplique.id),
                 true
             );
 

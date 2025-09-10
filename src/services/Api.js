@@ -3,7 +3,7 @@ import { JwtHandler } from './jwt_handler/jwt_handler';
 
 export const Api = {
     baseUrl: 'https://inphantil-moveis-backend.vercel.app',
-    // baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000',
+    // baseUrl: 'http://localhost:3000',
 
     // Rota Login
     loginUrl: () => `${Api.baseUrl}/login/`,
@@ -13,7 +13,7 @@ export const Api = {
     addUrl: (rota) => Api.baseUrl + `/${rota}/create`,
     readByIdUrl: (rota, id) => Api.baseUrl + `/${rota}/getById/` + id,
     updateUrl: (rota, id) => Api.baseUrl + `/${rota}/updateOne/` + id,
-    deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/deleteOne/` + id,
+    deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
 
     // Configuração do token para requisições autenticadas
     authConfig: () => {
