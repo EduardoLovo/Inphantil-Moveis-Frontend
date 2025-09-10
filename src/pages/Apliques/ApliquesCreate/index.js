@@ -8,7 +8,7 @@ export const ApliquesCreate = () => {
     const [codigo, setCodigo] = useState('');
     const [imagem, setImagem] = useState('');
     const [quantidade, setQuantidade] = useState('');
-    const [estoque, setEstoque] = useState('');
+    const [estoque, setEstoque] = useState(false);
     const [ordem, setOrdem] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
@@ -25,7 +25,7 @@ export const ApliquesCreate = () => {
             ordem: parseInt(ordem, 10),
         };
 
-        console.log(payload);
+        console.log('Payload enviado:', payload, typeof payload.estoque);
 
         try {
             const response = await Api.post(
