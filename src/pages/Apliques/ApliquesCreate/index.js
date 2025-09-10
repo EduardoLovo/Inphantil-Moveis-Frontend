@@ -29,7 +29,7 @@ export const ApliquesCreate = () => {
 
         try {
             const response = await Api.post(
-                Api.addUrl('aplique'),
+                Api.addUrl('apliques'),
                 payload,
                 true
             );

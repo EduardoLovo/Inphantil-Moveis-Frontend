@@ -6,14 +6,14 @@ export const Api = {
     // baseUrl: 'http://localhost:3000',
 
     // Rota Login
-    loginUrl: () => `${Api.baseUrl}/login/`,
+    loginUrl: () => `${Api.baseUrl}/auth/login/`,
 
     // Rotas Apliques
     readAllUrl: (rota) => Api.baseUrl + `/${rota}`,
-    addUrl: (rota) => Api.baseUrl + `/${rota}/create`,
-    readByIdUrl: (rota, id) => Api.baseUrl + `/${rota}/getById/` + id,
-    updateUrl: (rota, id) => Api.baseUrl + `/${rota}/updateOne/` + id,
-    deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/deleteOne/` + id,
+    addUrl: (rota) => Api.baseUrl + `/${rota}/`,
+    readByIdUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
+    updateUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
+    deleteUrl: (rota, id) => Api.baseUrl + `/${rota}/` + id,
 
     // Configuração do token para requisições autenticadas
     authConfig: () => {
