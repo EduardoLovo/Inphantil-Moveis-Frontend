@@ -37,7 +37,7 @@ export const ComposicaoTecidoComAplique = () => {
     // Apliques
     const loadDataAplique = async () => {
         try {
-            const response = await Api.get(Api.readAllUrl('aplique'));
+            const response = await Api.get(Api.readAllUrl('apliques'));
             setApliques(response.data.sort((a, b) => a.ordem - b.ordem));
             setIsLoading(false);
         } catch (error) {
