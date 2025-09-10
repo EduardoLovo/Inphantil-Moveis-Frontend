@@ -39,7 +39,7 @@ const ModalPantone = ({ pantone, onClose }) => {
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('pantone', pantone._id),
+                Api.updateUrl('pantone', pantone.id),
                 payload,
                 true
             );
@@ -68,7 +68,7 @@ const ModalPantone = ({ pantone, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('pantone', pantone._id),
+                Api.deleteUrl('pantone', pantone.id),
                 true
             );
 

@@ -20,6 +20,8 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
     const tipo = user?.tipo || 'desconhecido';
 
+    console.log(sintetico.id);
+
     const handleOverlayClick = () => {
         onClose(); // Fecha o modal ao clicar no fundo
     };

@@ -40,7 +40,7 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('lencol-pronta-entrega', lencol._id),
+                Api.updateUrl('lencol-pronta-entrega', lencol.id),
                 payload,
                 true
             );
@@ -69,7 +69,7 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('lencol-pronta-entrega', lencol._id),
+                Api.deleteUrl('lencol-pronta-entrega', lencol.id),
                 true
             );
 

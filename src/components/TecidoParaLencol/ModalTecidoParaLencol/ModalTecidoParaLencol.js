@@ -40,7 +40,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('tecido-para-lencol', tecidoParaLencol._id),
+                Api.updateUrl('tecido-para-lencol', tecidoParaLencol.id),
                 payload,
                 true
             );
@@ -72,7 +72,7 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('tecido-para-lencol', tecidoParaLencol._id),
+                Api.deleteUrl('tecido-para-lencol', tecidoParaLencol.id),
                 true
             );
 
