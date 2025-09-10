@@ -13,7 +13,7 @@ export const ListaDePantone = () => {
 
     const loadData = async () => {
         try {
-            const response = await Api.get(Api.readAllUrl('pantone'));
+            const response = await Api.get(Api.readAllUrl('pantones'));
             setPantones(response.data);
             setIsLoading(false);
         } catch (error) {

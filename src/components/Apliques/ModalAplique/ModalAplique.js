@@ -44,7 +44,7 @@ const Modal = ({ aplique, onClose }) => {
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('aplique', aplique._id),
+                Api.updateUrl('apliques', aplique._id),
                 payload,
                 true
             );
@@ -73,7 +73,7 @@ const Modal = ({ aplique, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('aplique', aplique._id),
+                Api.deleteUrl('apliques', aplique._id),
                 true
             );
 
