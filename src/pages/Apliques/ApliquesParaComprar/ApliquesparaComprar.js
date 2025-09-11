@@ -10,7 +10,7 @@ export const ApliquesParaComprar = () => {
     const [error, setError] = useState('');
     const loadData = async () => {
         try {
-            const response = await Api.get(Api.readAllUrl('aplique'));
+            const response = await Api.get(Api.readAllUrl('apliques'));
             setApliques(response.data);
             setIsLoading(false);
         } catch (error) {

@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 const Modal = ({ aplique, onClose }) => {
     const isLogged = JwtHandler.isJwtValid();
 
+    console.log(aplique);
+
     const [codigo, setCodigo] = useState(aplique.codigo);
     const [imagem, setImagem] = useState(aplique.imagem);
     const [quantidade, setQuantidade] = useState(aplique.quantidade);
@@ -35,10 +37,12 @@ const Modal = ({ aplique, onClose }) => {
         const payload = {
             codigo,
             imagem,
-            quantidade,
-            estoque,
-            ordem,
+            quantidade: Number(quantidade),
+            estoque: Boolean(estoque),
+            ordem: Number(estoque),
         };
+
+        console.log('Payload para envio:', payload);
 
         try {
             const response = await Api.patch(
