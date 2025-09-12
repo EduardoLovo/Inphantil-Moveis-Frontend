@@ -12,7 +12,6 @@ function Cama3D() {
 
     const mudar = (e) => {
         const corDaCama = e.target.id;
-        console.log(e.target.id);
         setCama(corDaCama);
         setIsLoading(true); // Define como carregando ao mudar
         if (window.innerWidth < 768) {

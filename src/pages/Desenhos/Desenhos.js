@@ -305,7 +305,6 @@ export const Desenhos = () => {
         });
     };
 
-    console.log(tipoDoDesenho);
 
     return (
         <div className="contentDesenhos">

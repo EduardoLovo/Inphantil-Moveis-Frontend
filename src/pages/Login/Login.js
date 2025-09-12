@@ -33,7 +33,6 @@ const Login = () => {
             // Redireciona para a página protegida
             navigate('/');
             window.location.reload();
-            // console.log('login efetuado');
             setIsLoading(false);
         } catch (error) {
             setError('Credenciais inválidas. Tente novamente.');

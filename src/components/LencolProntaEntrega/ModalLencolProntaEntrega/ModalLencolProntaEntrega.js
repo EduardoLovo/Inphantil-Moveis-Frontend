@@ -33,7 +33,7 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
         const payload = {
             codigo,
             imagem,
-            quantidade,
+            quantidade: Number(quantidade),
             cor,
             tamanho,
         };

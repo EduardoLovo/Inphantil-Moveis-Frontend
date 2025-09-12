@@ -22,7 +22,6 @@ export const TecidoParaLencolCreate = () => {
             quantidade,
             estoque,
         };
-        console.log(payload);
 
         try {
             const response = await Api.post(

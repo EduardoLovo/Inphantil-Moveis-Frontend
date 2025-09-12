@@ -11,7 +11,6 @@ export const Filtro = (props) => {
     const apliques = props.apliques;
     const texto = props.texto;
 
-    console.log(apliques);
 
     const [filtrado, setFiltrado] = useState([]);
 

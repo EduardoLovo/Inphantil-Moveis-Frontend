@@ -33,10 +33,9 @@ const ModalTecidoParaLencois = ({ tecidoParaLencol, onClose }) => {
         const payload = {
             cor,
             imagem,
-            quantidade,
-            estoque,
+            quantidade: Number(quantidade),
+            estoque: Boolean(estoque),
         };
-        console.log(payload);
 
         try {
             const response = await Api.patch(

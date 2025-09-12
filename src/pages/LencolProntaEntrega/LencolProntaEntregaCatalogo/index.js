@@ -4,7 +4,6 @@ import { ListaLencolProntaEntrega } from '../../../components/LencolProntaEntreg
 export const LencolProntaEntregaCatalogo = () => {
     const [tamanho, setTamanho] = useState('');
 
-    console.log(tamanho);
 
     return (
         <div>

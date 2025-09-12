@@ -25,8 +25,6 @@ export const ApliquesCreate = () => {
             ordem: parseInt(ordem, 10),
         };
 
-        console.log('Payload enviado:', payload, typeof payload.estoque);
-
         try {
             const response = await Api.post(
                 Api.addUrl('apliques'),

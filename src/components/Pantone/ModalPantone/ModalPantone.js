@@ -33,13 +33,13 @@ const ModalPantone = ({ pantone, onClose }) => {
         const payload = {
             codigo,
             imagem,
-            estoque,
+            estoque: Boolean(estoque),
             cor,
         };
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('pantone', pantone.id),
+                Api.updateUrl('pantones', pantone.id),
                 payload,
                 true
             );
@@ -68,7 +68,7 @@ const ModalPantone = ({ pantone, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('pantone', pantone.id),
+                Api.deleteUrl('pantones', pantone.id),
                 true
             );
 

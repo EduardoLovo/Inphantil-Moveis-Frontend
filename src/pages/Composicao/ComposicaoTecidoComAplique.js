@@ -54,7 +54,6 @@ export const ComposicaoTecidoComAplique = () => {
         e.preventDefault();
         setEscolha('aplique');
         setImagemDoTecido(e.target.src);
-        console.log(imagemDoTecido);
         window.scrollTo({
             top: 0, // Quantidade de pixels para descer
             behavior: 'smooth', // Suaviza o movimento

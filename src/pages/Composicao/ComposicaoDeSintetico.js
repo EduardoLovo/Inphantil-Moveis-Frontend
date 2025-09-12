@@ -54,8 +54,7 @@ export const ComposicaoDeSintetico = () => {
         });
     };
 
-    console.log(typeof codigoExterno);
-    console.log(codigoInterno);
+ 
 
     return (
         <div className="contentComposicoes">

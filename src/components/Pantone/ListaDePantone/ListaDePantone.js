@@ -9,7 +9,10 @@ export const ListaDePantone = () => {
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
 
-    const type = localStorage.getItem('user');
+    const userRaw = localStorage.getItem('user');
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
+    const tipo = user?.tipo || 'desconhecido';
 
     const loadData = async () => {
         try {
@@ -30,12 +33,13 @@ export const ListaDePantone = () => {
     const sortedPantone = pantones.sort((a, b) =>
         a.codigo.localeCompare(b.codigo)
     );
+
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}
             {sortedPantone.map((pantone, index) => (
                 <div key={index}>
-                    {type !== 'adm' && pantone.estoque === false ? (
+                    {tipo !== 'adm' && pantone.estoque === false ? (
                         ''
                     ) : (
                         <CardPantone pantone={pantone} />

@@ -20,8 +20,6 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
     const tipo = user?.tipo || 'desconhecido';
 
-    console.log(sintetico.id);
-
     const handleOverlayClick = () => {
         onClose(); // Fecha o modal ao clicar no fundo
     };
@@ -36,13 +34,13 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
         const payload = {
             codigo,
             imagem,
-            estoque,
+            estoque: Boolean(estoque),
             cor,
         };
 
         try {
             const response = await Api.patch(
-                Api.updateUrl('sintetico', sintetico._id),
+                Api.updateUrl('sintetico', sintetico.id),
                 payload,
                 true
             );
@@ -71,7 +69,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
 
         try {
             const response = await Api.delete(
-                Api.deleteUrl('sintetico', sintetico._id),
+                Api.deleteUrl('sintetico', sintetico.id),
                 true
             );
 
