@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
+    width: 260px;
     height: 100%;
     background-color: #333;
     color: #fff;
@@ -29,9 +29,16 @@
     padding: 0;
 }
 
+.titulo-no-menu {
+    padding: 10px;
+    color: #bfc219;
+    font-weight: bold;
+    border-top: 1px solid #444;
+}
+
 .menu li {
-    padding: 15px;
-    border-bottom: 1px solid #444;
+    padding: 15px 0 15px 20px;
+    transition: transform 0.1s ease-in-out;
 }
 
 .menu li a {
@@ -40,18 +47,20 @@
     font-size: 14px;
     display: block;
     padding-left: 5px;
+    display: inline-block;
+    transition: transform 0.1s ease-in-out;
 }
 
 /* Efeito de hover nos links */
 .menu li a:hover {
-    background-color: #555;
     color: #bfc219;
+    transform: scale(1.1);
 }
 
 .botaoSair {
     max-width: 200px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.2s ease-in-out;
 }
 
 .botaoSair:hover {

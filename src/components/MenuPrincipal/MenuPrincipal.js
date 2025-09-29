@@ -4,7 +4,6 @@ import { JwtHandler } from '../../services/jwt_handler/jwt_handler';
 import LogoutButton from '../Logout/Logout';
 import { Link } from 'react-router-dom';
 
-
 const MenuPrincipal = () => {
     const isLogged = JwtHandler.isJwtValid();
     const [menuAberto, setMenuAberto] = useState(false);
@@ -73,16 +72,13 @@ const MenuPrincipal = () => {
                         </Link>
                     </div>
                     <ul className="menu">
-                        <li>
-                            <Link onClick={toggleMenu} to="/">
-                                Inicio
-                            </Link>
-                        </li>
+                        <p className="titulo-no-menu">Camas em 3D:</p>
                         <li>
                             <Link onClick={toggleMenu} to="/camas-3D">
                                 Camas 3D
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Composições:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -99,6 +95,7 @@ const MenuPrincipal = () => {
                                 Composição de Materiais
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Catálogos:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -144,7 +141,7 @@ const MenuPrincipal = () => {
                                 Catálogo Pantone
                             </Link>
                         </li>
-
+                        <p className="titulo-no-menu">Sites:</p>
                         <li>
                             <a
                                 href="https://www.inphantil.com.br/informacoes/"
@@ -196,11 +193,13 @@ const MenuPrincipal = () => {
                         </Link>{' '}
                     </div>
                     <ul className="menu">
+                        <p className="titulo-no-menu">Camas em 3D:</p>
                         <li>
                             <Link onClick={toggleMenu} to="/camas-3D">
                                 Camas 3D
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Composições:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -222,6 +221,7 @@ const MenuPrincipal = () => {
                                 Desenhos
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Catálogos:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -267,6 +267,7 @@ const MenuPrincipal = () => {
                                 Catálogo Pantone
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Calculadoras:</p>
 
                         <li>
                             <Link onClick={toggleMenu} to="/calculadora-nova">
@@ -293,6 +294,7 @@ const MenuPrincipal = () => {
                         </Link>{' '}
                     </div>
                     <ul className="menu">
+                        <p className="titulo-no-menu">Adm:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -309,12 +311,13 @@ const MenuPrincipal = () => {
                                 Apliques para Cortar
                             </Link>
                         </li>
-
+                        <p className="titulo-no-menu">Camas em 3D:</p>
                         <li>
                             <Link onClick={toggleMenu} to="/camas-3D">
                                 Camas 3D
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Composições:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -336,6 +339,7 @@ const MenuPrincipal = () => {
                                 Desenhos
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Catálogos:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
@@ -381,6 +385,7 @@ const MenuPrincipal = () => {
                                 Catálogo Pantone
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Calculadoras:</p>
 
                         <li>
                             <Link onClick={toggleMenu} to="/calculadora-nova">
@@ -392,6 +397,7 @@ const MenuPrincipal = () => {
                                 Calculadora 6040
                             </Link>
                         </li>
+                        <p className="titulo-no-menu">Adicionar Novo:</p>
                         <li>
                             <Link
                                 onClick={toggleMenu}
