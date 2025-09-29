@@ -25,7 +25,7 @@ export const PantoneCreate = () => {
 
         try {
             const response = await Api.post(
-                Api.addUrl('pantone'),
+                Api.addUrl('pantones'),
                 payload,
                 true
             );

@@ -19,7 +19,7 @@ export const TecidoParaLencolCreate = () => {
         const payload = {
             cor,
             imagem,
-            quantidade,
+            quantidade: parseInt(quantidade, 10),
             estoque,
         };
 

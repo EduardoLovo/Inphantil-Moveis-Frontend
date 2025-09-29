@@ -21,7 +21,7 @@ export const ApliquesCreate = () => {
             codigo,
             imagem,
             quantidade: parseInt(quantidade, 10),
-            estoque,
+            estoque: Boolean(estoque),
             ordem: parseInt(ordem, 10),
         };
 

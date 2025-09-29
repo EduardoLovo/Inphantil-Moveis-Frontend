@@ -20,7 +20,7 @@ export const LencolProntaEntregaCreate = () => {
         const payload = {
             codigo,
             imagem,
-            quantidade,
+            quantidade: parseInt(quantidade, 10),
             cor,
             tamanho,
         };
