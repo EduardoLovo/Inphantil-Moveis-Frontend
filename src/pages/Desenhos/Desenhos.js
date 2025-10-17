@@ -429,16 +429,12 @@ export const Desenhos = () => {
                     {tipoDoDesenho === 'onda' ? (
                         <p>
                             {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
+                            {codigoCor2?.codigo?.toUpperCase()}{' '}
                         </p>
                     ) : tipoDoDesenho === 'onda-lado-esquerdo' ? (
                         <p>
                             {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
+                            {codigoCor2?.codigo?.toUpperCase()}{' '}
                         </p>
                     ) : tipoDoDesenho === 'nuvem' ? (
                         <p>
