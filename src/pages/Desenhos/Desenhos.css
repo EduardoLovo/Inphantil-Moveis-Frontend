@@ -218,6 +218,10 @@ button.selected {
 
 .opcoesRadio {
     padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto; /* Header, main content, footer */
+    gap: 20px; /* Space between grid cells */
 }
 
 .opcoesRadio label {
@@ -227,4 +231,5 @@ button.selected {
 .btnPrint {
     width: 200px;
     background-color: #bbb8b8;
+    margin-left: 50px;
 }

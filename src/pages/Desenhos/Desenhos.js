@@ -325,6 +325,188 @@ export const Desenhos = () => {
                     </button>
                 ))}
             </div>
+            <div ref={divRef}>
+                <div>
+                    {tipoDoDesenho === '' ? (
+                        ''
+                    ) : tipoDoDesenho === 'onda' ? (
+                        <OndaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'onda-lado-esquerdo' ? (
+                        <OndaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
+                        />
+                    ) : tipoDoDesenho === 'nuvem' ? (
+                        <NuvemSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'nuvem-lado-esquerdo' ? (
+                        <NuvemSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
+                        />
+                    ) : tipoDoDesenho === 'nuvemUmaParede' ? (
+                        <NuvemUmaParedeSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'montanha' ? (
+                        <MontanhaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'montanha-lado-esquerdo' ? (
+                        <MontanhaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
+                        />
+                    ) : tipoDoDesenho === 'montanhaUmaParede' ? (
+                        <MontanhaUmaParedeSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'encaixe' ? (
+                        <EncaixeSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'cama' ? (
+                        <CamaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                        />
+                    ) : tipoDoDesenho === 'pico' ? (
+                        <PicoSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'pico-lado-esquerdo' ? (
+                        <PicoSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
+                        />
+                    ) : tipoDoDesenho === 'poltrona' ? (
+                        <PoltronaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            onClick={handleSVGClick}
+                        />
+                    ) : (
+                        ''
+                    )}
+                </div>
+                <div className="resultadoNomeDasCores">
+                    {tipoDoDesenho === 'onda' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'onda-lado-esquerdo' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'nuvem' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'nuvem-lado-esquerdo' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'nuvemUmaParede' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'montanha' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor3?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'montanha-lado-esquerdo' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor3?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'montanhaUmaParede' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor3?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'encaixe' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'cama' ? (
+                        <p>
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'pico' ? (
+                        <p>
+                            {codigoCor3?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'pico-lado-esquerdo' ? (
+                        <p>
+                            {codigoCor3?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : (
+                        ''
+                    )}
+                </div>
+            </div>
+            <button className="btnPrint" onClick={copiarPrint}>
+                📸 Tirar print e copiar
+            </button>
             <div className="opcoesRadio">
                 <label>
                     <input
@@ -456,183 +638,6 @@ export const Desenhos = () => {
                     />
                     Poltrona
                 </label>
-
-                <button className="btnPrint" onClick={copiarPrint}>
-                    📸 Tirar print e copiar
-                </button>
-            </div>
-
-            <div ref={divRef}>
-                <div>
-                    {tipoDoDesenho === '' ? (
-                        ''
-                    ) : tipoDoDesenho === 'onda' ? (
-                        <OndaSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            onClick={handleSVGClick}
-                            lado="direito"
-                        />
-                    ) : tipoDoDesenho === 'onda-lado-esquerdo' ? (
-                        <OndaSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            onClick={handleSVGClick}
-                            lado="esquerdo"
-                        />
-                    ) : tipoDoDesenho === 'nuvem' ? (
-                        <NuvemSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            onClick={handleSVGClick}
-                            lado="direito"
-                        />
-                    ) : tipoDoDesenho === 'nuvem-lado-esquerdo' ? (
-                        <NuvemSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            onClick={handleSVGClick}
-                            lado="esquerdo"
-                        />
-                    ) : tipoDoDesenho === 'nuvemUmaParede' ? (
-                        <NuvemUmaParedeSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            onClick={handleSVGClick}
-                        />
-                    ) : tipoDoDesenho === 'montanha' ? (
-                        <MontanhaSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            color3={appliedColor3}
-                            onClick={handleSVGClick}
-                            lado="direito"
-                        />
-                    ) : tipoDoDesenho === 'montanha-lado-esquerdo' ? (
-                        <MontanhaSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            color3={appliedColor3}
-                            onClick={handleSVGClick}
-                            lado="esquerdo"
-                        />
-                    ) : tipoDoDesenho === 'montanhaUmaParede' ? (
-                        <MontanhaUmaParedeSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            color3={appliedColor3}
-                            onClick={handleSVGClick}
-                        />
-                    ) : tipoDoDesenho === 'encaixe' ? (
-                        <EncaixeSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            onClick={handleSVGClick}
-                        />
-                    ) : tipoDoDesenho === 'cama' ? (
-                        <CamaSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            onClick={handleSVGClick}
-                        />
-                    ) : tipoDoDesenho === 'pico' ? (
-                        <PicoSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            color3={appliedColor3}
-                            onClick={handleSVGClick}
-                            lado="direito"
-                        />
-                    ) : tipoDoDesenho === 'pico-lado-esquerdo' ? (
-                        <PicoSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            color3={appliedColor3}
-                            onClick={handleSVGClick}
-                            lado="esquerdo"
-                        />
-                    ) : tipoDoDesenho === 'poltrona' ? (
-                        <PoltronaSVG
-                            color={appliedColor}
-                            color2={appliedColor2}
-                            color3={appliedColor3}
-                            onClick={handleSVGClick}
-                        />
-                    ) : (
-                        ''
-                    )}
-                </div>
-                <div className="resultadoNomeDasCores">
-                    {tipoDoDesenho === 'onda' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'nuvem' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'nuvem-lado-esquerdo' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'nuvemUmaParede' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'montanha' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor3?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'montanha-lado-esquerdo' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor3?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'montanhaUmaParede' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor3?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'encaixe' ? (
-                        <p>
-                            {codigoCor?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'cama' ? (
-                        <p>
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'pico' ? (
-                        <p>
-                            {codigoCor3?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
-                        </p>
-                    ) : tipoDoDesenho === 'pico-lado-esquerdo' ? (
-                        <p>
-                            {codigoCor3?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
-                            {codigoCor?.codigo?.toUpperCase()}
-                        </p>
-                    ) : (
-                        ''
-                    )}
-                </div>
             </div>
         </div>
     );
