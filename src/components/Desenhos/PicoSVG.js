@@ -7,7 +7,7 @@ export const PicoSVG = ({ color, color2, color3, onClick, lado }) => {
             <div className={lado}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    // width="3300mm"
+                    width="300mm"
                     height="60mm"
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -16,6 +16,7 @@ export const PicoSVG = ({ color, color2, color3, onClick, lado }) => {
                     text-rendering="geometricPrecision"
                     version="1.0"
                     viewBox="0 0 330000 88000"
+                    style={{ cursor: 'pointer' }}
                 >
                     <g
                         fill="none"

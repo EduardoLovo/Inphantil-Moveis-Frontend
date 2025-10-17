@@ -10,6 +10,7 @@ import { PicoSVG } from '../../components/Desenhos/PicoSVG';
 import { NuvemUmaParedeSVG } from '../../components/Desenhos/NuvemUmaParedeSVG';
 import { MontanhaUmaParedeSVG } from '../../components/Desenhos/MontanhaUmaParedeSVG';
 import { PoltronaSVG } from '../../components/Desenhos/PoltronaSVG';
+import { OndaSVG } from '../../components/Desenhos/OndaSVG';
 
 const listaDeCores = [
     { codigo: 'am1', hex: '#ffd653' },
@@ -305,7 +306,6 @@ export const Desenhos = () => {
         });
     };
 
-
     return (
         <div className="contentDesenhos">
             <h1>Escolha uma cor e clique na imagem para aplicar</h1>
@@ -326,6 +326,26 @@ export const Desenhos = () => {
                 ))}
             </div>
             <div className="opcoesRadio">
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="onda"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'onda'}
+                    />
+                    Onda (Lado direito)
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="onda-lado-esquerdo"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'onda-lado-esquerdo'}
+                    />
+                    Onda (Lado esquerdo)
+                </label>
                 <label>
                     <input
                         type="radio"
@@ -446,6 +466,20 @@ export const Desenhos = () => {
                 <div>
                     {tipoDoDesenho === '' ? (
                         ''
+                    ) : tipoDoDesenho === 'onda' ? (
+                        <OndaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                            lado="direito"
+                        />
+                    ) : tipoDoDesenho === 'onda-lado-esquerdo' ? (
+                        <OndaSVG
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            onClick={handleSVGClick}
+                            lado="esquerdo"
+                        />
                     ) : tipoDoDesenho === 'nuvem' ? (
                         <NuvemSVG
                             color={appliedColor}
@@ -529,7 +563,14 @@ export const Desenhos = () => {
                     )}
                 </div>
                 <div className="resultadoNomeDasCores">
-                    {tipoDoDesenho === 'nuvem' ? (
+                    {tipoDoDesenho === 'onda' ? (
+                        <p>
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'nuvem' ? (
                         <p>
                             {codigoCor?.codigo?.toUpperCase()} -{' '}
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
