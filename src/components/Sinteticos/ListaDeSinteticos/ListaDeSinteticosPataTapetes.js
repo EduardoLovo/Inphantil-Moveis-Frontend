@@ -3,8 +3,7 @@ import { Loading } from '../../Loading/Loading';
 import { CardSinteticos } from '../CardSinteticos/CardSinteticos';
 import { Api } from '../../../services/Api';
 
-export const ListaDeSinteticos = (props) => {
-    const cor = props.cor;
+export const ListaDeSinteticosPataTapetes = () => {
     const [sinteticos, setSinteticos] = useState([]);
     const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
     const [error, setError] = useState('');
@@ -45,18 +44,14 @@ export const ListaDeSinteticos = (props) => {
                         ''
                     ) : (
                         <div>
-                            {!cor ? (
-                                <CardSinteticos sintetico={sintetico} />
-                            ) : (
-                                <div>
-                                    {sintetico.cor === cor && (
-                                        <CardSinteticos
-                                            sintetico={sintetico}
-                                            key={index}
-                                        />
-                                    )}
-                                </div>
-                            )}
+                            <div>
+                                {sintetico.tapete === true && (
+                                    <CardSinteticos
+                                        sintetico={sintetico}
+                                        key={index}
+                                    />
+                                )}
+                            </div>
                         </div>
                     )}
                 </div>

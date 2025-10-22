@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ListaDeSinteticos } from '../../../components/Sinteticos/ListaDeSinteticos/ListaDeSinteticos';
 import './SinteticoCatalogo.css';
+import { ListaDeSinteticosPataTapetes } from '../../../components/Sinteticos/ListaDeSinteticos/ListaDeSinteticosPataTapetes';
 
 export const SinteticoCatalogo = () => {
     const [cor, setCor] = useState('');
@@ -22,6 +23,7 @@ export const SinteticoCatalogo = () => {
                 <button onClick={() => setCor('Verde')}>Verde</button>
                 <button onClick={() => setCor('Vermelho')}>Vermelho</button>
                 <button onClick={() => setCor('Externo')}>Externo</button>
+                <button onClick={() => setCor('Tapete')}>Tapete</button>
             </div>
             <div className="avisoCatalogoSintetico">
                 <h3>***MUITO IMPORTANTE***</h3>
@@ -34,7 +36,11 @@ export const SinteticoCatalogo = () => {
                 </p>
             </div>
             <div>
-                <ListaDeSinteticos cor={cor} />
+                {cor === 'Tapete' ? (
+                    <ListaDeSinteticosPataTapetes />
+                ) : (
+                    <ListaDeSinteticos cor={cor} />
+                )}
             </div>
         </div>
     );
