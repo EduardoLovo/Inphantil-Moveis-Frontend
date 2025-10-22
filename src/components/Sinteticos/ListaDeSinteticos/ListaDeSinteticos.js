@@ -49,12 +49,13 @@ export const ListaDeSinteticos = (props) => {
                                 <CardSinteticos sintetico={sintetico} />
                             ) : (
                                 <div>
-                                    {sintetico.cor === cor && (
-                                        <CardSinteticos
-                                            sintetico={sintetico}
-                                            key={index}
-                                        />
-                                    )}
+                                    {sintetico.cor === cor &&
+                                        sintetico.tapete === false && (
+                                            <CardSinteticos
+                                                sintetico={sintetico}
+                                                key={index}
+                                            />
+                                        )}
                                 </div>
                             )}
                         </div>

@@ -117,7 +117,15 @@ const MenuPrincipal = () => {
                                 onClick={toggleMenu}
                                 to="/catalogo-de-sinteticos"
                             >
-                                Catálogo de Materiais
+                                Catálogo de cores para camas
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-sinteticos-para-tapetes"
+                            >
+                                Catálogo de cores para tapetes
                             </Link>
                         </li>
                         <li>
@@ -243,7 +251,15 @@ const MenuPrincipal = () => {
                                 onClick={toggleMenu}
                                 to="/catalogo-de-sinteticos"
                             >
-                                Catálogo de Materiais
+                                Catálogo de cores para camas
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-sinteticos-para-tapetes"
+                            >
+                                Catálogo de cores para tapetes
                             </Link>
                         </li>
                         <li>
@@ -361,7 +377,15 @@ const MenuPrincipal = () => {
                                 onClick={toggleMenu}
                                 to="/catalogo-de-sinteticos"
                             >
-                                Catálogo de Materiais
+                                Catálogo de cores para camas
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                onClick={toggleMenu}
+                                to="/catalogo-de-sinteticos-para-tapetes"
+                            >
+                                Catálogo de cores para tapetes
                             </Link>
                         </li>
                         <li>

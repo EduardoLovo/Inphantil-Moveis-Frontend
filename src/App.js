@@ -24,6 +24,7 @@ import { ComposicaoTecidoComAplique } from './pages/Composicao/ComposicaoTecidoC
 import { ToastContainer } from 'react-toastify';
 import { ComposicaoDeSintetico } from './pages/Composicao/ComposicaoDeSintetico';
 import { Desenhos } from './pages/Desenhos/Desenhos';
+import { SinteticoParaTapetes } from './pages/SinteticosParaTapetes/SinteticoParaTapetes';
 
 function App() {
     return (
@@ -79,6 +80,10 @@ function App() {
                     <Route
                         path="/catalogo-de-sinteticos"
                         element={<SinteticoCatalogo />}
+                    />
+                    <Route
+                        path="/catalogo-de-sinteticos-para-tapetes"
+                        element={<SinteticoParaTapetes />}
                     />
                     <Route
                         path="/adicionar-novo-sintetico"

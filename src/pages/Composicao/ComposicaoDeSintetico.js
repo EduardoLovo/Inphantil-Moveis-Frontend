@@ -54,8 +54,6 @@ export const ComposicaoDeSintetico = () => {
         });
     };
 
- 
-
     return (
         <div className="contentComposicoes">
             {isLoading && <Loading />}
@@ -99,8 +97,9 @@ export const ComposicaoDeSintetico = () => {
                     <div className="lista-de-tecidos">
                         {sinteticos.map((sintetico, index) => (
                             <div key={index}>
-                                {sintetico.estoque === true &&
-                                sintetico.cor === 'Externo' ? (
+                                {(sintetico.estoque === true &&
+                                    sintetico.cor === 'Externo') ||
+                                sintetico.tapete === false ? (
                                     <div className="contentCard">
                                         <img
                                             src={sintetico.imagem}
@@ -124,8 +123,9 @@ export const ComposicaoDeSintetico = () => {
                     <div className="lista-de-apliques">
                         {sinteticos.map((sintetico, index) => (
                             <div key={index}>
-                                {sintetico.estoque === false &&
-                                sintetico.cor === 'externo' ? (
+                                {(sintetico.estoque === false &&
+                                    sintetico.cor === 'externo') ||
+                                sintetico.tapete === true ? (
                                     ''
                                 ) : (
                                     <div className="contentCardTecido">

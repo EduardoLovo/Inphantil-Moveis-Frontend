@@ -45,12 +45,10 @@ export const ListaDeSinteticosPataTapetes = () => {
                     ) : (
                         <div>
                             <div>
-                                {sintetico.tapete === true && (
-                                    <CardSinteticos
-                                        sintetico={sintetico}
-                                        key={index}
-                                    />
-                                )}
+                                <CardSinteticos
+                                    sintetico={sintetico}
+                                    key={index}
+                                />
                             </div>
                         </div>
                     )}
