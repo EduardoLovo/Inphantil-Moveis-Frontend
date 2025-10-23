@@ -12,6 +12,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
     const [imagem, setImagem] = useState(sintetico.imagem);
     const [estoque, setEstoque] = useState(sintetico.estoque);
     const [tapete, setTapete] = useState(sintetico.tapete);
+    const [externo, setExterno] = useState(sintetico.externo);
     const [cor, setCor] = useState(sintetico.cor);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); // Estado de carregament
@@ -38,6 +39,7 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
             estoque: Boolean(estoque),
             cor,
             tapete: Boolean(tapete),
+            externo: Boolean(externo),
         };
 
         try {
@@ -181,7 +183,16 @@ export const ModalSinteticos = ({ sintetico, onClose }) => {
                                 <option value="true">Sim</option>
                                 <option value="false">Não</option>
                             </select>
-
+                            <label>Externo:</label>
+                            <select
+                                value={externo}
+                                onChange={(e) =>
+                                    setExterno(e.target.value === 'true')
+                                }
+                            >
+                                <option value="true">Sim</option>
+                                <option value="false">Não</option>
+                            </select>
                             <button type="submit">Atualizar</button>
                         </form>
                     </div>

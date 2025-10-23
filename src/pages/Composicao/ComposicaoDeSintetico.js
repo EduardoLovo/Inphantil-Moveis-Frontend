@@ -98,7 +98,7 @@ export const ComposicaoDeSintetico = () => {
                         {sinteticos.map((sintetico, index) => (
                             <div key={index}>
                                 {sintetico.estoque === true &&
-                                sintetico.cor === 'Externo' &&
+                                sintetico.externo &&
                                 sintetico.tapete === false ? (
                                     <div className="contentCard">
                                         <img

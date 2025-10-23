@@ -34,8 +34,6 @@ export const ListaDeSinteticos = (props) => {
         a.codigo.localeCompare(b.codigo)
     );
 
-    console.log(sinteticos);
-
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}
@@ -45,8 +43,16 @@ export const ListaDeSinteticos = (props) => {
                         ''
                     ) : (
                         <div>
-                            {!cor ? (
-                                <CardSinteticos sintetico={sintetico} />
+                            {cor === 'Externo' ? (
+                                <div>
+                                    {sintetico.tapete === false &&
+                                        sintetico.externo && (
+                                            <CardSinteticos
+                                                sintetico={sintetico}
+                                                key={index}
+                                            />
+                                        )}
+                                </div>
                             ) : (
                                 <div>
                                     {sintetico.cor === cor &&
