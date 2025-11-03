@@ -119,7 +119,7 @@ const listaDeCores = [
         hex: '#d4c7d9',
     },
     {
-        codigo: 'lj1',
+        codigo: 'lj2',
         hex: '#d26a3e',
     },
     {
