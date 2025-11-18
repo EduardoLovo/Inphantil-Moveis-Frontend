@@ -11,6 +11,7 @@ import { NuvemUmaParedeSVG } from '../../components/Desenhos/NuvemUmaParedeSVG';
 import { MontanhaUmaParedeSVG } from '../../components/Desenhos/MontanhaUmaParedeSVG';
 import { PoltronaSVG } from '../../components/Desenhos/PoltronaSVG';
 import { OndaSVG } from '../../components/Desenhos/OndaSVG';
+import { TapeteSvg } from '../../components/Desenhos/TapeteSvg';
 
 const listaDeCores = [
     { codigo: 'am1', hex: '#ffd653' },
@@ -261,9 +262,37 @@ export const Desenhos = () => {
     const [appliedColor, setAppliedColor] = useState('#ccc'); // Cor aplicada no SVG
     const [appliedColor2, setAppliedColor2] = useState('#ccc'); // Cor aplicada no SVG
     const [appliedColor3, setAppliedColor3] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor4, setAppliedColor4] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor5, setAppliedColor5] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor6, setAppliedColor6] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor7, setAppliedColor7] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor8, setAppliedColor8] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor9, setAppliedColor9] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor10, setAppliedColor10] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor11, setAppliedColor11] = useState('#ccc'); // Cor aplicada no SVG
+    const [appliedColor12, setAppliedColor12] = useState('#ccc');
+    const [appliedColor13, setAppliedColor13] = useState('#ccc');
+    const [appliedColor14, setAppliedColor14] = useState('#ccc');
+    const [appliedColor15, setAppliedColor15] = useState('#ccc');
+    const [appliedColor16, setAppliedColor16] = useState('#ccc');
+    const [appliedColor17, setAppliedColor17] = useState('#ccc');
     const [codigoCor, setCodigoCor] = useState(''); // Cor aplicada no SVG
     const [codigoCor2, setCodigoCor2] = useState(''); // Cor aplicada no SVG
     const [codigoCor3, setCodigoCor3] = useState(''); // Cor aplicada no SVG
+    const [codigoCor4, setCodigoCor4] = useState(''); // Cor aplicada no SVG
+    const [codigoCor5, setCodigoCor5] = useState(''); // Cor aplicada no SVG
+    const [codigoCor6, setCodigoCor6] = useState(''); // Cor aplicada no SVG
+    const [codigoCor7, setCodigoCor7] = useState(''); // Cor aplicada no SVG
+    const [codigoCor8, setCodigoCor8] = useState(''); // Cor aplicada no SVG
+    const [codigoCor9, setCodigoCor9] = useState(''); // Cor aplicada no SVG
+    const [codigoCor10, setCodigoCor10] = useState(''); // Cor aplicada no SVG
+    const [codigoCor11, setCodigoCor11] = useState(''); // Cor aplicada no SVG
+    const [codigoCor12, setCodigoCor12] = useState(''); //
+    const [codigoCor13, setCodigoCor13] = useState(''); // Cor aplicada no SVG
+    const [codigoCor14, setCodigoCor14] = useState(''); // Cor aplicada no SVG
+    const [codigoCor15, setCodigoCor15] = useState(''); // Cor aplicada no SVG
+    const [codigoCor16, setCodigoCor16] = useState(''); // Cor aplicada no SVG
+    const [codigoCor17, setCodigoCor17] = useState(''); // Cor aplicada no SVG
     const [tipoDoDesenho, setTipoDoDesenho] = useState(''); // Cor aplicada no SVG
 
     // Ao clicar na imagem, a cor do input é aplicada ao SVG
@@ -274,8 +303,36 @@ export const Desenhos = () => {
             setAppliedColor(selectedColor);
         } else if (cor === 'cor2') {
             setAppliedColor2(selectedColor);
-        } else {
+        } else if (cor === 'cor3') {
             setAppliedColor3(selectedColor);
+        } else if (cor === 'cor4') {
+            setAppliedColor4(selectedColor);
+        } else if (cor === 'cor5') {
+            setAppliedColor5(selectedColor);
+        } else if (cor === 'cor6') {
+            setAppliedColor6(selectedColor);
+        } else if (cor === 'cor7') {
+            setAppliedColor7(selectedColor);
+        } else if (cor === 'cor8') {
+            setAppliedColor8(selectedColor);
+        } else if (cor === 'cor9') {
+            setAppliedColor9(selectedColor);
+        } else if (cor === 'cor10') {
+            setAppliedColor10(selectedColor);
+        } else if (cor === 'cor11') {
+            setAppliedColor11(selectedColor);
+        } else if (cor === 'cor12') {
+            setAppliedColor12(selectedColor);
+        } else if (cor === 'cor13') {
+            setAppliedColor13(selectedColor);
+        } else if (cor === 'cor14') {
+            setAppliedColor14(selectedColor);
+        } else if (cor === 'cor15') {
+            setAppliedColor15(selectedColor);
+        } else if (cor === 'cor16') {
+            setAppliedColor16(selectedColor);
+        } else if (cor === 'cor17') {
+            setAppliedColor17(selectedColor);
         }
     };
 
@@ -283,7 +340,39 @@ export const Desenhos = () => {
         setCodigoCor(listaDeCores.find((cor) => cor.hex === appliedColor));
         setCodigoCor2(listaDeCores.find((cor) => cor.hex === appliedColor2));
         setCodigoCor3(listaDeCores.find((cor) => cor.hex === appliedColor3));
-    }, [appliedColor, appliedColor2, appliedColor3]);
+        setCodigoCor4(listaDeCores.find((cor) => cor.hex === appliedColor4));
+        setCodigoCor5(listaDeCores.find((cor) => cor.hex === appliedColor5));
+        setCodigoCor6(listaDeCores.find((cor) => cor.hex === appliedColor6));
+        setCodigoCor7(listaDeCores.find((cor) => cor.hex === appliedColor7));
+        setCodigoCor8(listaDeCores.find((cor) => cor.hex === appliedColor8));
+        setCodigoCor9(listaDeCores.find((cor) => cor.hex === appliedColor9));
+        setCodigoCor10(listaDeCores.find((cor) => cor.hex === appliedColor10));
+        setCodigoCor11(listaDeCores.find((cor) => cor.hex === appliedColor11));
+        setCodigoCor12(listaDeCores.find((cor) => cor.hex === appliedColor12));
+        setCodigoCor13(listaDeCores.find((cor) => cor.hex === appliedColor13));
+        setCodigoCor14(listaDeCores.find((cor) => cor.hex === appliedColor14));
+        setCodigoCor15(listaDeCores.find((cor) => cor.hex === appliedColor15));
+        setCodigoCor16(listaDeCores.find((cor) => cor.hex === appliedColor16));
+        setCodigoCor17(listaDeCores.find((cor) => cor.hex === appliedColor17));
+    }, [
+        appliedColor,
+        appliedColor2,
+        appliedColor3,
+        appliedColor4,
+        appliedColor5,
+        appliedColor6,
+        appliedColor7,
+        appliedColor8,
+        appliedColor9,
+        appliedColor10,
+        appliedColor11,
+        appliedColor12,
+        appliedColor13,
+        appliedColor14,
+        appliedColor15,
+        appliedColor16,
+        appliedColor17,
+    ]);
 
     const divRef = useRef(null);
 
@@ -421,6 +510,27 @@ export const Desenhos = () => {
                             color3={appliedColor3}
                             onClick={handleSVGClick}
                         />
+                    ) : tipoDoDesenho === 'tapete' ? (
+                        <TapeteSvg
+                            color={appliedColor}
+                            color2={appliedColor2}
+                            color3={appliedColor3}
+                            color4={appliedColor4}
+                            color5={appliedColor5}
+                            color6={appliedColor6}
+                            color7={appliedColor7}
+                            color8={appliedColor8}
+                            color9={appliedColor9}
+                            color10={appliedColor10}
+                            color11={appliedColor11}
+                            color12={appliedColor12}
+                            color13={appliedColor13}
+                            color14={appliedColor14}
+                            color15={appliedColor15}
+                            color16={appliedColor16}
+                            color17={appliedColor17}
+                            onClick={handleSVGClick}
+                        />
                     ) : (
                         ''
                     )}
@@ -494,6 +604,26 @@ export const Desenhos = () => {
                             {codigoCor3?.codigo?.toUpperCase()} -{' '}
                             {codigoCor2?.codigo?.toUpperCase()} -{' '}
                             {codigoCor?.codigo?.toUpperCase()}
+                        </p>
+                    ) : tipoDoDesenho === 'tapete' ? (
+                        <p className="resultado-tapete">
+                            {codigoCor?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor2?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor3?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor4?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor5?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor6?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor7?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor8?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor9?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor10?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor11?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor12?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor13?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor14?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor15?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor16?.codigo?.toUpperCase()} -{' '}
+                            {codigoCor17?.codigo?.toUpperCase()}
                         </p>
                     ) : (
                         ''
@@ -633,6 +763,16 @@ export const Desenhos = () => {
                         checked={tipoDoDesenho === 'poltrona'}
                     />
                     Poltrona
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="desenho"
+                        value="tapete"
+                        onChange={(e) => setTipoDoDesenho(e.target.value)}
+                        checked={tipoDoDesenho === 'tapete'}
+                    />
+                    Tapete
                 </label>
             </div>
         </div>

@@ -233,3 +233,7 @@ button.selected {
     background-color: #bbb8b8;
     margin-left: 50px;
 }
+
+.resultado-tapete {
+    width: 80%;
+}

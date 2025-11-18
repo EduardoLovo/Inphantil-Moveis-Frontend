@@ -14,3 +14,9 @@
 .titulo-lado {
     text-align: center;
 }
+
+.tapete svg {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
