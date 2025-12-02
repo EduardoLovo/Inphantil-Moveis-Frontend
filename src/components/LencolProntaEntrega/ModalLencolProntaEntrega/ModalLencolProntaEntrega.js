@@ -94,7 +94,7 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
 
     return (
         <div className="modal-overlay " onClick={handleOverlayClick}>
-            {tipo === 'vendas' || !isLogged ? (
+            {!isLogged ? (
                 <div className="modal-cliente">
                     <p onClick={onClose} className="botaoFechar"></p>
                     <img src={lencol.imagem} alt="Imagem do aplique" />
