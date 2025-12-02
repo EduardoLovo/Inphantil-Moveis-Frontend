@@ -33,16 +33,30 @@ export const ListaLencolProntaEntrega = (props) => {
         a.codigo.localeCompare(b.codigo)
     );
 
+    const lencoisFiltrados = sortedLencoisProntaEntrega.filter(
+        (lencol) => lencol.tamanho === tamanho
+    );
+
     return (
         <div className="contentListaDeApliques">
             {isLoading && <Loading />}
-            {sortedLencoisProntaEntrega.map((lencol, index) => (
-                <div key={index}>
-                    {tamanho === lencol.tamanho && (
-                        <CardLencolProntaEntrega lencol={lencol} />
+            {!isLoading && (
+                <>
+                    {lencoisFiltrados.length > 0 ? (
+                        lencoisFiltrados.map((lencol, index) => (
+                            <CardLencolProntaEntrega
+                                key={index}
+                                lencol={lencol}
+                            />
+                        ))
+                    ) : (
+                        // A mensagem aparecerá apenas se não houver lençóis no filtro e não estiver carregando
+                        <p className="msg-sem-produto">
+                            Nenhum lençol encontrado para este tamanho.
+                        </p>
                     )}
-                </div>
-            ))}
+                </>
+            )}
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );

@@ -1,0 +1,18 @@
+/* Estilo base para todos os botões dentro do menu */
+.menuDoCatalogoSintetico button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    background-color: #636363;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100px;
+}
+
+/* Classe que será aplicada apenas quando o botão estiver ativo */
+.menuDoCatalogoSintetico button.botao-ativo {
+    background-color: #007bff; /* Cor de destaque (Azul exemplo) */
+    color: white; /* Cor do texto ao selecionar */
+    border-color: #0056b3;
+    font-weight: bold;
+}
