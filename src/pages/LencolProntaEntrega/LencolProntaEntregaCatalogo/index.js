@@ -9,6 +9,12 @@ export const LencolProntaEntregaCatalogo = () => {
             <h1 className="titulo">Catálogo de Lencois Pronta-Entrega</h1>
             <div className="menuDoCatalogoSintetico">
                 <button
+                    className={tamanho === 'Fronha' ? 'botao-ativo' : ''}
+                    onClick={() => setTamanho('Fronha')}
+                >
+                    Fronhas
+                </button>
+                <button
                     className={tamanho === 'Berco' ? 'botao-ativo' : ''}
                     onClick={() => setTamanho('Berco')}
                 >

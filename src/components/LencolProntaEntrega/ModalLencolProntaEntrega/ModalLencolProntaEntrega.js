@@ -165,6 +165,7 @@ export const ModalLencolProntaEntrega = ({ lencol, onClose }) => {
                                 required
                             >
                                 <option value=""></option>
+                                <option value="Fronha">Fronha</option>
                                 <option value="Berco">Berço</option>
                                 <option value="Junior">Junior</option>
                                 <option value="Solteiro">Solteiro</option>
