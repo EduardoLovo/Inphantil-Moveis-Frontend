@@ -50,15 +50,27 @@ function App() {
                     {/* Rotas Apliques */}
                     <Route
                         path="/catalogo-de-apliques"
-                        element={<ApliquesCatalogo />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <ApliquesCatalogo />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/apliques-para-comprar"
-                        element={<ApliquesParaComprar />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <ApliquesParaComprar />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/catalogo-de-apliques-para-cabana"
-                        element={<ApliquesParaCabana />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <ApliquesParaCabana />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/adicionar-novo-aplique"
@@ -79,11 +91,19 @@ function App() {
                     {/* Rotas Sinteticos */}
                     <Route
                         path="/catalogo-de-sinteticos"
-                        element={<SinteticoCatalogo />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <SinteticoCatalogo />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/catalogo-de-sinteticos-para-tapetes"
-                        element={<SinteticoParaTapetes />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <SinteticoParaTapetes />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/adicionar-novo-sintetico"
@@ -96,7 +116,11 @@ function App() {
                     {/* Rotas Tecidos */}
                     <Route
                         path="/catalogo-de-tecidos-para-lencol"
-                        element={<TecidosParaLencolCatalogo />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <TecidosParaLencolCatalogo />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/adicionar-novo-tecido-para-lencol"
@@ -109,7 +133,11 @@ function App() {
                     {/* Rotas Lençois */}
                     <Route
                         path="/catalogo-de-lencol-pronta-entrega"
-                        element={<LencolProntaEntregaCatalogo />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <LencolProntaEntregaCatalogo />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/adicionar-novo-lencol-pronta-entrega"
@@ -135,25 +163,48 @@ function App() {
                     {/* Rotas Composições */}
                     <Route
                         path="/composicao-tecido-com-aplique"
-                        element={<ComposicaoTecidoComAplique />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <ComposicaoTecidoComAplique />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/composicao-de-sinteticos"
-                        element={<ComposicaoDeSintetico />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <ComposicaoDeSintetico />
+                            </PrivateRoute>
+                        }
                     />
                     {/* Rota Cama 3D */}
                     <Route path="/camas-3D" element={<Cama3D />} />
                     {/* Rotas calculadoras */}
                     <Route
                         path="/calculadora-nova"
-                        element={<CalculadoraNova />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <CalculadoraNova />
+                            </PrivateRoute>
+                        }
                     />
                     <Route
                         path="/calculadora-6040"
-                        element={<Calculadora6040 />}
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <Calculadora6040 />
+                            </PrivateRoute>
+                        }
                     />
                     {/* Rotas desenhos */}
-                    <Route path="/desenhos" element={<Desenhos />} />
+                    <Route
+                        path="/desenhos"
+                        element={
+                            <PrivateRoute redirectTo="/login">
+                                <Desenhos />
+                            </PrivateRoute>
+                        }
+                    />
                 </Routes>
             </div>
         </div>
