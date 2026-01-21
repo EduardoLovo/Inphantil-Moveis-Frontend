@@ -25,6 +25,7 @@ import { ToastContainer } from 'react-toastify';
 import { ComposicaoDeSintetico } from './pages/Composicao/ComposicaoDeSintetico';
 import { Desenhos } from './pages/Desenhos/Desenhos';
 import { SinteticoParaTapetes } from './pages/SinteticosParaTapetes/SinteticoParaTapetes';
+import { NovoSite } from './pages/NovoSite';
 
 function App() {
     return (
@@ -45,13 +46,14 @@ function App() {
             <div className="containerApp">
                 <Routes>
                     <Route path="/login" element={<Login />} />
+                    <Route path="/direcionamento" element={<NovoSite />} />
 
                     <Route path="/" element={<Home />} />
                     {/* Rotas Apliques */}
                     <Route
                         path="/catalogo-de-apliques"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <ApliquesCatalogo />
                             </PrivateRoute>
                         }
@@ -59,7 +61,7 @@ function App() {
                     <Route
                         path="/apliques-para-comprar"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <ApliquesParaComprar />
                             </PrivateRoute>
                         }
@@ -67,7 +69,7 @@ function App() {
                     <Route
                         path="/catalogo-de-apliques-para-cabana"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <ApliquesParaCabana />
                             </PrivateRoute>
                         }
@@ -75,7 +77,7 @@ function App() {
                     <Route
                         path="/adicionar-novo-aplique"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <ApliquesCreate />
                             </PrivateRoute>
                         }
@@ -83,7 +85,7 @@ function App() {
                     <Route
                         path="/apliques-para-cortar"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <ApliquesParaCortar />
                             </PrivateRoute>
                         }
@@ -92,7 +94,7 @@ function App() {
                     <Route
                         path="/catalogo-de-sinteticos"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <SinteticoCatalogo />
                             </PrivateRoute>
                         }
@@ -100,7 +102,7 @@ function App() {
                     <Route
                         path="/catalogo-de-sinteticos-para-tapetes"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <SinteticoParaTapetes />
                             </PrivateRoute>
                         }
@@ -108,7 +110,7 @@ function App() {
                     <Route
                         path="/adicionar-novo-sintetico"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <SinteticoCreate />
                             </PrivateRoute>
                         }
@@ -117,7 +119,7 @@ function App() {
                     <Route
                         path="/catalogo-de-tecidos-para-lencol"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <TecidosParaLencolCatalogo />
                             </PrivateRoute>
                         }
@@ -125,7 +127,7 @@ function App() {
                     <Route
                         path="/adicionar-novo-tecido-para-lencol"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <TecidoParaLencolCreate />
                             </PrivateRoute>
                         }
@@ -134,7 +136,7 @@ function App() {
                     <Route
                         path="/catalogo-de-lencol-pronta-entrega"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <LencolProntaEntregaCatalogo />
                             </PrivateRoute>
                         }
@@ -142,7 +144,7 @@ function App() {
                     <Route
                         path="/adicionar-novo-lencol-pronta-entrega"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <LencolProntaEntregaCreate />
                             </PrivateRoute>
                         }
@@ -155,7 +157,7 @@ function App() {
                     <Route
                         path="/adicionar-novo-pantone"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <PantoneCreate />
                             </PrivateRoute>
                         }
@@ -164,7 +166,7 @@ function App() {
                     <Route
                         path="/composicao-tecido-com-aplique"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <ComposicaoTecidoComAplique />
                             </PrivateRoute>
                         }
@@ -172,7 +174,7 @@ function App() {
                     <Route
                         path="/composicao-de-sinteticos"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <ComposicaoDeSintetico />
                             </PrivateRoute>
                         }
@@ -183,7 +185,7 @@ function App() {
                     <Route
                         path="/calculadora-nova"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <CalculadoraNova />
                             </PrivateRoute>
                         }
@@ -191,7 +193,7 @@ function App() {
                     <Route
                         path="/calculadora-6040"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <Calculadora6040 />
                             </PrivateRoute>
                         }
@@ -200,7 +202,7 @@ function App() {
                     <Route
                         path="/desenhos"
                         element={
-                            <PrivateRoute redirectTo="/login">
+                            <PrivateRoute redirectTo="/direcionamento">
                                 <Desenhos />
                             </PrivateRoute>
                         }
